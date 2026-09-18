@@ -1,240 +1,131 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>निबंध वही</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f7f5f0;
-    --bg-soft:#ffffff;
-    --ink:#22201c;
-    --ink-soft:#5c574e;
-    --line:#e2ddd2;
-    --accent:#9a6b3f;
-    --accent-soft:#c9a227;
-    --shadow:0 1px 2px rgba(34,32,28,.06),0 10px 30px rgba(34,32,28,.07);
+:root{
+  --bg:#f7f3ea; --bg2:#fffdf8; --ink:#241f1a; --muted:#6d6257;
+  --line:#e0d6c5; --accent:#9a5b2e; --accent2:#c98a4b; --shadow:0 1px 3px rgba(60,45,25,.08),0 12px 32px rgba(60,45,25,.07);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#15130f; --bg2:#1e1b16; --ink:#ece5d8; --muted:#a2988a;
+    --line:#332e26; --accent:#e0a869; --accent2:#c98a4b; --shadow:0 1px 3px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.35);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#14161a;
-      --bg-soft:#1b1e24;
-      --ink:#e9e6e0;
-      --ink-soft:#a8a29a;
-      --line:#2c3038;
-      --accent:#d8a668;
-      --accent-soft:#e2c275;
-      --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 36px rgba(0,0,0,.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#14161a;
-    --bg-soft:#1b1e24;
-    --ink:#e9e6e0;
-    --ink-soft:#a8a29a;
-    --line:#2c3038;
-    --accent:#d8a668;
-    --accent-soft:#e2c275;
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 36px rgba(0,0,0,.35);
-  }
-
-  *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:"IBM Plex Sans Devanagari","IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-    font-weight:400;
-    font-size:clamp(16px,1rem + .25vw,18.5px);
-    line-height:1.95;
-    hyphens:none;
-    -webkit-hyphens:none;
-    word-break:keep-all;
-    overflow-wrap:normal;
-    text-rendering:optimizeLegibility;
-  }
-
-  .wrap{
-    max-width:760px;
-    margin:0 auto;
-    padding:clamp(28px,6vw,72px) clamp(18px,5vw,40px) clamp(56px,10vw,96px);
-  }
-
-  h1{
-    font-weight:600;
-    font-size:clamp(2rem,1.4rem + 3vw,3.1rem);
-    line-height:1.3;
-    letter-spacing:.005em;
-    margin:0 0 .35em;
-    text-align:center;
-    background:linear-gradient(100deg,var(--accent),var(--accent-soft));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-  .rule{
-    width:92px;height:2px;margin:0 auto clamp(26px,5vw,42px);
-    background:linear-gradient(90deg,transparent,var(--accent),transparent);
-    border-radius:2px;
-  }
-
-  figure{margin:0 0 clamp(28px,5vw,44px);}
-  figure svg{display:block;width:100%;height:auto;max-width:100%;}
-
-  p{
-    text-align:justify;
-    text-align-last:start;
-    text-justify:inter-word;
-    margin:0 0 1.25em;
-  }
-  p:first-of-type::first-letter{
-    font-size:2.9em;
-    line-height:.9;
-    float:inline-start;
-    padding:.06em .12em 0 0;
-    color:var(--accent);
-    font-weight:600;
-  }
-
-  .links{
-    margin-top:clamp(34px,6vw,54px);
-    display:grid;
-    gap:12px;
-  }
-  a.card{
-    display:block;
-    text-decoration:none;
-    color:inherit;
-    background:var(--bg-soft);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:14px 18px;
-    box-shadow:var(--shadow);
-    transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
-  }
-  a.card:hover,a.card:focus-visible{
-    transform:translateY(-2px);
-    border-color:var(--accent);
-    outline:none;
-  }
-  a.card .name{
-    display:block;
-    font-weight:500;
-    font-size:1.05em;
-    color:var(--accent);
-    letter-spacing:.01em;
-  }
-  a.card .url{
-    display:block;
-    margin-top:2px;
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.82em;
-    line-height:1.5;
-    color:var(--ink-soft);
-    overflow-wrap:anywhere;
-  }
-
-  @media (max-width:520px){
-    body{line-height:1.85;}
-    .wrap{padding-inline:16px;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    a.card{transition:none;}
-  }
+}
+:root[data-theme="dark"]{
+  --bg:#15130f; --bg2:#1e1b16; --ink:#ece5d8; --muted:#a2988a;
+  --line:#332e26; --accent:#e0a869; --accent2:#c98a4b; --shadow:0 1px 3px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Devanagari","IBM Plex Sans",system-ui,sans-serif;
+  font-size:clamp(16px,1rem + .25vw,18.5px); line-height:1.95;
+  hyphens:none; -webkit-hyphens:none; overflow-wrap:normal; word-break:normal;
+}
+.wrap{max-width:52rem;margin:0 auto;padding:clamp(1.1rem,4vw,3.5rem) clamp(1.1rem,5vw,2.5rem) 4rem}
+.hero{width:100%;height:auto;display:block;margin:0 auto clamp(1.2rem,4vw,2.2rem);max-width:100%;border-radius:18px;box-shadow:var(--shadow)}
+h1{
+  font-weight:600;letter-spacing:.01em;text-align:center;
+  font-size:clamp(2.1rem,7vw,3.4rem);line-height:1.35;margin:0 0 .35em;
+}
+h1 span{background:linear-gradient(transparent 68%,var(--accent2) 68%,var(--accent2) 86%,transparent 86%);padding:0 .12em}
+p{text-align:justify;text-justify:inter-word;margin:0 0 1.15em;text-indent:0}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:clamp(2rem,6vw,3rem) 0}
+ol{list-style:none;counter-reset:n;margin:0;padding:0;display:grid;gap:.9rem}
+li{counter-increment:n}
+a.card{
+  display:block;text-decoration:none;color:inherit;background:var(--bg2);
+  border:1px solid var(--line);border-radius:14px;padding:1rem 1.15rem;
+  box-shadow:var(--shadow);transition:transform .18s ease,border-color .18s ease;
+  overflow-wrap:break-word;
+}
+a.card:hover,a.card:focus-visible{transform:translateY(-2px);border-color:var(--accent2);outline:none}
+a.card .t{display:block;font-weight:500;font-size:1.06em;line-height:1.6;text-align:left}
+a.card .t::before{content:counter(n) ".";color:var(--accent);font-weight:600;margin-inline-end:.45em}
+a.card .u{
+  display:block;margin-top:.35rem;color:var(--muted);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.82em;line-height:1.5;
+  word-break:break-all;text-align:left;
+}
+@media (max-width:420px){body{line-height:1.85}}
 </style>
 </head>
 <body>
-<main class="wrap">
+<div class="wrap">
 
-  <h1>निबंध वही</h1>
-  <div class="rule"></div>
+<svg class="hero" viewBox="0 0 800 300" role="img" aria-label="उघडी वही आणि लेखणी" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg2)"/><stop offset="1" stop-color="var(--bg)"/>
+    </linearGradient>
+    <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--bg2)"/><stop offset="1" stop-color="var(--bg)"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#sky)"/>
+  <g opacity=".5" stroke="var(--line)" stroke-width="1">
+    <circle cx="660" cy="70" r="46" fill="none"/><circle cx="660" cy="70" r="70" fill="none" opacity=".6"/>
+    <circle cx="120" cy="240" r="34" fill="none"/>
+  </g>
+  <g transform="translate(400,168)">
+    <ellipse cx="0" cy="92" rx="250" ry="16" fill="var(--line)" opacity=".45"/>
+    <path d="M-230 70 C-150 20 -70 18 -4 58 L-4 78 C-70 40 -150 42 -230 90 Z" fill="var(--accent)" opacity=".28"/>
+    <path d="M230 70 C150 20 70 18 4 58 L4 78 C70 40 150 42 230 90 Z" fill="var(--accent)" opacity=".28"/>
+    <path d="M-222 62 C-146 14 -68 12 -6 52 L-6 76 C-68 36 -146 38 -222 84 Z" fill="url(#pg)" stroke="var(--line)"/>
+    <path d="M222 62 C146 14 68 12 6 52 L6 76 C68 36 146 38 222 84 Z" fill="url(#pg)" stroke="var(--line)"/>
+    <g stroke="var(--muted)" stroke-width="2.4" stroke-linecap="round" opacity=".45">
+      <path d="M-196 46 C-150 22 -100 20 -40 44"/><path d="M-196 60 C-150 36 -100 34 -40 58"/>
+      <path d="M-196 74 C-158 54 -118 50 -70 62"/>
+      <path d="M196 46 C150 22 100 20 40 44"/><path d="M196 60 C150 36 100 34 40 58"/>
+    </g>
+    <path d="M-6 52 L-6 76 L6 76 L6 52 Z" fill="var(--accent)" opacity=".5"/>
+  </g>
+  <g transform="translate(556,52) rotate(28)">
+    <path d="M0 0 C34 26 62 74 74 128 C48 112 18 74 0 22 Z" fill="var(--accent)" opacity=".85"/>
+    <path d="M6 16 C30 46 52 86 66 122" stroke="var(--bg2)" stroke-width="2.5" fill="none" opacity=".7"/>
+    <path d="M74 128 L88 156" stroke="var(--accent2)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g fill="var(--accent2)" opacity=".7">
+    <circle cx="150" cy="60" r="4"/><circle cx="186" cy="96" r="2.5"/><circle cx="124" cy="104" r="2"/>
+  </g>
+</svg>
 
-  <figure>
-    <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="उघडी वही, लेखणी आणि उमटणारे शब्द">
-      <defs>
-        <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="var(--bg-soft)"/>
-          <stop offset="100%" stop-color="var(--bg)"/>
-        </linearGradient>
-        <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="var(--accent)"/>
-          <stop offset="100%" stop-color="var(--accent-soft)"/>
-        </linearGradient>
-      </defs>
+<h1><span>निबंध वही</span></h1>
 
-      <ellipse cx="380" cy="268" rx="250" ry="14" fill="var(--accent)" opacity=".10"/>
+<p>तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगभूत असलेला आळस नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.</p>
 
-      <!-- left page -->
-      <path d="M375 70 C320 44 250 40 180 52 C160 55 152 62 152 76 L152 226 C152 238 160 243 178 240 C248 229 320 232 375 254 Z"
-            fill="url(#pg)" stroke="var(--line)" stroke-width="2"/>
-      <!-- right page -->
-      <path d="M385 70 C440 44 510 40 580 52 C600 55 608 62 608 76 L608 226 C608 238 600 243 582 240 C512 229 440 232 385 254 Z"
-            fill="url(#pg)" stroke="var(--line)" stroke-width="2"/>
-      <!-- spine -->
-      <path d="M375 70 L375 254 M385 70 L385 254" stroke="var(--accent)" stroke-width="2" opacity=".55" fill="none"/>
+<p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागून ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते स्फुट WhatsApp वर टाकलं गेलं आणि ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
 
-      <!-- ruled lines left -->
-      <g stroke="var(--ink)" opacity=".26" stroke-width="3" stroke-linecap="round">
-        <path d="M182 96 H352"/><path d="M182 122 H344"/><path d="M182 148 H356"/>
-        <path d="M182 174 H326"/><path d="M182 200 H348"/>
-      </g>
-      <!-- ruled lines right -->
-      <g stroke="var(--ink)" opacity=".18" stroke-width="3" stroke-linecap="round">
-        <path d="M410 98 H578"/><path d="M410 124 H566"/><path d="M410 150 H580"/>
-        <path d="M410 176 H540"/>
-      </g>
-      <path d="M410 202 H492" stroke="url(#ac)" stroke-width="4" stroke-linecap="round"/>
+<p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
 
-      <!-- pen -->
-      <g transform="rotate(34 520 206)">
-        <rect x="498" y="120" width="16" height="86" rx="7" fill="url(#ac)"/>
-        <rect x="498" y="206" width="16" height="22" fill="var(--ink)" opacity=".55"/>
-        <path d="M498 228 L514 228 L506 248 Z" fill="var(--accent)"/>
-      </g>
+<p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि Substack वरती बरेच स्टॅकिंग झाले. परंतु त्यावर पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
 
-      <!-- floating marks -->
-      <g fill="var(--accent)" opacity=".5">
-        <circle cx="120" cy="70" r="5"/>
-        <circle cx="92" cy="140" r="3.5"/>
-        <circle cx="660" cy="92" r="4.5"/>
-        <circle cx="690" cy="160" r="3"/>
-        <circle cx="138" cy="212" r="3"/>
-      </g>
-      <g stroke="var(--accent)" stroke-width="2.5" opacity=".38" fill="none" stroke-linecap="round">
-        <path d="M84 96 q14 -12 28 -2"/>
-        <path d="M646 124 q16 -12 30 -2"/>
-      </g>
-    </svg>
-  </figure>
+<p>सबस्टॅकवरचे सर्व लेखन हळू हळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.</p>
 
-  <p>तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगभूत असलेला आळस नावाचा असामान्य दैवी गुण सुचलेले ‘ते’ लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.</p>
+<p>प्रकरण ऑनलाइन असल्याने अक्षर लागले नाही म्हणून वाचले नाही या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
 
-  <p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत ‘टंकल’ देखील गेलं. तत्पश्चात गुणधर्माला जागून ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते स्फुट WhatsApp वर टाकलं गेलं आणि ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
+<div class="rule"></div>
 
-  <p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
+<ol>
+<li><a class="card" href="https://jswdrkl.github.io/Quantum/"><span class="t">क्वाटंम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</span><span class="u">https://jswdrkl.github.io/Quantum/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/Shwas/"><span class="t">श्वास एक मितवा</span><span class="u">https://jswdrkl.github.io/Shwas/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/RadioTuning/"><span class="t">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</span><span class="u">https://jswdrkl.github.io/RadioTuning/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/aastik-nastik/"><span class="t">आस्तिक (ना)आस्तिक</span><span class="u">https://jswdrkl.github.io/aastik-nastik/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/constants/"><span class="t">'कॉन्स्टंट' स्थिरांक!!</span><span class="u">https://jswdrkl.github.io/constants/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/Perfectionism/"><span class="t">Perfectionism – अचूकतेचा अट्टाहास</span><span class="u">https://jswdrkl.github.io/Perfectionism/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/bandgul/"><span class="t">बांडगूळ(च)</span><span class="u">https://jswdrkl.github.io/bandgul/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/Resonance/"><span class="t">रेझोनन्स</span><span class="u">https://jswdrkl.github.io/Resonance/</span></a></li>
+<li><a class="card" href="https://jswdrkl.github.io/LetGo/"><span class="t">सोडून देणे.. just let go.. write off..</span><span class="u">https://jswdrkl.github.io/LetGo/</span></a></li>
+</ol>
 
-  <p>मग ‘ब्लॉग’पटू व्हायची उर्मी आली आणि Substack वरती बरेच स्टॅकिंग झाले. परंतु त्यावर पान उघडायच्या आधी येणारा ‘नावनोंदणी करा’ हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
-
-  <p>सबस्टॅकवरचे सर्व लेखन हळू हळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.</p>
-
-  <p>प्रकरण ऑनलाइन असल्याने अक्षर लागले नाही म्हणून वाचले नाही या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
-
-  <nav class="links">
-    <a class="card" href="https://jswdrkl.github.io/Quantum/"><span class="name">Quantum</span><span class="url">https://jswdrkl.github.io/Quantum/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/Shwas/"><span class="name">Shwas</span><span class="url">https://jswdrkl.github.io/Shwas/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/RadioTuning/"><span class="name">Radio Tuning</span><span class="url">https://jswdrkl.github.io/RadioTuning/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/aastik-nastik/"><span class="name">Aastik Nastik</span><span class="url">https://jswdrkl.github.io/aastik-nastik/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/constants/"><span class="name">Constants</span><span class="url">https://jswdrkl.github.io/constants/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/Perfectionism/"><span class="name">Perfectionism</span><span class="url">https://jswdrkl.github.io/Perfectionism/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/bandgul/"><span class="name">Bandgul</span><span class="url">https://jswdrkl.github.io/bandgul/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/Resonance/"><span class="name">Resonance</span><span class="url">https://jswdrkl.github.io/Resonance/</span></a>
-    <a class="card" href="https://jswdrkl.github.io/LetGo/"><span class="name">Let Go</span><span class="url">https://jswdrkl.github.io/LetGo/</span></a>
-  </nav>
-
-</main>
+</div>
 </body>
 </html>
