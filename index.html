@@ -1,127 +1,405 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="mr" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>निबंध वही</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#f7f4ee; --bg2:#fffdf8; --ink:#241f1a; --muted:#6b6257;
-  --line:#e0d8c9; --accent:#8a5a2b; --accent2:#b5793c; --shadow:0 1px 3px rgba(60,45,25,.10),0 10px 30px rgba(60,45,25,.07);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#15130f; --bg2:#1e1b16; --ink:#ece6da; --muted:#a49a8a;
-    --line:#332e26; --accent:#e0a866; --accent2:#c98f4e; --shadow:0 1px 3px rgba(0,0,0,.5),0 12px 30px rgba(0,0,0,.35);
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#15130f; --bg2:#1e1b16; --ink:#ece6da; --muted:#a49a8a;
-  --line:#332e26; --accent:#e0a866; --accent2:#c98f4e; --shadow:0 1px 3px rgba(0,0,0,.5),0 12px 30px rgba(0,0,0,.35);
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0; background:var(--bg); color:var(--ink);
-  font-family:"IBM Plex Sans Devanagari","IBM Plex Sans",system-ui,"Nirmala UI","Noto Sans Devanagari",sans-serif;
-  font-size:clamp(16px,1rem + .3vw,19px); line-height:1.95;
-  hyphens:none; -webkit-hyphens:none; word-break:normal; overflow-wrap:normal;
-}
-.wrap{max-width:46rem; margin:0 auto; padding:clamp(1.1rem,4vw,3rem) clamp(1.1rem,5vw,2rem) 4rem}
-h1{
-  font-weight:600; letter-spacing:.01em; text-align:center;
-  font-size:clamp(2rem,1.4rem + 3vw,3.1rem); line-height:1.3; margin:.2em 0 .1em;
-}
-.rule{width:5.5rem;height:3px;margin:1.1rem auto 2rem;border-radius:3px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-figure{margin:0 0 2.4rem}
-svg.art{display:block;width:100%;height:auto;max-width:100%;border-radius:14px;
-  box-shadow:var(--shadow);background:var(--bg2);border:1px solid var(--line)}
-p{text-align:justify; text-align-last:left; margin:0 0 1.35em}
-p::first-letter{}
-.intro p:first-of-type{font-size:1.05em}
-ul{list-style:none;margin:2.6rem 0 0;padding:0;display:grid;gap:.9rem}
-li a{
-  display:block; text-decoration:none; color:inherit;
-  background:var(--bg2); border:1px solid var(--line); border-left:4px solid var(--accent);
-  border-radius:12px; padding:.95rem 1.05rem; box-shadow:var(--shadow);
-  transition:transform .18s ease,border-left-color .18s ease;
-}
-li a:hover,li a:focus-visible{transform:translateY(-2px);border-left-color:var(--accent2);outline:none}
-li a:focus-visible{box-shadow:0 0 0 3px var(--accent2)}
-.t{display:block;font-weight:600;line-height:1.6;color:var(--accent)}
-.u{display:block;margin-top:.3rem;font-family:"IBM Plex Sans",ui-monospace,monospace;
-  font-size:.78em;line-height:1.5;color:var(--muted);overflow-wrap:anywhere;word-break:break-all}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>निबंध वही</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
+          },
+          colors: {
+            paper: {
+              light: '#fcfbf7',
+              dark: '#141416',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    .text-marathi-justified {
+      text-align: justify;
+      text-justify: inter-word;
+      word-break: normal;
+      overflow-wrap: break-word;
+      hyphens: none;
+      -webkit-hyphens: none;
+    }
+    .essay-card {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .essay-card:hover {
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
-<body>
-<main class="wrap">
-<h1>निबंध वही</h1>
-<div class="rule"></div>
+<body class="bg-paper-light dark:bg-paper-dark text-stone-800 dark:text-stone-200 min-h-screen transition-colors duration-300 antialiased selection:bg-amber-200 dark:selection:bg-amber-900/60 selection:text-amber-950 dark:selection:text-amber-100">
 
-<figure>
-<svg class="art" viewBox="0 0 900 420" role="img" aria-label="उघडी वही, लेखणी आणि विचारांचे तरंग" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="var(--accent)" stop-opacity=".16"/>
-      <stop offset="1" stop-color="var(--accent2)" stop-opacity=".04"/>
-    </linearGradient>
-  </defs>
-  <rect width="900" height="420" fill="url(#g1)"/>
-  <g fill="none" stroke="var(--accent)" stroke-opacity=".30" stroke-width="1.5">
-    <circle cx="742" cy="108" r="34"/><circle cx="742" cy="108" r="58"/>
-    <circle cx="742" cy="108" r="82"/><circle cx="742" cy="108" r="106"/>
-  </g>
-  <g stroke="var(--accent)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M150 310 C 260 268, 360 268, 448 306 C 536 268, 636 268, 746 310
-             L 746 170 C 636 128, 536 128, 448 166 C 360 128, 260 128, 150 170 Z"
-          fill="var(--bg2)" fill-opacity=".85"/>
-    <path d="M448 306 L 448 166"/>
-  </g>
-  <g stroke="var(--accent)" stroke-opacity=".45" stroke-width="2" stroke-linecap="round">
-    <path d="M196 196 H 402"/><path d="M196 226 H 418"/><path d="M196 256 H 372"/>
-    <path d="M492 196 H 700"/><path d="M492 226 H 674"/><path d="M492 256 H 712"/>
-  </g>
-  <g stroke="var(--accent2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M598 268 L 706 120"/><path d="M598 268 l 30 10 l 78 -158 l -30 -10 Z" fill="var(--bg2)" fill-opacity=".6"/>
-    <path d="M598 268 l 6 26 l 24 -16"/>
-  </g>
-  <g fill="var(--accent)" fill-opacity=".55">
-    <circle cx="140" cy="92" r="5"/><circle cx="184" cy="66" r="3.5"/><circle cx="108" cy="130" r="3"/>
-    <circle cx="238" cy="88" r="2.5"/><circle cx="806" cy="330" r="4.5"/><circle cx="762" cy="358" r="3"/>
-  </g>
-</svg>
-</figure>
+  <div class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-stone-50/80 dark:bg-stone-900/80 border-b border-stone-200/70 dark:border-stone-800 transition-colors duration-300">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="font-semibold text-lg tracking-wide text-stone-900 dark:text-stone-100">
+        निबंध वही
+      </div>
+      <div class="flex items-center gap-2">
+        <!-- Share Button -->
+        <button id="shareButton" aria-label="शेअर करा" class="p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-stone-200/70 dark:hover:bg-stone-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/40" title="शेअर करा">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+          </svg>
+        </button>
 
-<div class="intro">
-<p>तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.</p>
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" aria-label="थीम बदला" class="p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-stone-200/70 dark:hover:bg-stone-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/40" title="थीम बदला">
+          <!-- Moon Icon (Light mode default) -->
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          <!-- Sun Icon (Dark mode default) -->
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 
-<p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते स्फुट WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-24 pb-20">
+    <!-- Thematic SVG Illustration -->
+    <div class="mb-10 flex justify-center">
+      <div class="w-full max-w-xl aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 dark:border-amber-500/20 bg-gradient-to-br from-amber-500/10 via-rose-500/10 to-indigo-500/10 p-2">
+        <svg viewBox="0 0 800 450" class="w-full h-full rounded-xl" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="निबंध वही सचित्र प्रतीक">
+          <defs>
+            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#31103F"/>
+              <stop offset="50%" stop-color="#1F1538"/>
+              <stop offset="100%" stop-color="#0E1A2C"/>
+            </linearGradient>
+            <linearGradient id="bookCover" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E11D48"/>
+              <stop offset="40%" stop-color="#EA580C"/>
+              <stop offset="100%" stop-color="#F59E0B"/>
+            </linearGradient>
+            <linearGradient id="pageGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ECE2D0"/>
+              <stop offset="50%" stop-color="#FFFDF9"/>
+              <stop offset="100%" stop-color="#F4EADB"/>
+            </linearGradient>
+            <linearGradient id="featherGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#06B6D4"/>
+              <stop offset="50%" stop-color="#3B82F6"/>
+              <stop offset="100%" stop-color="#8B5CF6"/>
+            </linearGradient>
+            <linearGradient id="aurora" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#10B981" stop-opacity="0.5"/>
+              <stop offset="50%" stop-color="#6366F1" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#F43F5E" stop-opacity="0.4"/>
+            </linearGradient>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="10" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
 
-<p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
+          <!-- Cosmic / Mindful Literature Backdrop -->
+          <rect width="800" height="450" fill="url(#bgGrad)"/>
+          
+          <!-- Luminous creative aura waves -->
+          <path d="M-50,220 C150,120 300,320 500,180 C680,80 750,250 850,200 L850,450 L-50,450 Z" fill="url(#aurora)" filter="url(#glow)"/>
 
-<p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि Substack वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
+          <!-- Subtle starry thought particles -->
+          <circle cx="140" cy="90" r="2.5" fill="#FDE68A" opacity="0.8"/>
+          <circle cx="260" cy="140" r="3.5" fill="#F472B6" opacity="0.9"/>
+          <circle cx="680" cy="120" r="3" fill="#6EE7B7" opacity="0.85"/>
+          <circle cx="620" cy="70" r="2" fill="#93C5FD" opacity="0.9"/>
+          <circle cx="210" cy="60" r="1.5" fill="#FDE68A" opacity="0.7"/>
+          <circle cx="730" cy="220" r="2.5" fill="#FDE68A" opacity="0.75"/>
 
-<p>सबस्टॅकवरचे सर्व लेखन हळू हळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.</p>
+          <!-- Open Notebook (निबंध वही) Body -->
+          <!-- Left Cover Shadow -->
+          <path d="M 175 330 C 270 345 375 335 395 315 L 395 125 C 375 140 270 150 175 135 Z" fill="#9F1239" opacity="0.7"/>
+          <!-- Right Cover Shadow -->
+          <path d="M 625 330 C 530 345 425 335 405 315 L 405 125 C 425 140 530 150 625 135 Z" fill="#C2410C" opacity="0.7"/>
 
-<p>प्रकरण ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
-</div>
+          <!-- Outer Notebook Base -->
+          <path d="M 180 325 C 280 340 380 330 400 310 C 420 330 520 340 620 325 L 620 130 C 520 145 420 135 400 115 C 380 135 280 145 180 130 Z" fill="url(#bookCover)"/>
 
-<ul>
-<li><a href="https://jswdrkl.github.io/Quantum/"><span class="t">क्वाटंम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</span><span class="u">https://jswdrkl.github.io/Quantum/</span></a></li>
-<li><a href="https://jswdrkl.github.io/Shwas/"><span class="t">श्वास एक मितवा</span><span class="u">https://jswdrkl.github.io/Shwas/</span></a></li>
-<li><a href="https://jswdrkl.github.io/RadioTuning/"><span class="t">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</span><span class="u">https://jswdrkl.github.io/RadioTuning/</span></a></li>
-<li><a href="https://jswdrkl.github.io/aastik-nastik/"><span class="t">आस्तिक (ना)आस्तिक</span><span class="u">https://jswdrkl.github.io/aastik-nastik/</span></a></li>
-<li><a href="https://jswdrkl.github.io/constants/"><span class="t">'कॉन्स्टंट' स्थिरांक!!</span><span class="u">https://jswdrkl.github.io/constants/</span></a></li>
-<li><a href="https://jswdrkl.github.io/Perfectionism/"><span class="t">Perfectionism – अचूकतेचा अट्टाहास</span><span class="u">https://jswdrkl.github.io/Perfectionism/</span></a></li>
-<li><a href="https://jswdrkl.github.io/bandgul/"><span class="t">बांडगूळ(च)</span><span class="u">https://jswdrkl.github.io/bandgul/</span></a></li>
-<li><a href="https://jswdrkl.github.io/Resonance/"><span class="t">रेझोनन्स</span><span class="u">https://jswdrkl.github.io/Resonance/</span></a></li>
-<li><a href="https://jswdrkl.github.io/LetGo/"><span class="t">सोडून देणे.. just let go.. write off..</span><span class="u">https://jswdrkl.github.io/LetGo/</span></a></li>
-<li><a href="https://jswdrkl.github.io/Aura/"><span class="t">'ऑरा'</span><span class="u">https://jswdrkl.github.io/Aura/</span></a></li>
-</ul>
-</main>
+          <!-- Stacked Paper Layers Left -->
+          <path d="M 188 318 C 285 333 380 323 398 305 L 398 120 C 380 136 285 146 188 132 Z" fill="#DDD0B8"/>
+          <!-- Stacked Paper Layers Right -->
+          <path d="M 612 318 C 515 333 420 323 402 305 L 402 120 C 420 136 515 146 612 132 Z" fill="#DDD0B8"/>
+
+          <!-- Top Open Pages Left -->
+          <path d="M 195 312 C 290 326 382 318 398 300 L 398 115 C 382 132 290 140 195 126 Z" fill="url(#pageGrad)"/>
+          <!-- Top Open Pages Right -->
+          <path d="M 605 312 C 510 326 418 318 402 300 L 402 115 C 418 132 510 140 605 126 Z" fill="url(#pageGrad)"/>
+
+          <!-- Notebook Spine Shadow -->
+          <ellipse cx="400" cy="207" rx="3.5" ry="92" fill="#887353" opacity="0.35"/>
+
+          <!-- Ruled lines / Marathi Script impression on Left Page -->
+          <path d="M 230 160 Q 305 168 375 158" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 225 188 Q 305 196 375 186" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 225 216 Q 305 224 375 214" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 225 244 Q 305 252 375 242" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 230 272 Q 305 280 375 270" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+
+          <!-- Ruled lines on Right Page -->
+          <path d="M 425 158 Q 495 168 570 160" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 425 186 Q 495 196 575 188" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 425 214 Q 495 224 575 216" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 425 242 Q 495 252 575 244" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M 425 270 Q 495 280 570 272" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+
+          <!-- Bookmark Ribbon (Red Velvet) -->
+          <path d="M 400 115 Q 406 200 422 355 L 434 335 L 444 360 Q 412 195 400 115 Z" fill="#DC2626" opacity="0.95"/>
+
+          <!-- Glowing Quill / Pen Floating with Thought Energy -->
+          <g transform="rotate(28 470 140)">
+            <!-- Quill feather spine -->
+            <path d="M 470 50 C 470 50 495 110 472 230 L 468 230 C 445 110 470 50 470 50 Z" fill="url(#featherGrad)" filter="url(#glow)"/>
+            <path d="M 470 50 L 470 250" stroke="#FDE047" stroke-width="3" stroke-linecap="round"/>
+            <!-- Nib -->
+            <polygon points="468,248 472,248 470,266" fill="#F59E0B"/>
+            <!-- Ink droplets -->
+            <circle cx="470" cy="275" r="3.5" fill="#38BDF8" opacity="0.8"/>
+            <circle cx="474" cy="286" r="2" fill="#818CF8" opacity="0.6"/>
+          </g>
+
+          <!-- Playful Butterfly Effect motif -->
+          <path d="M 270 120 C 255 100 240 115 255 130 C 240 145 255 155 270 135 C 285 155 300 145 285 130 C 300 115 285 100 270 120 Z" fill="#F43F5E" opacity="0.85"/>
+          <circle cx="270" cy="127" r="1.5" fill="#FFF"/>
+        </svg>
+      </div>
+    </div>
+
+    <article class="space-y-6">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-50 border-b border-stone-200 dark:border-stone-800 pb-4">
+        निबंध वही
+      </h1>
+
+      <div class="space-y-5 text-base sm:text-lg leading-relaxed sm:leading-loose text-marathi-justified font-normal text-stone-800 dark:text-stone-200">
+        <p>
+          तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.
+        </p>
+
+        <p>
+          सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते ‘स्फुट’ WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.
+        </p>
+
+        <p>
+          त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.
+        </p>
+
+        <p>
+          मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener noreferrer" class="font-medium text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 underline decoration-amber-400/60 dark:decoration-amber-500/50 underline-offset-4 transition-colors">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.
+        </p>
+
+        <p>
+          सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.
+        </p>
+
+        <p>
+          प्रकरण ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..
+        </p>
+      </div>
+
+      <div class="pt-6 space-y-3">
+        
+        <a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            क्वाटंम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            श्वास एक मितवा
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            आस्तिक (ना)आस्तिक
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            ‘कॉन्स्टंट’ स्थिरांक!!
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            Perfectionism – अचूकतेचा अट्टाहास
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            बांडगूळ(च)
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            रेझोनन्स
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            सोडून देणे.. just let go.. write off..
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            ‘ऑरा’
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            ‘नशीब’
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+        <a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
+          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
+            बटरफ्लाय इफेक्ट
+          </span>
+          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+
+      </div>
+    </article>
+  </main>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 text-sm font-medium shadow-xl opacity-0 pointer-events-none transition-opacity duration-300">
+    <!-- Toast message injected dynamically -->
+  </div>
+
+  <script>
+    (function initTheme() {
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+
+    const themeToggleBtn = document.getElementById('themeToggle');
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    const shareBtn = document.getElementById('shareButton');
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: 'निबंध वही',
+        text: 'निबंध वही - मनमोकळे ललित निबंध आणि चिंतन',
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            copyToClipboard(window.location.href);
+          }
+        }
+      } else {
+        copyToClipboard(window.location.href);
+      }
+    });
+
+    function copyToClipboard(text) {
+      try {
+        const tempInput = document.createElement('input');
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        showToast('लिंक कॉपी झाली!');
+      } catch (e) {
+        showToast('लिंक कॉपी होऊ शकली नाही.');
+      }
+    }
+  </script>
 </body>
 </html>
