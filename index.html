@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>निबंध वही</title>
+  
+  <!-- Google Fonts: IBM Plex Sans & IBM Plex Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -11,395 +18,369 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
-          },
-          colors: {
-            paper: {
-              light: '#fcfbf7',
-              dark: '#141416',
-            }
+            marathi: ['"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
           }
         }
       }
     }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 
   <style>
+    /* Ensure font inheritance and precise Devanagari rendering without unnatural hyphenation */
     body {
-      font-family: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', sans-serif;
+      font-family: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .text-marathi-justified {
+
+    /* Justified text rules strictly preserving whole words */
+    .marathi-justified {
       text-align: justify;
       text-justify: inter-word;
       word-break: normal;
       overflow-wrap: break-word;
+      word-wrap: break-word;
       hyphens: none;
       -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
     }
-    .essay-card {
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .essay-card:hover {
-      transform: translateY(-2px);
+
+    /* Subtle custom transitions */
+    .theme-transition {
+      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   </style>
 </head>
-<body class="bg-paper-light dark:bg-paper-dark text-stone-800 dark:text-stone-200 min-h-screen transition-colors duration-300 antialiased selection:bg-amber-200 dark:selection:bg-amber-900/60 selection:text-amber-950 dark:selection:text-amber-100">
 
-  <div class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-stone-50/80 dark:bg-stone-900/80 border-b border-stone-200/70 dark:border-stone-800 transition-colors duration-300">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-      <div class="font-semibold text-lg tracking-wide text-stone-900 dark:text-stone-100">
-        निबंध वही
-      </div>
-      <div class="flex items-center gap-2">
-        <!-- Share Button -->
-        <button id="shareButton" aria-label="शेअर करा" class="p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-stone-200/70 dark:hover:bg-stone-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/40" title="शेअर करा">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-          </svg>
-        </button>
+<body class="bg-amber-50/40 dark:bg-zinc-950 text-stone-800 dark:text-stone-100 min-h-screen theme-transition flex flex-col items-center px-4 py-6 sm:px-6 sm:py-10 md:py-14 antialiased selection:bg-amber-200 dark:selection:bg-amber-900/60 selection:text-stone-900 dark:selection:text-stone-50">
 
-        <!-- Theme Toggle Button -->
-        <button id="themeToggle" aria-label="थीम बदला" class="p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-stone-200/70 dark:hover:bg-stone-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/40" title="थीम बदला">
-          <!-- Moon Icon (Light mode default) -->
-          <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-          </svg>
-          <!-- Sun Icon (Dark mode default) -->
-          <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
+  <!-- Floating Sticky Action Bar: Theme Toggle & Share Button -->
+  <div class="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-2.5 bg-white/80 dark:bg-zinc-900/85 backdrop-blur-md px-3 py-2 rounded-2xl shadow-lg shadow-stone-900/5 dark:shadow-black/40 border border-stone-200/80 dark:border-zinc-800">
+    
+    <!-- Share Button -->
+    <button id="shareBtn" aria-label="शेअर करा" class="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:text-amber-700 dark:hover:text-amber-400 hover:bg-stone-100 dark:hover:bg-zinc-800/80 active:scale-95 transition-all flex items-center justify-center group" title="शेअर करा">
+      <svg class="w-5 h-5 transition-transform group-hover:-rotate-12" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
+      </svg>
+    </button>
+
+    <div class="w-px h-5 bg-stone-200 dark:bg-zinc-700/80"></div>
+
+    <!-- Theme Toggle Button -->
+    <button id="themeToggleBtn" aria-label="थीम बदला" class="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:text-amber-700 dark:hover:text-amber-400 hover:bg-stone-100 dark:hover:bg-zinc-800/80 active:scale-95 transition-all flex items-center justify-center" title="थीम बदला">
+      <!-- Sun icon (shown in dark mode) -->
+      <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+      </svg>
+      <!-- Moon icon (shown in light mode) -->
+      <svg id="moonIcon" class="w-5 h-5 block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+      </svg>
+    </button>
   </div>
 
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-24 pb-20">
-    <!-- Thematic SVG Illustration -->
-    <div class="mb-10 flex justify-center">
-      <div class="w-full max-w-xl aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-amber-900/10 dark:border-amber-500/20 bg-gradient-to-br from-amber-500/10 via-rose-500/10 to-indigo-500/10 p-2">
-        <svg viewBox="0 0 800 450" class="w-full h-full rounded-xl" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="निबंध वही सचित्र प्रतीक">
+  <!-- Toast Notification for Share / Copy -->
+  <div id="toastMessage" class="fixed bottom-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-stone-900 text-stone-100 dark:bg-amber-100 dark:text-stone-900 px-5 py-2.5 rounded-full text-sm font-medium shadow-xl">
+    लिंक कॉपी झाली!
+  </div>
+
+  <main class="w-full max-w-2xl bg-white dark:bg-zinc-900 rounded-3xl shadow-xl shadow-stone-300/40 dark:shadow-black/60 border border-stone-200/90 dark:border-zinc-800 p-6 sm:p-10 md:p-14 my-4 sm:my-8 transition-colors">
+
+    <!-- Colorful Artistic SVG Illustration representing निबंध वही, writing, thoughts, quantum waves & butterflies -->
+    <div class="w-full mb-8 sm:mb-10 flex justify-center">
+      <div class="w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden bg-gradient-to-br from-amber-100/60 via-rose-50/50 to-indigo-100/60 dark:from-zinc-800/80 dark:via-zinc-800/40 dark:to-indigo-950/40 p-4 sm:p-6 border border-amber-200/40 dark:border-zinc-700/40 shadow-inner">
+        <svg viewBox="0 0 400 230" class="w-full h-auto drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#31103F"/>
-              <stop offset="50%" stop-color="#1F1538"/>
-              <stop offset="100%" stop-color="#0E1A2C"/>
+            <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F59E0B" />
+              <stop offset="50%" stop-color="#EA580C" />
+              <stop offset="100%" stop-color="#BE123C" />
             </linearGradient>
-            <linearGradient id="bookCover" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#E11D48"/>
-              <stop offset="40%" stop-color="#EA580C"/>
-              <stop offset="100%" stop-color="#F59E0B"/>
+            <linearGradient id="pageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFFFFF" />
+              <stop offset="100%" stop-color="#FFFBEB" />
             </linearGradient>
-            <linearGradient id="pageGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ECE2D0"/>
-              <stop offset="50%" stop-color="#FFFDF9"/>
-              <stop offset="100%" stop-color="#F4EADB"/>
+            <linearGradient id="penGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3B82F6" />
+              <stop offset="100%" stop-color="#8B5CF6" />
             </linearGradient>
-            <linearGradient id="featherGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#06B6D4"/>
-              <stop offset="50%" stop-color="#3B82F6"/>
-              <stop offset="100%" stop-color="#8B5CF6"/>
+            <linearGradient id="auraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.7"/>
+              <stop offset="50%" stop-color="#A855F7" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#EC4899" stop-opacity="0.7"/>
             </linearGradient>
-            <linearGradient id="aurora" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#10B981" stop-opacity="0.5"/>
-              <stop offset="50%" stop-color="#6366F1" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#F43F5E" stop-opacity="0.4"/>
-            </linearGradient>
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="10" result="blur" />
+            <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over"/>
             </filter>
           </defs>
 
-          <!-- Cosmic / Mindful Literature Backdrop -->
-          <rect width="800" height="450" fill="url(#bgGrad)"/>
+          <!-- Ambient Aura / Glowing circles (representing विचार तरंग / Resonance / Aura) -->
+          <circle cx="200" cy="115" r="90" fill="url(#auraGrad)" opacity="0.18" filter="url(#softGlow)" />
+          <circle cx="290" cy="70" r="45" fill="#38BDF8" opacity="0.15" filter="url(#softGlow)" />
+          <circle cx="110" cy="140" r="50" fill="#F43F5E" opacity="0.15" filter="url(#softGlow)" />
+
+          <!-- Quantum Entanglement / Wavelength lines -->
+          <path d="M 40 180 C 100 130, 140 210, 200 160 C 260 110, 300 190, 360 140" stroke="#06B6D4" stroke-width="2" stroke-dasharray="4 4" opacity="0.55"/>
+          <path d="M 50 80 C 120 140, 160 50, 220 110 C 280 170, 320 70, 350 100" stroke="#A855F7" stroke-width="1.8" stroke-dasharray="3 3" opacity="0.45"/>
+
+          <!-- Open Notebook (वही) Base Shadows -->
+          <path d="M 90 175 C 130 183, 175 186, 200 188 C 225 186, 270 183, 310 175 L 315 85 C 275 93, 225 96, 200 98 C 175 96, 125 93, 85 85 Z" fill="#0F172A" opacity="0.12"/>
+
+          <!-- Notebook Cover / Spine -->
+          <path d="M 85 168 C 130 176, 175 179, 200 181 C 225 179, 270 176, 315 168 L 317 78 C 272 86, 225 89, 200 91 C 175 89, 128 86, 83 78 Z" fill="url(#bookGrad)" rx="4"/>
+
+          <!-- Notebook Pages Left -->
+          <path d="M 90 73 C 125 81, 168 84, 198 86 L 198 174 C 168 172, 125 169, 90 161 Z" fill="url(#pageGrad)" stroke="#E2E8F0" stroke-width="1"/>
+          <!-- Notebook Pages Right -->
+          <path d="M 310 73 C 275 81, 232 84, 202 86 L 202 174 C 232 172, 275 169, 310 161 Z" fill="url(#pageGrad)" stroke="#E2E8F0" stroke-width="1"/>
           
-          <!-- Luminous creative aura waves -->
-          <path d="M-50,220 C150,120 300,320 500,180 C680,80 750,250 850,200 L850,450 L-50,450 Z" fill="url(#aurora)" filter="url(#glow)"/>
+          <!-- Central Notebook Spine Crease -->
+          <line x1="200" y1="84" x2="200" y2="175" stroke="#CBD5E1" stroke-width="2.5" stroke-linecap="round"/>
 
-          <!-- Subtle starry thought particles -->
-          <circle cx="140" cy="90" r="2.5" fill="#FDE68A" opacity="0.8"/>
-          <circle cx="260" cy="140" r="3.5" fill="#F472B6" opacity="0.9"/>
-          <circle cx="680" cy="120" r="3" fill="#6EE7B7" opacity="0.85"/>
-          <circle cx="620" cy="70" r="2" fill="#93C5FD" opacity="0.9"/>
-          <circle cx="210" cy="60" r="1.5" fill="#FDE68A" opacity="0.7"/>
-          <circle cx="730" cy="220" r="2.5" fill="#FDE68A" opacity="0.75"/>
+          <!-- Ruled Lines on Left Page -->
+          <path d="M 108 97 C 135 103, 165 105, 185 106" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+          <path d="M 108 113 C 135 119, 165 121, 185 122" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+          <path d="M 108 129 C 135 135, 165 137, 185 138" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+          <path d="M 108 145 C 135 151, 165 153, 185 154" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
 
-          <!-- Open Notebook (निबंध वही) Body -->
-          <!-- Left Cover Shadow -->
-          <path d="M 175 330 C 270 345 375 335 395 315 L 395 125 C 375 140 270 150 175 135 Z" fill="#9F1239" opacity="0.7"/>
-          <!-- Right Cover Shadow -->
-          <path d="M 625 330 C 530 345 425 335 405 315 L 405 125 C 425 140 530 150 625 135 Z" fill="#C2410C" opacity="0.7"/>
+          <!-- Ruled Lines on Right Page -->
+          <path d="M 215 106 C 235 105, 265 103, 292 97" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+          <path d="M 215 122 C 235 121, 265 119, 292 113" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+          <path d="M 215 138 C 235 137, 265 135, 292 129" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
+          <path d="M 215 154 C 235 153, 265 151, 292 145" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
 
-          <!-- Outer Notebook Base -->
-          <path d="M 180 325 C 280 340 380 330 400 310 C 420 330 520 340 620 325 L 620 130 C 520 145 420 135 400 115 C 380 135 280 145 180 130 Z" fill="url(#bookCover)"/>
+          <!-- Bookmark Ribbon (Emerald / Amber) -->
+          <path d="M 200 84 C 205 105, 212 125, 216 150 L 222 170 L 216 166 L 210 170 L 206 145 Z" fill="#10B981"/>
 
-          <!-- Stacked Paper Layers Left -->
-          <path d="M 188 318 C 285 333 380 323 398 305 L 398 120 C 380 136 285 146 188 132 Z" fill="#DDD0B8"/>
-          <!-- Stacked Paper Layers Right -->
-          <path d="M 612 318 C 515 333 420 323 402 305 L 402 120 C 420 136 515 146 612 132 Z" fill="#DDD0B8"/>
-
-          <!-- Top Open Pages Left -->
-          <path d="M 195 312 C 290 326 382 318 398 300 L 398 115 C 382 132 290 140 195 126 Z" fill="url(#pageGrad)"/>
-          <!-- Top Open Pages Right -->
-          <path d="M 605 312 C 510 326 418 318 402 300 L 402 115 C 418 132 510 140 605 126 Z" fill="url(#pageGrad)"/>
-
-          <!-- Notebook Spine Shadow -->
-          <ellipse cx="400" cy="207" rx="3.5" ry="92" fill="#887353" opacity="0.35"/>
-
-          <!-- Ruled lines / Marathi Script impression on Left Page -->
-          <path d="M 230 160 Q 305 168 375 158" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 225 188 Q 305 196 375 186" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 225 216 Q 305 224 375 214" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 225 244 Q 305 252 375 242" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 230 272 Q 305 280 375 270" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-
-          <!-- Ruled lines on Right Page -->
-          <path d="M 425 158 Q 495 168 570 160" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 425 186 Q 495 196 575 188" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 425 214 Q 495 224 575 216" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 425 242 Q 495 252 575 244" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <path d="M 425 270 Q 495 280 570 272" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-
-          <!-- Bookmark Ribbon (Red Velvet) -->
-          <path d="M 400 115 Q 406 200 422 355 L 434 335 L 444 360 Q 412 195 400 115 Z" fill="#DC2626" opacity="0.95"/>
-
-          <!-- Glowing Quill / Pen Floating with Thought Energy -->
-          <g transform="rotate(28 470 140)">
-            <!-- Quill feather spine -->
-            <path d="M 470 50 C 470 50 495 110 472 230 L 468 230 C 445 110 470 50 470 50 Z" fill="url(#featherGrad)" filter="url(#glow)"/>
-            <path d="M 470 50 L 470 250" stroke="#FDE047" stroke-width="3" stroke-linecap="round"/>
+          <!-- Stylish Fountain Pen / Quill hovering -->
+          <g transform="translate(195, 30) rotate(32)">
+            <!-- Pen Barrel -->
+            <rect x="0" y="0" width="9" height="75" rx="4.5" fill="url(#penGrad)"/>
+            <!-- Golden Grip Section -->
+            <rect x="0.5" y="65" width="8" height="12" rx="2" fill="#F59E0B"/>
             <!-- Nib -->
-            <polygon points="468,248 472,248 470,266" fill="#F59E0B"/>
-            <!-- Ink droplets -->
-            <circle cx="470" cy="275" r="3.5" fill="#38BDF8" opacity="0.8"/>
-            <circle cx="474" cy="286" r="2" fill="#818CF8" opacity="0.6"/>
+            <path d="M 0.8 77 L 8.2 77 L 4.5 95 Z" fill="#D97706"/>
+            <!-- Nib split -->
+            <line x1="4.5" y1="80" x2="4.5" y2="92" stroke="#451A03" stroke-width="0.8"/>
+            <circle cx="4.5" cy="82" r="1" fill="#451A03"/>
           </g>
 
-          <!-- Playful Butterfly Effect motif -->
-          <path d="M 270 120 C 255 100 240 115 255 130 C 240 145 255 155 270 135 C 285 155 300 145 285 130 C 300 115 285 100 270 120 Z" fill="#F43F5E" opacity="0.85"/>
-          <circle cx="270" cy="127" r="1.5" fill="#FFF"/>
+          <!-- Butterfly (बटरफ्लाय इफेक्ट) fluttering out of thoughts -->
+          <g transform="translate(295, 42) scale(0.85)">
+            <!-- Wings Left -->
+            <path d="M 0 0 C -18 -22, -28 5, 0 10 C -22 18, -14 36, 0 20 Z" fill="#EC4899" opacity="0.88"/>
+            <!-- Wings Right -->
+            <path d="M 0 0 C 18 -22, 28 5, 0 10 C 22 18, 14 36, 0 20 Z" fill="#8B5CF6" opacity="0.88"/>
+            <!-- Body -->
+            <ellipse cx="0" cy="8" rx="1.6" ry="11" fill="#1E1B4B"/>
+            <!-- Antennae -->
+            <path d="M -0.5 -2 Q -5 -10 -9 -8" stroke="#1E1B4B" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path d="M 0.5 -2 Q 5 -10 9 -8" stroke="#1E1B4B" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- Sparkles & Floating Inspiration Orbs -->
+          <circle cx="95" cy="55" r="3" fill="#F59E0B"/>
+          <path d="M 95 49 L 96.5 53.5 L 101 55 L 96.5 56.5 L 95 61 L 93.5 56.5 L 89 55 L 93.5 53.5 Z" fill="#F59E0B"/>
+          
+          <circle cx="150" cy="40" r="2.5" fill="#3B82F6"/>
+          <circle cx="340" cy="115" r="3.5" fill="#10B981"/>
+          <path d="M 335 155 L 336.2 158.8 L 340 160 L 336.2 161.2 L 335 165 L 333.8 161.2 L 330 160 L 333.8 158.8 Z" fill="#EC4899"/>
         </svg>
       </div>
     </div>
 
-    <article class="space-y-6">
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-50 border-b border-stone-200 dark:border-stone-800 pb-4">
-        निबंध वही
-      </h1>
+    <!-- Title: निबंध वही -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 dark:text-stone-50 mb-8 sm:mb-10 text-center pb-4 border-b border-stone-200/70 dark:border-zinc-800">
+      निबंध वही
+    </h1>
 
-      <div class="space-y-5 text-base sm:text-lg leading-relaxed sm:leading-loose text-marathi-justified font-normal text-stone-800 dark:text-stone-200">
-        <p>
-          तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.
-        </p>
+    <!-- Document Body Content: Justified, non-broken words, clear line-height -->
+    <div class="space-y-5 text-base sm:text-lg leading-relaxed sm:leading-loose text-stone-700 dark:text-stone-300 marathi-justified">
+      <p>
+        तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.
+      </p>
 
-        <p>
-          सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते ‘स्फुट’ WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.
-        </p>
+      <p>
+        सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते ‘स्फुट’ WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.
+      </p>
 
-        <p>
-          त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.
-        </p>
+      <p>
+        त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.
+      </p>
 
-        <p>
-          मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener noreferrer" class="font-medium text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 underline decoration-amber-400/60 dark:decoration-amber-500/50 underline-offset-4 transition-colors">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.
-        </p>
+      <p>
+        मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि Substack वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.
+      </p>
 
-        <p>
-          सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.
-        </p>
+      <p>
+        सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.
+      </p>
 
-        <p>
-          प्रकरण ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..
-        </p>
+      <p>
+        प्रकरण ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..
+      </p>
+    </div>
+
+    <!-- Index Section: अनुक्रमणिका -->
+    <div class="mt-12 sm:mt-14 pt-8 border-t border-stone-200/80 dark:border-zinc-800">
+      <h2 class="text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-100 mb-6 text-center sm:text-left">
+        अनुक्रमणिका
+      </h2>
+
+      <ol class="space-y-2.5 sm:space-y-3 text-base sm:text-lg text-stone-700 dark:text-stone-300 marathi-justified">
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          क्वाटंम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          श्वास एक मितवा
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          आस्तिक (ना)आस्तिक
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          ‘कॉन्स्टंट’ स्थिरांक!!
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          Perfectionism – अचूकतेचा अट्टाहास
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          बांडगूळ(च)
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          रेझोनन्स
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          सोडून देणे.. just let go.. write off..
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          ‘ऑरा’
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          ‘नशीब’
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          बटरफ्लाय इफेक्ट
+        </li>
+        <li class="p-2 sm:p-2.5 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800/60 transition-colors">
+          पाण्यासारखे..
+        </li>
+      </ol>
+
+      <!-- Document separator exactly as in source -->
+      <div class="text-center text-stone-400 dark:text-stone-500 font-semibold tracking-widest text-lg sm:text-xl mt-8">
+        ***
       </div>
+    </div>
 
-      <div class="pt-6 space-y-3">
-        
-        <a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            क्वाटंम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            श्वास एक मितवा
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            आस्तिक (ना)आस्तिक
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            ‘कॉन्स्टंट’ स्थिरांक!!
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            Perfectionism – अचूकतेचा अट्टाहास
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            बांडगूळ(च)
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            रेझोनन्स
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            सोडून देणे.. just let go.. write off..
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            ‘ऑरा’
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            ‘नशीब’
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-        <a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener noreferrer" class="essay-card flex items-center justify-between p-4 rounded-xl bg-white/75 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 shadow-sm hover:border-amber-400 dark:hover:border-amber-500/60 group">
-          <span class="text-base sm:text-lg font-medium text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-            बटरफ्लाय इफेक्ट
-          </span>
-          <svg class="w-5 h-5 text-stone-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transform group-hover:translate-x-1 transition-all shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-        </a>
-
-      </div>
-    </article>
   </main>
 
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 text-sm font-medium shadow-xl opacity-0 pointer-events-none transition-opacity duration-300">
-    <!-- Toast message injected dynamically -->
-  </div>
-
   <script>
-    (function initTheme() {
-      const storedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
+    (function () {
+      // Elements
+      const htmlEl = document.documentElement;
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const sunIcon = document.getElementById('sunIcon');
+      const moonIcon = document.getElementById('moonIcon');
+      const shareBtn = document.getElementById('shareBtn');
+      const toastMessage = document.getElementById('toastMessage');
+
+      // Theme Preference Handling
+      function applyTheme(isDark) {
+        if (isDark) {
+          htmlEl.classList.add('dark');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+          localStorage.setItem('theme_nibandh_vahi', 'dark');
+        } else {
+          htmlEl.classList.remove('dark');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          localStorage.setItem('theme_nibandh_vahi', 'light');
+        }
       }
-    })();
 
-    const themeToggleBtn = document.getElementById('themeToggle');
-    themeToggleBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
+      // Initialize Theme from localStorage or system preference
+      const savedTheme = localStorage.getItem('theme_nibandh_vahi');
+      if (savedTheme === 'dark') {
+        applyTheme(true);
+      } else if (savedTheme === 'light') {
+        applyTheme(false);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark);
+      }
 
-    const shareBtn = document.getElementById('shareButton');
-    const toast = document.getElementById('toast');
+      // Toggle theme on button click
+      themeToggleBtn.addEventListener('click', function () {
+        const isCurrentlyDark = htmlEl.classList.contains('dark');
+        applyTheme(!isCurrentlyDark);
+      });
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.remove('opacity-0', 'pointer-events-none');
-      toast.classList.add('opacity-100');
-      setTimeout(() => {
-        toast.classList.remove('opacity-100');
-        toast.classList.add('opacity-0', 'pointer-events-none');
-      }, 2500);
-    }
+      // Toast notification helper
+      let toastTimeout;
+      function showToast(text) {
+        toastMessage.textContent = text;
+        toastMessage.classList.remove('opacity-0', 'translate-y-20');
+        toastMessage.classList.add('opacity-100', 'translate-y-0');
+        
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(function () {
+          toastMessage.classList.remove('opacity-100', 'translate-y-0');
+          toastMessage.classList.add('opacity-0', 'translate-y-20');
+        }, 2500);
+      }
 
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: 'निबंध वही',
-        text: 'निबंध वही - मनमोकळे ललित निबंध आणि चिंतन',
-        url: window.location.href
-      };
+      // Share Feature (Web Share API with fallback to Clipboard copy)
+      shareBtn.addEventListener('click', async function () {
+        const shareData = {
+          title: 'निबंध वही',
+          text: 'निबंध वही - सुचलेले विचार आणि निबंधांची वही',
+          url: window.location.href
+        };
 
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-        } catch (err) {
-          if (err.name !== 'AbortError') {
-            copyToClipboard(window.location.href);
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+            return;
+          } catch (err) {
+            // User cancelled or share dismissed; proceed to fallback only if actual failure
+            if (err.name !== 'AbortError') {
+              fallbackCopy();
+            }
+            return;
           }
         }
-      } else {
-        copyToClipboard(window.location.href);
-      }
-    });
+        fallbackCopy();
+      });
 
-    function copyToClipboard(text) {
-      try {
+      // Clipboard fallback compatible with iframe restrictions
+      function fallbackCopy() {
         const tempInput = document.createElement('input');
-        tempInput.value = text;
+        tempInput.value = window.location.href;
         document.body.appendChild(tempInput);
         tempInput.select();
-        document.execCommand('copy');
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showToast('वेबपेज लिंक कॉपी झाली!');
+          } else {
+            showToast('लिंक कॉपी करता आली नाही');
+          }
+        } catch (e) {
+          showToast('लिंक कॉपी करता आली नाही');
+        }
         document.body.removeChild(tempInput);
-        showToast('लिंक कॉपी झाली!');
-      } catch (e) {
-        showToast('लिंक कॉपी होऊ शकली नाही.');
       }
-    }
+    })();
   </script>
 </body>
 </html>
