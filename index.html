@@ -2,378 +2,391 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>निबंध वही</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FBF6EC;
-    --surface:#F2E9D7;
-    --surface-2:#EADFC7;
-    --text:#2B2420;
-    --text-soft:#5B5044;
-    --border:#DED0AF;
-    --ink-blue:#2F4B7C;
-    --marigold:#D9A441;
-    --maroon:#A63446;
-    --teal:#2E7D6B;
-    --shadow: 0 1px 2px rgba(43,36,32,.06), 0 8px 24px rgba(43,36,32,.06);
+    --bg:#F1E9D8;
+    --bg-soft:#E7DBBF;
+    --ink:#23283B;
+    --ink-soft:#585C72;
+    --accent:#C1440E;
+    --accent-2:#3B5A82;
+    --rule: rgba(35,40,59,0.16);
+    --card-shadow: 0 1px 0 rgba(35,40,59,0.06);
+    color-scheme: light;
   }
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) {
-      --bg:#1B1712;
-      --surface:#252019;
-      --surface-2:#2E2820;
-      --text:#EDE3CC;
-      --text-soft:#B9AC90;
-      --border:#3A3225;
-      --ink-blue:#7C9CD6;
-      --marigold:#E6BB63;
-      --maroon:#D97A8B;
-      --teal:#5FC3AC;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    :root:not([data-theme="light"]){
+      --bg:#12172A;
+      --bg-soft:#1B2140;
+      --ink:#EDE6D3;
+      --ink-soft:#B7B0C6;
+      --accent:#F0975A;
+      --accent-2:#8FB0DD;
+      --rule: rgba(237,230,211,0.16);
+      color-scheme: dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#1B1712;
-    --surface:#252019;
-    --surface-2:#2E2820;
-    --text:#EDE3CC;
-    --text-soft:#B9AC90;
-    --border:#3A3225;
-    --ink-blue:#7C9CD6;
-    --marigold:#E6BB63;
-    --maroon:#D97A8B;
-    --teal:#5FC3AC;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    --bg:#12172A;
+    --bg-soft:#1B2140;
+    --ink:#EDE6D3;
+    --ink-soft:#B7B0C6;
+    --accent:#F0975A;
+    --accent-2:#8FB0DD;
+    --rule: rgba(237,230,211,0.16);
+    color-scheme: dark;
+  }
+  :root[data-theme="light"]{
+    --bg:#F1E9D8;
+    --bg-soft:#E7DBBF;
+    --ink:#23283B;
+    --ink-soft:#585C72;
+    --accent:#C1440E;
+    --accent-2:#3B5A82;
+    --rule: rgba(35,40,59,0.16);
+    color-scheme: light;
   }
 
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  *{ box-sizing: border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background: var(--bg);
+    color: var(--ink);
+    transition: background .35s ease, color .35s ease;
+  }
+
   body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'IBM Plex Sans','IBM Plex Sans Devanagari',sans-serif;
-    line-height:1.85;
-    -webkit-font-smoothing:antialiased;
-    transition:background .35s ease, color .35s ease;
-    word-break:keep-all;
-    overflow-wrap:normal;
-    hyphens:none;
+    font-family: 'IBM Plex Sans Devanagari','IBM Plex Sans',-apple-system,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
 
-  .toolbar{
-    position:fixed;
-    top:16px;
-    right:16px;
+  a{ color: inherit; }
+
+  /* ---------- top controls ---------- */
+  .controls{
+    position: fixed;
+    top: max(14px, env(safe-area-inset-top));
+    right: max(14px, env(safe-area-inset-right));
     display:flex;
-    gap:8px;
-    z-index:20;
+    gap: 8px;
+    z-index: 50;
   }
-  .toolbar button{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    border:1px solid var(--border);
-    background:var(--surface);
-    color:var(--text);
+  .icon-btn{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    background: var(--bg-soft);
+    color: var(--ink);
     display:flex;
     align-items:center;
     justify-content:center;
     cursor:pointer;
-    box-shadow:var(--shadow);
-    transition:transform .18s ease, background .3s ease;
+    padding:0;
+    transition: transform .2s ease, background .3s ease, border-color .3s ease;
   }
-  .toolbar button:hover{ transform:translateY(-1px); }
-  .toolbar button:active{ transform:translateY(0); }
-  .toolbar svg{ width:19px; height:19px; }
-  .toolbar .moon-icon{ display:none; }
-  :root[data-theme="dark"] .toolbar .sun-icon{ display:none; }
-  :root[data-theme="dark"] .toolbar .moon-icon{ display:flex; }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) .toolbar .sun-icon{ display:none; }
-    :root:not([data-theme="light"]) .toolbar .moon-icon{ display:flex; }
+  .icon-btn:hover{ transform: translateY(-1px); border-color: var(--accent); }
+  .icon-btn:active{ transform: translateY(0px) scale(.94); }
+  .icon-btn svg{ width:19px; height:19px; }
+  .icon-btn .moon{ display:none; }
+  :root[data-theme="dark"] .icon-btn .sun{ display:none; }
+  :root[data-theme="dark"] .icon-btn .moon{ display:block; }
+
+  .toast{
+    position: fixed;
+    left:50%;
+    bottom: 28px;
+    transform: translate(-50%, 12px);
+    background: var(--ink);
+    color: var(--bg);
+    font-family:'IBM Plex Sans Devanagari','IBM Plex Sans',sans-serif;
+    font-size: 0.85rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity .25s ease, transform .25s ease;
+    z-index: 60;
+    white-space: nowrap;
+  }
+  .toast.show{ opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- layout ---------- */
+  main{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: clamp(28px, 8vw, 64px) clamp(20px, 6vw, 28px) clamp(56px, 10vw, 96px);
   }
 
-  header.hero{
-    max-width:760px;
-    margin:0 auto;
-    padding:56px 20px 8px;
-  }
-  .hero .page-title{
-    font-family:'IBM Plex Sans','IBM Plex Sans Devanagari',sans-serif;
-    font-size:2.4rem;
-    font-weight:700;
-    text-align:center;
-    color:var(--text);
-    margin:0 0 18px;
+  .hero{
+    width:100%;
+    margin-bottom: clamp(20px, 5vw, 40px);
   }
   .hero svg{ width:100%; height:auto; display:block; }
 
-  main{
-    max-width:680px;
-    margin:0 auto;
-    padding:12px 24px 80px;
+  article p{
+    text-align: justify;
+    text-justify: inter-word;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    -webkit-hyphens: none;
+    hyphens: none;
+    line-height: 1.95;
+    font-size: clamp(1rem, .85rem + .5vw, 1.12rem);
+    font-weight: 400;
+    margin: 0 0 1.35em;
+    color: var(--ink);
   }
 
-  .prose p{
-    text-align:justify;
-    text-justify:inter-word;
-    font-size:1.06rem;
-    color:var(--text);
-    margin:0 0 1.35em;
-  }
-  .prose a{
-    color:var(--ink-blue);
-    text-decoration:underline;
-    text-decoration-color:var(--marigold);
-    text-decoration-thickness:2px;
-    text-underline-offset:2px;
+  article p a{
+    color: var(--accent-2);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
   }
 
-  .divider{
+  .ornament{
     display:flex;
-    align-items:center;
-    gap:14px;
-    margin:40px 0 28px;
-    color:var(--text-soft);
+    justify-content:center;
+    margin: clamp(28px, 6vw, 44px) 0;
   }
-  .divider::before, .divider::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background:var(--border);
-  }
-  .divider span{
-    font-size:1.15rem;
-    font-weight:600;
-    letter-spacing:.01em;
-  }
+  .ornament svg{ width: 84px; height:auto; opacity:.8; }
 
-  ul.toc{
-    list-style:none;
-    margin:0;
-    padding:0;
+  .essay-list{
+    list-style: none;
+    margin: 0 0 1.4em;
+    padding: 0;
+    display:block;
+  }
+  .essay-list li{
     display:flex;
-    flex-direction:column;
+    justify-content:center;
+    width:100%;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+  .essay-list li:last-child{ border-bottom: 1px solid var(--rule); }
+
+  .essay-list a{
+    display:flex;
+    justify-content: center;
     align-items:center;
-    gap:10px;
+    gap: 12px;
+    padding: 16px 4px;
+    text-decoration: none;
+    font-size: clamp(1rem, .9rem + .3vw, 1.08rem);
+    font-weight: 500;
+    color: var(--ink);
+    transition: color .2s ease, gap .2s ease;
+  }
+  .essay-list a:hover{
+    color: var(--accent);
+    gap: 18px;
+  }
+  .essay-list a .dot{
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform .2s ease;
+  }
+  .essay-list a:hover .dot{ transform: scale(1.35); }
+  .essay-list a span.title{
+    text-align: center;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  .index-title{
     text-align:center;
+    font-size: clamp(1.7rem, 1.15rem + 2.4vw, 2.6rem);
+    font-weight:700;
+    margin: 0 0 1.2em;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2), #C1440E, var(--accent-2), var(--accent));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: indexShift 7s ease-in-out infinite;
   }
-  ul.toc li a{
-    display:inline-block;
-    color:var(--text);
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:10px 18px;
-    text-decoration:none;
-    font-size:.99rem;
-    font-weight:500;
-    transition:background .25s ease, border-color .25s ease, transform .18s ease;
+  @keyframes indexShift{
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
   }
-  ul.toc li a:hover{
-    border-color:var(--marigold);
-    background:var(--surface-2);
-    transform:translateY(-1px);
-  }
-
-  .end-mark{
-    text-align:center;
-    margin-top:44px;
-    font-size:1.3rem;
-    letter-spacing:.35em;
-    color:var(--maroon);
-    opacity:.75;
-  }
-
-  .toast{
-    position:fixed;
-    bottom:22px;
-    left:50%;
-    transform:translate(-50%,12px);
-    background:var(--text);
-    color:var(--bg);
-    padding:9px 16px;
-    border-radius:999px;
-    font-size:.85rem;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .25s ease, transform .25s ease;
-  }
-  .toast.show{ opacity:1; transform:translate(-50%,0); }
-
-  @media (max-width:520px){
-    header.hero{ padding:44px 14px 4px; }
-    .hero .page-title{ font-size:1.9rem; }
-    main{ padding:8px 18px 64px; }
-    .prose p{ font-size:1rem; }
+    *, *::before, *::after{
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="toolbar">
-  <button id="themeToggle" aria-label="थीम बदला" title="Toggle theme">
-    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.9 4.9l1.85 1.85M17.25 17.25l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.9 19.1l1.85-1.85M17.25 6.75l1.85-1.85"/></svg>
-    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>
+<div class="controls">
+  <button class="icon-btn" id="themeToggle" aria-label="Toggle light and dark theme">
+    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></svg>
+    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
   </button>
-  <button id="shareBtn" aria-label="शेअर करा" title="Share">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7 15.7 6.6M8.3 13.3l7.4 4.1"/></svg>
+  <button class="icon-btn" id="shareBtn" aria-label="Share this page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.2M8.3 13.3l7.4 4.2"/></svg>
   </button>
 </div>
 
-<header class="hero">
-  <h1 class="page-title">निबंध वही</h1>
-  <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle">
-    <title id="heroTitle">निबंध वही</title>
-    <defs>
-      <linearGradient id="coverGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="var(--marigold)"/>
-        <stop offset="100%" stop-color="var(--maroon)"/>
-      </linearGradient>
-    </defs>
-
-    <g opacity="0.85">
-      <circle cx="90" cy="60" r="7" fill="var(--teal)">
-        <animate attributeName="cy" values="60;40;60" dur="4.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="4.2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="150" cy="35" r="4.5" fill="var(--marigold)">
-        <animate attributeName="cy" values="35;18;35" dur="3.4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.9;0.3;0.9" dur="3.4s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="610" cy="55" r="6" fill="var(--maroon)">
-        <animate attributeName="cy" values="55;34;55" dur="3.8s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.9;0.35;0.9" dur="3.8s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="555" cy="30" r="4" fill="var(--ink-blue)">
-        <animate attributeName="cy" values="30;12;30" dur="4.6s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.85;0.3;0.85" dur="4.6s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="350" cy="20" r="5" fill="var(--teal)">
-        <animate attributeName="cy" values="20;4;20" dur="3.6s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.6s" repeatCount="indefinite"/>
-      </circle>
-    </g>
-
-    <g transform="translate(150,80)">
-      <rect x="0" y="0" width="400" height="150" rx="10" fill="url(#coverGrad)" opacity="0.18"/>
-      <rect x="14" y="10" width="372" height="130" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-      <line x1="200" y1="12" x2="200" y2="138" stroke="var(--border)" stroke-width="2"/>
-
-      <g stroke="var(--text-soft)" stroke-width="3" stroke-linecap="round" opacity="0.6">
-        <line x1="192" y1="22" x2="208" y2="22"/>
-        <line x1="192" y1="44" x2="208" y2="44"/>
-        <line x1="192" y1="66" x2="208" y2="66"/>
-        <line x1="192" y1="88" x2="208" y2="88"/>
-        <line x1="192" y1="110" x2="208" y2="110"/>
-        <line x1="192" y1="128" x2="208" y2="128"/>
-      </g>
-
-      <g stroke="var(--border)" stroke-width="1.5">
-        <line x1="30" y1="36" x2="180" y2="36"/>
-        <line x1="30" y1="58" x2="180" y2="58"/>
-        <line x1="30" y1="80" x2="180" y2="80"/>
-        <line x1="30" y1="102" x2="180" y2="102"/>
-      </g>
-
-      <path d="M220 40 Q240 25 258 40 T296 40 T334 40 T372 40" fill="none" stroke="var(--ink-blue)" stroke-width="3" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="220">
-        <animate attributeName="stroke-dashoffset" values="220;0;0;220" keyTimes="0;0.45;0.85;1" dur="5s" repeatCount="indefinite"/>
-      </path>
-      <path d="M220 68 Q235 55 250 68 T280 68 T310 68" fill="none" stroke="var(--maroon)" stroke-width="3" stroke-linecap="round" stroke-dasharray="140" stroke-dashoffset="140">
-        <animate attributeName="stroke-dashoffset" values="140;140;0;140" keyTimes="0;0.45;0.85;1" dur="5s" repeatCount="indefinite"/>
-      </path>
-      <path d="M220 96 Q232 86 244 96 T268 96" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-dasharray="90" stroke-dashoffset="90">
-        <animate attributeName="stroke-dashoffset" values="90;90;90;0" keyTimes="0;0.45;0.8;1" dur="5s" repeatCount="indefinite"/>
-      </path>
-
-      <g>
-        <animateMotion dur="5s" repeatCount="indefinite" path="M220 40 Q240 25 258 40 T296 40 T334 40 T372 40 L372 68 Q356 58 340 68 T310 68 L310 96 Q290 86 268 96" rotate="auto"/>
-        <path d="M0,-6 L9,0 L0,6 L2,0 Z" fill="var(--maroon)"/>
-      </g>
-    </g>
-  </svg>
-</header>
+<div class="toast" id="toast">दुवा कॉपी झाला</div>
 
 <main>
-  <section class="prose">
-    <p>तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला ‘आळस’ नावाचा असामान्य दैवी गुण सुचलेले ‘ते’ लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.</p>
 
-    <p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत ‘टंकल’ देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते ‘स्फुट’ WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
+  <div class="hero">
+    <svg viewBox="0 0 720 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="निबंध वही">
+      <defs>
+        <linearGradient id="inkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--accent)"/>
+          <stop offset="50%" stop-color="var(--accent-2)"/>
+          <stop offset="100%" stop-color="var(--accent)"/>
+          <animate attributeName="x1" values="-40%;100%;-40%" dur="9s" repeatCount="indefinite"/>
+          <animate attributeName="x2" values="60%;200%;60%" dur="9s" repeatCount="indefinite"/>
+        </linearGradient>
+      </defs>
 
-    <p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
+      <circle cx="66" cy="46" r="0" fill="var(--accent)" opacity=".55">
+        <animate attributeName="r" values="0;5;4" dur="1s" begin=".1s" fill="freeze"/>
+      </circle>
+      <circle cx="650" cy="150" r="0" fill="var(--accent-2)" opacity=".55">
+        <animate attributeName="r" values="0;7;6" dur="1.1s" begin=".35s" fill="freeze"/>
+      </circle>
+      <circle cx="600" cy="34" r="0" fill="var(--accent)" opacity=".4">
+        <animate attributeName="r" values="0;3.5" dur=".9s" begin=".55s" fill="freeze"/>
+      </circle>
 
-    <p>मग ‘ब्लॉग’पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा ‘नावनोंदणी करा’ हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
+      <text x="50%" y="112" text-anchor="middle"
+            font-family="'IBM Plex Sans Devanagari','IBM Plex Sans',sans-serif"
+            font-weight="700" font-size="76" fill="url(#inkGrad)">निबंध वही</text>
 
-    <p>सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.</p>
+      <path d="M180 148 C 300 168, 420 128, 545 150" fill="none"
+            stroke="var(--accent)" stroke-width="4" stroke-linecap="round"
+            stroke-dasharray="420" stroke-dashoffset="420">
+        <animate attributeName="stroke-dashoffset" from="420" to="0" dur="1.1s" begin=".2s" fill="freeze" calcMode="spline" keySplines="0.2 0 0.1 1"/>
+      </path>
+    </svg>
+  </div>
 
-    <p>प्रकरण ऑनलाइन असल्याने आणि म्हणून ‘अक्षर लागले नाही म्हणून वाचले नाही’ या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
-  </section>
+  <article>
 
-  <div class="divider"><span>अनुक्रमणिका</span></div>
+<p>तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.</p>
 
-  <ul class="toc">
-    <li><a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener">क्वाटंम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</a></li>
-    <li><a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener">श्वास एक मितवा</a></li>
-    <li><a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a></li>
-    <li><a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener">आस्तिक (ना)आस्तिक</a></li>
-    <li><a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener">'कॉन्स्टंट' स्थिरांक!!</a></li>
-    <li><a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener">Perfectionism — अचूकतेचा अट्टाहास</a></li>
-    <li><a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener">बांडगूळ(च)</a></li>
-    <li><a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener">रेझोनन्स</a></li>
-    <li><a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener">सोडून देणे.. just let go.. write off..</a></li>
-    <li><a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener">'ऑरा'</a></li>
-    <li><a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener">'नशीब'</a></li>
-    <li><a href="https://jswdrkl.github.io/water/" target="_blank" rel="noopener">पाण्यासारखे..</a></li>
-    <li><a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener">बटरफ्लाय इफेक्ट</a></li>
-    <li><a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener">ठेहराव</a></li>
-    <li><a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener">सापशिडी</a></li>
-    <li><a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener">पोली-आजीचे घडयाळ</a></li>
-    <li><a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener">'भूल' — एक घेणे</a></li>
-    <li><a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener">एका खड्डयाचे 'पडणे'... आणि त्याचे नशीब</a></li>
-    <li><a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener">जेरुषा</a></li>
-  </ul>
+<p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते 'स्फुट' WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
 
-  <div class="end-mark">§ § §</div>
+<p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
+
+<p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
+
+<p>सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.</p>
+
+<p>प्रकरण ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
+
+    <div class="ornament">
+      <svg viewBox="0 0 90 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="10" r="3" fill="var(--accent)"/>
+        <circle cx="45" cy="10" r="3.6" fill="var(--accent-2)"/>
+        <circle cx="60" cy="10" r="3" fill="var(--accent)"/>
+      </svg>
+    </div>
+
+<p class="index-title">अनुक्रमणिका</p>
+
+    <ul class="essay-list">
+      <li><a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">क्वाटंम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">श्वास एक मितवा</span></a></li>
+      <li><a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</span></a></li>
+      <li><a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">आस्तिक (ना)आस्तिक</span></a></li>
+      <li><a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">'कॉन्स्टंट' स्थिरांक!!</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">Perfectionism – अचूकतेचा अट्टाहास</span></a></li>
+      <li><a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">बांडगूळ(च)</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">रेझोनन्स</span></a></li>
+      <li><a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">सोडून देणे.. just let go.. write off..</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">'ऑरा'</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">'नशीब'</span></a></li>
+      <li><a href="https://jswdrkl.github.io/water/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">पाण्यासारखे..</span></a></li>
+      <li><a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">बटरफ्लाय इफेक्ट</span></a></li>
+      <li><a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">ठेहराव</span></a></li>
+      <li><a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">सापशिडी</span></a></li>
+      <li><a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">पोली-आजीचे घडयाळ</span></a></li>
+      <li><a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">'भूल' – एक घेणे</span></a></li>
+      <li><a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">एका खड्डयाचे 'पडणे'… आणि त्याचे नशीब</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">जेरुषा</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Stage/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">A Stage - रंगमंच</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Networks-and-Bypasses/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">नेटवर्क्स आणि बायपासेस</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Ego-Tariff/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">इगो-टॅरिफ</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Jyache-Tyache-Pani/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">ज्याचे त्याचे 'पाणी'</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Wait/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">वाट पहावी लागण्यातली मज्जा..</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Equalizer/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">आंतरिक सौंदर्य आणि इक्वलायझर</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Tech-Te/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">तेच ते आणि तेच ते..</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Persona-Non-Grata/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">पर्सोना नॉन ग्राटा</span></a></li>
+      <li><a href="https://jswdrkl.github.io/Weather-Forcast/" target="_blank" rel="noopener"><span class="dot"></span><span class="title">हवामान(वा)चा अंदाज..</span></a></li>
+    </ul>
+
+    <div class="ornament">
+      <svg viewBox="0 0 90 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="10" r="3" fill="var(--accent-2)"/>
+        <circle cx="45" cy="10" r="3.6" fill="var(--accent)"/>
+        <circle cx="60" cy="10" r="3" fill="var(--accent-2)"/>
+      </svg>
+    </div>
+
+  </article>
 </main>
-
-<div class="toast" id="toast">लिंक कॉपी झाली</div>
 
 <script>
 (function(){
   var root = document.documentElement;
-  var themeBtn = document.getElementById('themeToggle');
-  try{
-    var saved = localStorage.getItem('nv-theme');
-    if(saved === 'light' || saved === 'dark'){ root.setAttribute('data-theme', saved); }
-  }catch(e){}
+  var key = 'nibandh-vahi-theme';
+  var saved = null;
+  try { saved = localStorage.getItem(key); } catch(e){}
+  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
 
-  themeBtn.addEventListener('click', function(){
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
     var next = current === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-    try{ localStorage.setItem('nv-theme', next); }catch(e){}
+    try { localStorage.setItem(key, next); } catch(e){}
   });
 
-  var shareBtn = document.getElementById('shareBtn');
   var toast = document.getElementById('toast');
+  var toastTimer;
   function showToast(msg){
     toast.textContent = msg;
     toast.classList.add('show');
-    setTimeout(function(){ toast.classList.remove('show'); }, 1800);
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2000);
   }
-  shareBtn.addEventListener('click', function(){
-    var url = window.location.href;
-    if(navigator.share){
-      navigator.share({ title: document.title, url: url }).catch(function(){});
+
+  document.getElementById('shareBtn').addEventListener('click', async function(){
+    var shareData = {
+      title: 'निबंध वही',
+      text: 'निबंध वही',
+      url: window.location.href
+    };
+    if (navigator.share) {
+      try { await navigator.share(shareData); } catch(e){}
     } else {
-      try{
-        navigator.clipboard.writeText(url).then(function(){ showToast('लिंक कॉपी झाली'); });
-      }catch(e){ showToast(url); }
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        showToast('दुवा कॉपी झाला');
+      } catch(e){
+        showToast('दुवा कॉपी करता आला नाही');
+      }
     }
   });
 })();
