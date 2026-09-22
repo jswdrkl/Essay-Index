@@ -1,274 +1,428 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="mr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>निबंध वही</title>
-<meta property="og:title" content="निबंध वही">
-<meta property="og:description" content="निबंध वही — एक वैयक्तिक लेखनसंग्रह">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#fbf7f1; --bg2:#ffffff; --ink:#2c2620; --ink-soft:#5a5148;
-    --accent1:#e8734a; --accent2:#2f9e8f; --accent3:#e0a63c; --accent4:#c25b8f;
-    --card:#ffffffcc; --border:#e9ddce; --shadow:0 8px 30px rgba(60,40,20,.08);
-    color-scheme: light;
-    box-sizing:border-box;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1b1712; --bg2:#221d17; --ink:#f1e9dd; --ink-soft:#c9bda9;
-      --accent1:#f08a5d; --accent2:#4ec3b0; --accent3:#f0c064; --accent4:#e07aab;
-      --card:#26201822; --border:#3a3225; --shadow:0 8px 30px rgba(0,0,0,.35);
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#1b1712; --bg2:#221d17; --ink:#f1e9dd; --ink-soft:#c9bda9;
-    --accent1:#f08a5d; --accent2:#4ec3b0; --accent3:#f0c064; --accent4:#e07aab;
-    --card:#26201822; --border:#3a3225; --shadow:0 8px 30px rgba(0,0,0,.35);
-    color-scheme: dark;
-  }
-  html{scroll-padding-top:env(safe-area-inset-top,0px);}
-  *{box-sizing:border-box;}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:'IBM Plex Sans Devanagari','IBM Plex Sans',sans-serif;
-    line-height:1.9; -webkit-font-smoothing:antialiased;
-    transition:background .3s ease, color .3s ease;
-    word-break: keep-all; overflow-wrap: normal; hyphens: none;
-    overflow-x:hidden;
-  }
-  .controls{
-    position:fixed; top:calc(env(safe-area-inset-top,0px) + 14px); right:16px; z-index:20;
-    display:flex; gap:10px;
-  }
-  .icon-btn{
-    width:42px; height:42px; border-radius:50%; border:1px solid var(--border);
-    background:var(--card); backdrop-filter:blur(8px); box-shadow:var(--shadow);
-    display:flex; align-items:center; justify-content:center; cursor:pointer;
-    color:var(--ink); transition:transform .15s ease;
-  }
-  .icon-btn:active{transform:scale(.9);}
-  .icon-btn svg{width:20px; height:20px;}
-  .page-title{
-    text-align:center; font-weight:600; font-size:2.1rem; color:var(--ink);
-    margin:24px 0 4px; letter-spacing:.5px;
-  }
-  .hero{
-    position:relative; width:100%; max-height:320px; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .hero svg{width:100%; height:auto; display:block;}
-  .blob{animation:float 9s ease-in-out infinite;}
-  .blob2{animation:float 11s ease-in-out infinite reverse;}
-  .blob3{animation:float 7s ease-in-out infinite;}
-  .spin{animation:spin 40s linear infinite; transform-origin:200px 130px;}
-  .bob{animation:bob 4s ease-in-out infinite;}
-  @keyframes float{0%,100%{transform:translateY(0) scale(1);} 50%{transform:translateY(-10px) scale(1.03);}}
-  @keyframes spin{from{transform:rotate(0deg);} to{transform:rotate(360deg);}}
-  @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg);} 50%{transform:translateY(-6px) rotate(2deg);}}
-  main{
-    max-width:760px; margin:0 auto; padding:8px 22px 60px;
-  }
-  .prose p{
-    text-align:justify; text-justify:inter-word; color:var(--ink-soft);
-    font-size:1.05rem; margin:0 0 22px;
-  }
-  .prose a{color:var(--accent2); text-decoration-thickness:1.5px;}
-  .toc{
-    text-align:center; margin-top:10px;
-  }
-  .toc h2{
-    color:var(--ink); font-weight:600; font-size:1.4rem; margin:0 0 26px;
-  }
-  .toc ul{
-    list-style:none; margin:0 auto; padding:0; display:flex; flex-direction:column;
-    align-items:center; gap:12px; max-width:600px;
-  }
-  .toc li{width:100%;}
-  .toc a{
-    display:block; text-align:center; padding:13px 20px; border-radius:14px;
-    background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);
-    color:var(--ink); text-decoration:none; font-size:1rem;
-    transition:transform .18s ease, border-color .18s ease;
-  }
-  .toc a:hover{transform:translateY(-2px); border-color:var(--accent1);}
-  .toc a:nth-child(4n+1){border-left:3px solid var(--accent1);}
-  .toc a:nth-child(4n+2){border-left:3px solid var(--accent2);}
-  .toc a:nth-child(4n+3){border-left:3px solid var(--accent3);}
-  .toc a:nth-child(4n+4){border-left:3px solid var(--accent4);}
-  .end-mark{
-    text-align:center; margin-top:46px; color:var(--accent1); font-size:1.3rem;
-    letter-spacing:6px;
-  }
-  .toast{
-    position:fixed; bottom:calc(env(safe-area-inset-bottom,0px) + 20px); left:50%;
-    transform:translateX(-50%) translateY(20px); background:var(--ink); color:var(--bg);
-    padding:10px 18px; border-radius:20px; font-size:.9rem; opacity:0; pointer-events:none;
-    transition:opacity .25s ease, transform .25s ease; z-index:30;
-  }
-  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
-  @media (max-width:600px){
-    main{padding:4px 16px 50px;}
-    .hero{max-height:230px;}
-    .page-title{font-size:1.6rem;}
-  }
-</style>
-</head>
-<body>
-
-<div class="controls">
-  <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
-    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
-  </button>
-  <button class="icon-btn" id="shareBtn" title="Share" aria-label="Share">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle>
-      <line x1="8.6" y1="10.6" x2="15.4" y2="6.4"></line><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"></line>
-    </svg>
-  </button>
-</div>
-
-<h1 class="page-title">निबंध वही</h1>
-<div class="hero">
-<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="निबंध वही">
-  <defs>
-    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f6c667"/><stop offset="100%" stop-color="#e8734a"/>
-    </linearGradient>
-    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#6fd6c4"/><stop offset="100%" stop-color="#2f9e8f"/>
-    </linearGradient>
-    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f0a4c8"/><stop offset="100%" stop-color="#c25b8f"/>
-    </linearGradient>
-  </defs>
-  <circle class="blob" cx="70" cy="70" r="46" fill="url(#g1)" opacity="0.75"/>
-  <circle class="blob2" cx="335" cy="60" r="38" fill="url(#g2)" opacity="0.7"/>
-  <circle class="blob3" cx="345" cy="200" r="50" fill="url(#g3)" opacity="0.7"/>
-  <circle class="blob2" cx="55" cy="205" r="30" fill="url(#g1)" opacity="0.55"/>
-  <g class="spin" opacity="0.5">
-    <circle cx="200" cy="130" r="3" fill="var(--accent3)"/>
-    <circle cx="230" cy="80" r="4" fill="var(--accent2)"/>
-    <circle cx="160" cy="185" r="3" fill="var(--accent4)"/>
-  </g>
-  <g class="bob">
-    <rect x="140" y="70" width="120" height="120" rx="10" fill="var(--bg2)" stroke="var(--accent1)" stroke-width="3"/>
-    <line x1="200" y1="76" x2="200" y2="184" stroke="var(--border)" stroke-width="2"/>
-    <line x1="152" y1="98" x2="192" y2="98" stroke="var(--accent2)" stroke-width="4" stroke-linecap="round"/>
-    <line x1="152" y1="116" x2="192" y2="116" stroke="var(--accent3)" stroke-width="4" stroke-linecap="round"/>
-    <line x1="152" y1="134" x2="184" y2="134" stroke="var(--accent4)" stroke-width="4" stroke-linecap="round"/>
-    <line x1="208" y1="98" x2="248" y2="98" stroke="var(--accent2)" stroke-width="4" stroke-linecap="round"/>
-    <line x1="208" y1="116" x2="248" y2="116" stroke="var(--accent3)" stroke-width="4" stroke-linecap="round"/>
-    <line x1="208" y1="134" x2="240" y2="134" stroke="var(--accent4)" stroke-width="4" stroke-linecap="round"/>
-    <path d="M245 150 l28 -30 8 8 -28 30 -12 4z" fill="var(--accent1)"/>
-  </g>
-</svg>
-</div>
-
-<main>
-  <div class="prose">
-    <p>तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.</p>
-    <p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते 'स्फुट' WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
-    <p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
-    <p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
-    <p>सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.</p>
-    <p>प्रकरण ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
-  </div>
-
-  <div class="toc">
-    <h2>अनुक्रमणिका</h2>
-    <ul>
-      <li><a href="https://jswdrkl.github.io/clicks/" target="_blank" rel="noopener">काहीतरी 'क्लिक' होते</a></li>
-      <li><a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener">क्वांटम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</a></li>
-      <li><a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener">श्वास एक मितवा</a></li>
-      <li><a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a></li>
-      <li><a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener">आस्तिक (ना)आस्तिक</a></li>
-      <li><a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener">'कॉन्स्टंट' स्थिरांक!!</a></li>
-      <li><a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener">Perfectionism -- अचूकतेचा अट्टाहास</a></li>
-      <li><a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener">बांडगूळ(च)</a></li>
-      <li><a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener">रेझोनन्स</a></li>
-      <li><a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener">सोडून देणे.. just let go.. write off..</a></li>
-      <li><a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener">'ऑरा'</a></li>
-      <li><a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener">'नशीब'</a></li>
-      <li><a href="https://jswdrkl.github.io/water/" target="_blank" rel="noopener">पाण्यासारखे..</a></li>
-      <li><a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener">बटरफ्लाय इफेक्ट</a></li>
-      <li><a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener">ठेहराव</a></li>
-      <li><a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener">सापशिडी</a></li>
-      <li><a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener">पोली-आजीचे घडयाळ</a></li>
-      <li><a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener">'भूल' -- एक घेणे</a></li>
-      <li><a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener">एका खड्डयाचे 'पडणे'... आणि त्याचे नशीब</a></li>
-      <li><a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener">जेरुषा</a></li>
-      <li><a href="https://jswdrkl.github.io/Stage/" target="_blank" rel="noopener">A Stage - रंगमंच</a></li>
-      <li><a href="https://jswdrkl.github.io/Networks-and-Bypasses/" target="_blank" rel="noopener">नेटवर्क्स आणि बायपासेस</a></li>
-      <li><a href="https://jswdrkl.github.io/Ego-Tariff/" target="_blank" rel="noopener">इगो-टॅरिफ</a></li>
-      <li><a href="https://jswdrkl.github.io/Jyache-Tyache-Pani/" target="_blank" rel="noopener">ज्याचे त्याचे 'पाणी'</a></li>
-      <li><a href="https://jswdrkl.github.io/Wait/" target="_blank" rel="noopener">वाट पहावी लागण्यातली मज्जा..</a></li>
-      <li><a href="https://jswdrkl.github.io/Equalizer/" target="_blank" rel="noopener">आंतरिक सौंदर्य आणि इक्वलायझर</a></li>
-      <li><a href="https://jswdrkl.github.io/Tech-Te/" target="_blank" rel="noopener">तेच ते आणि तेच ते..</a></li>
-      <li><a href="https://jswdrkl.github.io/Persona-Non-Grata/" target="_blank" rel="noopener">पर्सोना नॉन ग्राटा</a></li>
-      <li><a href="https://jswdrkl.github.io/Weather-Forcast/" target="_blank" rel="noopener">हवामान(वा)चा अंदाज..</a></li>
-    </ul>
-  </div>
-
-  <div class="end-mark">§ § §</div>
-</main>
-
-<div class="toast" id="toast"></div>
-
-<script>
-  const sunPath = 'M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4M12 7a5 5 0 100 10 5 5 0 000-10z';
-  const moonPath = 'M20 14.5A8 8 0 019.5 4a8.5 8.5 0 1010.5 10.5z';
-  const themeIcon = document.getElementById('themeIcon');
-  const root = document.documentElement;
-
-  function isDark(){
-    const t = root.getAttribute('data-theme');
-    if(t === 'dark') return true;
-    if(t === 'light') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-  function paintIcon(){
-    themeIcon.innerHTML = isDark()
-      ? '<path d="'+moonPath+'"></path>'
-      : '<circle cx="12" cy="12" r="4"></circle><path d="'+sunPath+'"></path>';
-  }
-  paintIcon();
-
-  document.getElementById('themeBtn').addEventListener('click', () => {
-    try{
-      const next = isDark() ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('nv-theme', next);
-    }catch(e){}
-    paintIcon();
-  });
-  try{
-    const saved = localStorage.getItem('nv-theme');
-    if(saved){ root.setAttribute('data-theme', saved); paintIcon(); }
-  }catch(e){}
-
-  const toast = document.getElementById('toast');
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(()=>toast.classList.remove('show'), 1800);
-  }
-  document.getElementById('shareBtn').addEventListener('click', async () => {
-    const shareData = { title: document.title, url: location.href };
-    try{
-      if(navigator.share){ await navigator.share(shareData); }
-      else{
-        await navigator.clipboard.writeText(location.href);
-        showToast('लिंक कॉपी झाली');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>निबंध वही</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"IBM Plex Sans Devanagari"', '"IBM Plex Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+            }
+          }
+        }
       }
-    }catch(e){}
-  });
-</script>
+    }
+  </script>
+  <style>
+    * {
+      font-family: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', sans-serif;
+    }
+    
+    /* Ensure no words are broken awkwardly in Marathi text */
+    .marathi-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      word-break: keep-all;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+    }
+
+    .marathi-centered {
+      text-align: center;
+      word-break: keep-all;
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+    }
+
+    /* Gradient styling for colorful titles */
+    .colorful-title {
+      background: linear-gradient(135deg, #f97316 0%, #ec4899 45%, #8b5cf6 80%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .colorful-subheading {
+      background: linear-gradient(120deg, #0284c7 0%, #8b5cf6 50%, #f43f5e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Keyframe animations for the colorful light SVG */
+    @keyframes floatJournal {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(0.8deg); }
+    }
+
+    @keyframes featherWrite {
+      0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+      25% { transform: translate(-3px, -4px) rotate(-4deg); }
+      50% { transform: translate(4px, -1px) rotate(3deg); }
+      75% { transform: translate(-2px, 2px) rotate(-2deg); }
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 0.65; transform: scale(1); }
+      50% { opacity: 0.95; transform: scale(1.04); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.25); }
+    }
+
+    .journal-anim {
+      animation: floatJournal 6s ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    .feather-anim {
+      animation: featherWrite 4s ease-in-out infinite;
+      transform-origin: 340px 145px;
+    }
+
+    .glow-anim {
+      animation: gentlePulse 5s ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    .star-1 { animation: twinkle 3s ease-in-out infinite; }
+    .star-2 { animation: twinkle 4s ease-in-out 1s infinite; }
+    .star-3 { animation: twinkle 3.5s ease-in-out 2s infinite; }
+  </style>
+</head>
+<body class="bg-amber-50/40 dark:bg-neutral-950 text-neutral-800 dark:text-neutral-200 min-h-screen transition-colors duration-300 antialiased selection:bg-amber-200 dark:selection:bg-amber-800">
+
+  <div class="fixed top-4 right-4 z-50 flex items-center space-x-2">
+    <!-- Share Button -->
+    <button id="shareBtn" aria-label="Share" class="p-2.5 rounded-full bg-white/90 dark:bg-neutral-800/90 shadow-md border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+      </svg>
+    </button>
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle" aria-label="Toggle Theme" class="p-2.5 rounded-full bg-white/90 dark:bg-neutral-800/90 shadow-md border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500">
+      <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+      </svg>
+      <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+    </button>
+  </div>
+
+  <main class="max-w-3xl mx-auto px-5 sm:px-8 pt-10 sm:pt-14 pb-16">
+
+    <!-- Title placed strictly above the SVG graphic with vibrant colors -->
+    <div class="text-center mb-6 sm:mb-8">
+      <h1 class="colorful-title text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight pb-1">
+        निबंध वही
+      </h1>
+    </div>
+
+    <!-- Light, colorful, animated SVG graphic of an open notebook/vahi and writing quill -->
+    <div class="w-full flex justify-center mb-10 sm:mb-12 select-none">
+      <div class="w-full max-w-sm sm:max-w-md h-auto">
+        <svg viewBox="0 0 460 260" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-lg">
+          <defs>
+            <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fef08a" stop-opacity="0.45" />
+              <stop offset="50%" stop-color="#fdba74" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#f472b6" stop-opacity="0.3" />
+            </linearGradient>
+
+            <linearGradient id="coverLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+
+            <linearGradient id="coverRight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0284c7" />
+              <stop offset="100%" stop-color="#0369a1" />
+            </linearGradient>
+
+            <linearGradient id="pageLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f8fafc" />
+              <stop offset="90%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#e2e8f0" />
+            </linearGradient>
+
+            <linearGradient id="pageRight" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#cbd5e1" />
+              <stop offset="12%" stop-color="#ffffff" />
+              <stop offset="100%" stop-color="#f8fafc" />
+            </linearGradient>
+
+            <linearGradient id="quillGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f97316" />
+              <stop offset="40%" stop-color="#ec4899" />
+              <stop offset="100%" stop-color="#a855f7" />
+            </linearGradient>
+
+            <linearGradient id="bookmarkRibbon" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#f43f5e" />
+              <stop offset="100%" stop-color="#e11d48" />
+            </linearGradient>
+            
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.14" />
+            </filter>
+          </defs>
+
+          <!-- Ambient Colorful Glowing Aura -->
+          <ellipse cx="230" cy="140" rx="190" ry="85" fill="url(#bgGlow)" class="glow-anim" />
+
+          <!-- Sparkling creative particles -->
+          <g>
+            <circle cx="85" cy="50" r="3.5" fill="#f59e0b" class="star-1" />
+            <circle cx="390" cy="70" r="4.5" fill="#ec4899" class="star-2" />
+            <circle cx="370" cy="35" r="3" fill="#06b6d4" class="star-3" />
+            <circle cx="65" cy="190" r="3" fill="#8b5cf6" class="star-2" />
+            <circle cx="410" cy="180" r="3.5" fill="#10b981" class="star-1" />
+          </g>
+
+          <!-- Floating Journal Structure -->
+          <g class="journal-anim" filter="url(#softShadow)">
+            <!-- Left Notebook Cover -->
+            <path d="M 68 62 C 145 56, 210 68, 226 76 L 226 208 C 210 200, 145 188, 68 194 Z" fill="url(#coverLeft)" rx="6" />
+            <!-- Right Notebook Cover -->
+            <path d="M 392 62 C 315 56, 250 68, 234 76 L 234 208 C 250 200, 315 188, 392 194 Z" fill="url(#coverRight)" rx="6" />
+
+            <!-- Page Stack Underlying Depth -->
+            <path d="M 72 65 C 145 60, 210 71, 227 78 L 227 203 C 210 196, 145 185, 72 190 Z" fill="#e2e8f0" />
+            <path d="M 388 65 C 315 60, 250 71, 233 78 L 233 203 C 250 196, 315 185, 388 190 Z" fill="#cbd5e1" />
+
+            <!-- Left Open Page -->
+            <path d="M 78 69 C 148 64, 212 74, 227 80 L 227 199 C 212 193, 148 183, 78 188 Z" fill="url(#pageLeft)" />
+            
+            <!-- Right Open Page -->
+            <path d="M 382 69 C 312 64, 248 74, 233 80 L 233 199 C 248 193, 312 183, 382 188 Z" fill="url(#pageRight)" />
+
+            <!-- Notebook Center Spine Shadow -->
+            <path d="M 226 78 Q 230 140 226 201 Q 234 140 234 78 Z" fill="#94a3b8" opacity="0.6" />
+
+            <!-- Elegant Faint Ruled Lines on Left Page -->
+            <g stroke="#93c5fd" stroke-width="1.2" stroke-linecap="round" opacity="0.6">
+              <line x1="98" y1="94" x2="208" y2="101" />
+              <line x1="98" y1="112" x2="208" y2="119" />
+              <line x1="98" y1="130" x2="208" y2="137" />
+              <line x1="98" y1="148" x2="208" y2="155" />
+              <line x1="98" y1="166" x2="208" y2="173" />
+            </g>
+
+            <!-- Creative Colorful Thought Strokes on Right Page -->
+            <g stroke-linecap="round">
+              <line x1="252" y1="101" x2="352" y2="94" stroke="#f472b6" stroke-width="1.8" opacity="0.75" />
+              <line x1="252" y1="119" x2="362" y2="112" stroke="#fb923c" stroke-width="1.8" opacity="0.75" />
+              <line x1="252" y1="137" x2="340" y2="130" stroke="#38bdf8" stroke-width="1.8" opacity="0.75" />
+              <line x1="252" y1="155" x2="358" y2="148" stroke="#a78bfa" stroke-width="1.8" opacity="0.75" />
+              <line x1="252" y1="173" x2="320" y2="166" stroke="#4ade80" stroke-width="1.8" opacity="0.75" />
+            </g>
+
+            <!-- Bookmark Ribbon hanging out -->
+            <path d="M 230 76 Q 234 130 228 218 L 235 212 L 242 218 Q 235 130 231 76 Z" fill="url(#bookmarkRibbon)" />
+          </g>
+
+          <!-- Animated Creative Pen / Feather Quill -->
+          <g class="feather-anim">
+            <!-- Nib of the Quill -->
+            <polygon points="304,175 316,160 310,154" fill="#fbbf24" />
+            <polygon points="304,175 308,168 306,166" fill="#1e293b" />
+            
+            <!-- Quill Body -->
+            <path d="M 312 157 C 324 135 348 95 385 65 C 372 90 358 120 326 150 Z" fill="url(#quillGrad)" />
+            <path d="M 314 155 C 330 130 350 90 385 65 C 388 95 365 140 322 154 Z" fill="#ec4899" opacity="0.5" />
+            
+            <!-- Quill spine -->
+            <path d="M 305 174 Q 345 110 390 62" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+            
+            <!-- Floating ink spark -->
+            <circle cx="298" cy="180" r="3" fill="#f43f5e" opacity="0.85" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <article class="text-base sm:text-lg leading-relaxed text-neutral-800 dark:text-neutral-200 space-y-5 marathi-justify mb-14">
+      <p>
+        तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी सुचते याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.
+      </p>
+      
+      <p>
+        सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते ‘स्फुट’ WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.
+      </p>
+      
+      <p>
+        त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.
+      </p>
+      
+      <p>
+        मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener noreferrer" class="text-amber-600 dark:text-amber-400 underline decoration-amber-400 hover:text-amber-700 dark:hover:text-amber-300 font-medium transition-colors">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.
+      </p>
+      
+      <p>
+        सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे. पाहूया.
+      </p>
+      
+      <p>
+        प्रकरण ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..
+      </p>
+    </article>
+
+    <section class="mt-8 mb-12">
+      <!-- Centered Section Title with colorful vibrant gradient -->
+      <div class="text-center mb-8">
+        <h2 class="colorful-subheading text-2xl sm:text-3xl font-bold tracking-tight pb-1 marathi-centered">
+          अनुक्रमणिका
+        </h2>
+      </div>
+
+      <!-- List of 32 Links Centered and Non-broken words -->
+      <div class="marathi-centered flex flex-col items-center space-y-3 sm:space-y-3.5 text-base sm:text-lg">
+        <a href="https://jswdrkl.github.io/clicks/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">काहीतरी ‘क्लिक’ होते</a>
+        <a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">क्वांटम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य! </a>
+        <a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">श्वास एक मितवा</a>
+        <a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a>
+        <a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">आस्तिक (ना)आस्तिक</a>
+        <a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">‘कॉन्स्टंट’ स्थिरांक!!</a>
+        <a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">Perfectionism – अचूकतेचा अट्टाहास</a>
+        <a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">बांडगूळ(च)</a>
+        <a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">रेझोनन्स</a>
+        <a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">सोडून देणे.. just let go.. write off..</a>
+        <a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">‘ऑरा’</a>
+        <a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">‘नशीब’</a>
+        <a href="https://jswdrkl.github.io/water/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">पाण्यासारखे..</a>
+        <a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">बटरफ्लाय इफेक्ट</a>
+        <a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">ठेहराव</a>
+        <a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">सापशिडी</a>
+        <a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">पोली-आजीचे घडयाळ</a>
+        <a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">‘भूल’ – एक घेणे</a>
+        <a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">एका खड्डयाचे ‘पडणे’… आणि त्याचे नशीब</a>
+        <a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">जेरुषा</a>
+        <a href="https://jswdrkl.github.io/Stage/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">A Stage - रंगमंच</a>
+        <a href="https://jswdrkl.github.io/Networks-and-Bypasses/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">नेटवर्क्स आणि बायपासेस</a>
+        <a href="https://jswdrkl.github.io/Ego-Tariff/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">इगो-टॅरिफ</a>
+        <a href="https://jswdrkl.github.io/Jyache-Tyache-Pani/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">ज्याचे त्याचे ‘पाणी’</a>
+        <a href="https://jswdrkl.github.io/Wait/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">वाट पहावी लागण्यातली मज्जा..</a>
+        <a href="https://jswdrkl.github.io/Equalizer/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">आंतरिक सौंदर्य आणि इक्वलायझर</a>
+        <a href="https://jswdrkl.github.io/Tech-Te/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">तेच ते आणि तेच ते..</a>
+        <a href="https://jswdrkl.github.io/Persona-Non-Grata/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">पर्सोना नॉन ग्राटा</a>
+        <a href="https://jswdrkl.github.io/Weather-Forcast/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">हवामान(वा)चा अंदाज..</a>
+        <a href="https://jswdrkl.github.io/Commute/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">कम्यूट</a>
+        <a href="https://jswdrkl.github.io/G-For/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">G For..</a>
+        <a href="https://jswdrkl.github.io/Introspection/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 underline decoration-neutral-300 dark:decoration-neutral-700 hover:decoration-amber-500 transition-colors py-0.5">आत्मनिरीक्षण</a>
+      </div>
+
+      <div class="marathi-centered font-bold text-2xl tracking-widest text-neutral-600 dark:text-neutral-400 mt-10">
+        §§§
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Non-intrusive copy toast notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-sm font-medium rounded-lg shadow-xl opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+    लिंक कॉपी झाली!
+  </div>
+
+  <script>
+    (function () {
+      const themeToggle = document.getElementById('themeToggle');
+      const sunIcon = document.getElementById('sunIcon');
+      const moonIcon = document.getElementById('moonIcon');
+      const shareBtn = document.getElementById('shareBtn');
+      const toast = document.getElementById('toast');
+
+      // Theme detection and persistence
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      function setTheme(isDark) {
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        setTheme(true);
+      } else {
+        setTheme(false);
+      }
+
+      themeToggle.addEventListener('click', function () {
+        const isDark = document.documentElement.classList.contains('dark');
+        setTheme(!isDark);
+      });
+
+      // Show toast helper without using alert()
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.remove('opacity-0', 'pointer-events-none');
+        setTimeout(function () {
+          toast.classList.add('opacity-0', 'pointer-events-none');
+        }, 2200);
+      }
+
+      // Share button logic (Web Share API with fallback to copy text)
+      shareBtn.addEventListener('click', function () {
+        const shareData = {
+          title: 'निबंध वही',
+          url: window.location.href
+        };
+
+        if (navigator.share) {
+          navigator.share(shareData).catch(function () {
+            copyFallback();
+          });
+        } else {
+          copyFallback();
+        }
+
+        function copyFallback() {
+          const tempInput = document.createElement('input');
+          tempInput.value = window.location.href;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          try {
+            document.execCommand('copy');
+            showToast('लिंक क्लिपबोर्डवर कॉपी झाली!');
+          } catch (e) {
+            showToast('लिंक: ' + window.location.href);
+          }
+          document.body.removeChild(tempInput);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
