@@ -6,399 +6,397 @@
 <title>निबंध वही</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fbf8f3;
-    --bg-soft:#f2ecdf;
-    --text:#2c2620;
-    --text-soft:#5b5142;
-    --card:#ffffff;
-    --border:rgba(44,38,32,0.10);
-    --c1:#e0685a;
-    --c2:#e8a13c;
-    --c3:#3fa77e;
-    --c4:#3d7dc9;
-    --c5:#9b5de5;
-    --c6:#e0567f;
-    --shadow:0 10px 30px rgba(44,38,32,0.08);
+    --bg: #fdf9f4;
+    --bg-2: #fef3e7;
+    --text: #2c2620;
+    --text-soft: #55483c;
+    --accent1: #e0663f;
+    --accent2: #2f8f7b;
+    --accent3: #d9a441;
+    --accent4: #7a5fc7;
+    --link: #b3512b;
+    --link-hover: #e0663f;
+    --card: #ffffffb3;
+    --border: rgba(44,38,32,0.12);
+    --btn-bg: #ffffffcc;
+    --btn-text: #2c2620;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
   }
-  :root:not([data-theme="light"]){
-    @media (prefers-color-scheme: dark){
-      --bg:#171310;
-      --bg-soft:#1f1a15;
-      --text:#f0e9dd;
-      --text-soft:#c7bba8;
-      --card:#221c17;
-      --border:rgba(240,233,221,0.10);
-      --shadow:0 10px 30px rgba(0,0,0,0.35);
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #191512;
+      --bg-2: #201a16;
+      --text: #f2e9df;
+      --text-soft: #d8c9b8;
+      --accent1: #ff9466;
+      --accent2: #5fd3b8;
+      --accent3: #f0c264;
+      --accent4: #b49bf0;
+      --link: #ffb089;
+      --link-hover: #ffd0b0;
+      --card: #2a231e99;
+      --border: rgba(242,233,223,0.12);
+      --btn-bg: #2e2620cc;
+      --btn-text: #f2e9df;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#171310;
-    --bg-soft:#1f1a15;
-    --text:#f0e9dd;
-    --text-soft:#c7bba8;
-    --card:#221c17;
-    --border:rgba(240,233,221,0.10);
-    --shadow:0 10px 30px rgba(0,0,0,0.35);
+    --bg: #191512;
+    --bg-2: #201a16;
+    --text: #f2e9df;
+    --text-soft: #d8c9b8;
+    --accent1: #ff9466;
+    --accent2: #5fd3b8;
+    --accent3: #f0c264;
+    --accent4: #b49bf0;
+    --link: #ffb089;
+    --link-hover: #ffd0b0;
+    --card: #2a231e99;
+    --border: rgba(242,233,223,0.12);
+    --btn-bg: #2e2620cc;
+    --btn-text: #f2e9df;
   }
 
-  *{box-sizing:border-box;}
-  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html,body{ height:100%; }
+
+  *{ box-sizing: border-box; }
+
   body{
     margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'IBM Plex Sans Devanagari','IBM Plex Sans',sans-serif;
-    line-height:1.9;
-    -webkit-font-smoothing:antialiased;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-    transition:background .35s ease, color .35s ease;
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, var(--bg-2), var(--bg) 60%);
+    color: var(--text);
+    font-family: "IBM Plex Sans Devanagari", "IBM Plex Sans", sans-serif;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
   }
 
-  /* ---------- toolbar ---------- */
-  .toolbar{
-    position:fixed;
-    top:calc(14px + env(safe-area-inset-top,0px));
-    right:16px;
-    z-index:50;
+  .top-controls{
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 14px);
+    right: 16px;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+  }
+
+  .icon-btn{
     display:flex;
-    gap:8px;
-    background:var(--card);
-    border:1px solid var(--border);
-    padding:6px;
-    border-radius:999px;
-    box-shadow:var(--shadow);
+    align-items:center;
+    justify-content:center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   }
-  .toolbar button{
-    width:40px;height:40px;
-    border-radius:50%;
-    border:none;
-    background:transparent;
-    color:var(--text);
-    font-size:18px;
-    cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:background .2s ease, transform .2s ease;
-  }
-  .toolbar button:hover{background:var(--bg-soft); transform:scale(1.08);}
-  .toolbar button:active{transform:scale(0.94);}
+  .icon-btn:hover{ transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+  .icon-btn svg{ width:20px; height:20px; }
 
-  .toast{
-    position:fixed;
-    bottom:calc(20px + env(safe-area-inset-bottom,0px));
-    left:50%;
-    transform:translateX(-50%) translateY(20px);
-    background:var(--text);
-    color:var(--bg);
-    padding:10px 18px;
-    border-radius:999px;
-    font-size:14px;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .3s ease, transform .3s ease;
-    z-index:60;
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 90px 22px 60px;
   }
-  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 
-  /* ---------- header ---------- */
-  header{
-    max-width:760px;
-    margin:0 auto;
-    padding:64px 20px 10px;
-    text-align:center;
-  }
   .title{
-    font-weight:700;
-    font-size:clamp(2.2rem, 7vw, 3.6rem);
-    margin:0 0 26px;
-    letter-spacing:0.5px;
-    background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5));
-    background-size:300% auto;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation:shine 9s ease-in-out infinite;
+    text-align:center;
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    font-weight: 700;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent3), var(--accent2), var(--accent4));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 8s linear infinite;
+    letter-spacing: 0.5px;
   }
   @keyframes shine{
-    0%,100%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
+    to{ background-position: 300% center; }
   }
 
-  .art-wrap{max-width:520px; margin:0 auto;}
-  svg{width:100%; height:auto; display:block;}
-  .blob{animation:float 7s ease-in-out infinite;}
-  .blob2{animation-duration:9s; animation-delay:.4s;}
-  .blob3{animation-duration:11s; animation-delay:.8s;}
-  @keyframes float{
-    0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(6px,-10px) scale(1.03);}
-  }
-  .pageflip{transform-origin:110px 100px; animation:flip 5s ease-in-out infinite;}
-  @keyframes flip{
-    0%,100%{transform:rotateY(0deg);}
-    50%{transform:rotateY(18deg);}
-  }
-  .spark{animation:twinkle 2.6s ease-in-out infinite;}
-  .spark:nth-child(2){animation-delay:.6s;}
-  .spark:nth-child(3){animation-delay:1.2s;}
-  @keyframes twinkle{
-    0%,100%{opacity:.25; transform:scale(0.8);}
-    50%{opacity:1; transform:scale(1.15);}
-  }
-  .pen{animation:write 4s ease-in-out infinite;}
-  @keyframes write{
-    0%{transform:translate(0,0) rotate(0deg);}
-    25%{transform:translate(-14px,-3px) rotate(-3deg);}
-    50%{transform:translate(-28px,1px) rotate(2deg);}
-    75%{transform:translate(-14px,4px) rotate(-2deg);}
-    100%{transform:translate(0,0) rotate(0deg);}
-  }
-  .ink-trail{
-    stroke-dasharray:120;
-    stroke-dashoffset:120;
-    animation:inkdraw 4s ease-in-out infinite;
-  }
-  @keyframes inkdraw{
-    0%{stroke-dashoffset:120;}
-    50%{stroke-dashoffset:0;}
-    100%{stroke-dashoffset:0; opacity:0;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .title,.blob,.pageflip,.spark{animation:none !important;}
+  .art{
+    display:block;
+    width: min(360px, 78vw);
+    height: auto;
+    margin: 6px auto 34px;
   }
 
-  /* ---------- main content ---------- */
-  main{
-    max-width:720px;
-    margin:0 auto;
-    padding:20px 22px 70px;
+  .body-text{
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 1.08rem;
+    color: var(--text-soft);
   }
-  .essay p{
-    margin:0 0 22px;
-    text-align:justify;
-    text-justify:inter-word;
-    word-break:normal;
-    overflow-wrap:normal;
-    hyphens:none;
-    -webkit-hyphens:none;
-    color:var(--text);
-    font-size:1.05rem;
+  .body-text p{ margin: 0 0 1.3em; }
+  .body-text a{
+    color: var(--link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .essay em{color:var(--text-soft);}
-
-  .divider{
-    text-align:center;
-    margin:46px 0;
-    font-size:1.1rem;
-    letter-spacing:10px;
-    background:linear-gradient(90deg,var(--c4),var(--c5),var(--c6));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    opacity:.75;
-  }
+  .body-text a:hover{ color: var(--link-hover); }
 
   .index-title{
     text-align:center;
-    font-weight:700;
-    font-size:clamp(1.6rem, 5vw, 2.2rem);
-    margin:0 0 34px;
-    background:linear-gradient(90deg,var(--c6),var(--c5),var(--c2));
-    background-size:200% auto;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation:shine 7s ease-in-out infinite;
+    font-size: clamp(1.7rem, 5vw, 2.3rem);
+    font-weight: 700;
+    margin: 56px 0 30px;
+    color: var(--text);
   }
 
-  .toc{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:12px;
-    list-style:none;
-    padding:0;
-    margin:0;
-    text-align:center;
-  }
-  .toc li{
-    text-align:center;
-    word-break:normal;
-    overflow-wrap:normal;
-  }
-  .toc a{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    justify-content:center;
-    width:100%;
-    padding:13px 16px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    color:var(--text);
-    text-decoration:none;
-    font-size:0.98rem;
-    box-shadow:var(--shadow);
-    transition:transform .2s ease, box-shadow .2s ease, color .2s ease;
-  }
-  .toc a:hover{
-    transform:translateY(-3px);
-    color:var(--c4);
+  .index-list{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
   }
 
+  .index-list a{
+    color: var(--link);
+    text-decoration: none;
+    font-size: 1.08rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 4px 10px;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .index-list a:hover{
+    color: var(--link-hover);
+    border-bottom-color: var(--link-hover);
+  }
+
+  .toast{
+    position: fixed;
+    left: 50%;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+    transform: translate(-50%, 20px);
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--border);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+    backdrop-filter: blur(6px);
+    z-index: 30;
+  }
+  .toast.show{ opacity:1; transform: translate(-50%, 0); }
+
+  @media (max-width: 480px){
+    .wrap{ padding: 82px 16px 44px; }
+    .body-text{ font-size: 1rem; }
+  }
 </style>
 </head>
 <body>
 
-<div class="toolbar">
-  <button id="themeToggle" aria-label="थीम बदला" title="थीम बदला">🌓</button>
-  <button id="shareBtn" aria-label="शेअर करा" title="शेअर करा">🔗</button>
-</div>
+  <div class="top-controls">
+    <button class="icon-btn" id="themeBtn" aria-label="थीम बदला" title="थीम बदला">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+    </button>
+    <button class="icon-btn" id="shareBtn" aria-label="शेअर करा" title="शेअर करा">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.6" y1="10.6" x2="15.4" y2="6.4"></line>
+        <line x1="8.6" y1="13.4" x2="15.4" y2="17.6"></line>
+      </svg>
+    </button>
+  </div>
 
-<header>
-  <h1 class="title">निबंध वही</h1>
-  <div class="art-wrap">
-    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <div class="wrap">
+    <h1 class="title">निबंध वही</h1>
+
+    <svg class="art" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#e0685a"/>
-          <stop offset="100%" stop-color="#e8a13c"/>
+        <linearGradient id="coverGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="var(--accent1)"/>
+          <stop offset="100%" stop-color="var(--accent4)"/>
         </linearGradient>
-        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#3fa77e"/>
-          <stop offset="100%" stop-color="#3d7dc9"/>
-        </linearGradient>
-        <linearGradient id="g3" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stop-color="#9b5de5"/>
-          <stop offset="100%" stop-color="#e0567f"/>
+        <linearGradient id="pageGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="var(--bg-2)"/>
+          <stop offset="100%" stop-color="var(--bg)"/>
         </linearGradient>
       </defs>
 
-      <circle class="blob" cx="70" cy="60" r="46" fill="url(#g1)" opacity="0.55"/>
-      <circle class="blob blob2" cx="340" cy="70" r="58" fill="url(#g2)" opacity="0.5"/>
-      <circle class="blob blob3" cx="330" cy="210" r="40" fill="url(#g3)" opacity="0.5"/>
-      <circle class="blob blob2" cx="55" cy="210" r="34" fill="url(#g3)" opacity="0.4"/>
+      <ellipse cx="160" cy="235" rx="110" ry="12" fill="var(--text)" opacity="0.06"/>
 
-      <g class="pageflip">
-        <rect x="110" y="70" width="180" height="130" rx="10" fill="var(--card)" stroke="url(#g2)" stroke-width="3"/>
-        <line x1="200" y1="70" x2="200" y2="200" stroke="url(#g2)" stroke-width="2" opacity="0.5"/>
-        <line x1="130" y1="100" x2="185" y2="100" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
-        <line x1="130" y1="118" x2="180" y2="118" stroke="url(#g1)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
-        <line x1="130" y1="136" x2="185" y2="136" stroke="url(#g1)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
-        <line x1="215" y1="100" x2="265" y2="100" stroke="url(#g3)" stroke-width="4" stroke-linecap="round"/>
-        <line x1="215" y1="118" x2="260" y2="118" stroke="url(#g3)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
-        <line x1="215" y1="136" x2="265" y2="136" stroke="url(#g3)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
-      </g>
+      <g transform="translate(70,40)">
+        <rect x="0" y="0" width="180" height="170" rx="10" fill="url(#coverGrad)"/>
+        <rect x="10" y="8" width="160" height="154" rx="6" fill="url(#pageGrad)"/>
 
-      <g fill="#e8a13c">
-        <circle class="spark" cx="95" cy="40" r="4"/>
-        <circle class="spark" cx="315" cy="35" r="3"/>
-        <circle class="spark" cx="345" cy="150" r="4"/>
-      </g>
-
-      <path class="ink-trail" d="M265,155 Q245,150 225,156" fill="none" stroke="url(#g3)" stroke-width="2.5" stroke-linecap="round"/>
-      <g class="pen">
-        <g transform="translate(270,145) rotate(48)">
-          <path d="M0,0 L58,0 L66,6 L58,12 L0,12 Z" fill="url(#g1)"/>
-          <path d="M58,0 L72,6 L58,12 Z" fill="#2c2620"/>
-          <path d="M66,6 L76,6" stroke="#2c2620" stroke-width="1.5" stroke-linecap="round"/>
-          <rect x="10" y="3" width="4" height="6" fill="#fbf8f3" opacity="0.6"/>
+        <g stroke="var(--accent2)" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+          <path d="M24 34 H140">
+            <animate attributeName="d" dur="4s" repeatCount="indefinite"
+              values="M24 34 H60; M24 34 H140; M24 34 H140; M24 34 H60; M24 34 H60"/>
+          </path>
+          <path d="M24 52 H120" opacity="0.6"/>
+          <path d="M24 70 H130" opacity="0.6"/>
+          <path d="M24 88 H100" opacity="0.6"/>
         </g>
+
+        <g>
+          <circle r="4.5" fill="var(--accent3)">
+            <animateMotion dur="4s" repeatCount="indefinite"
+              path="M24 34 H60 M24 52 H120 M24 70 H130 M24 88 H100"/>
+          </circle>
+        </g>
+
+        <circle cx="150" cy="20" r="5" fill="var(--accent3)" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.2;0.9" dur="2.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="15" cy="140" r="4" fill="var(--accent2)" opacity="0.8">
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <g fill="none" stroke="var(--accent3)" stroke-width="2.4" stroke-linecap="round">
+        <path d="M250 60 l6 6 M256 60 l-6 6">
+          <animateTransform attributeName="transform" type="rotate" from="0 253 63" to="360 253 63" dur="6s" repeatCount="indefinite"/>
+        </path>
+      </g>
+
+      <g fill="var(--accent1)">
+        <circle cx="46" cy="70" r="3">
+          <animate attributeName="cy" values="70;62;70" dur="3.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="270" cy="150" r="4">
+          <animate attributeName="cy" values="150;140;150" dur="4.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="60" cy="200" r="3.5" fill="var(--accent4)">
+          <animate attributeName="cy" values="200;190;200" dur="3.8s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <g stroke="var(--accent2)" stroke-width="2" fill="none" opacity="0.8">
+        <path d="M245 100 q8 -10 16 0 q8 10 16 0">
+          <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.6s" repeatCount="indefinite"/>
+        </path>
       </g>
     </svg>
+
+    <div class="body-text">
+      <p>तसं बघायला गेलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी 'सुचते' याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे. 🫣</p>
+
+      <p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते 'स्फुट' WhatsApp वर इकडेतिकडे टाकलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
+
+      <p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
+
+      <p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
+
+      <p>ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
+    </div>
+
+    <h2 class="index-title">अनुक्रमणिका</h2>
+
+    <div class="index-list">
+      <a href="https://jswdrkl.github.io/clicks/" target="_blank" rel="noopener">काहीतरी 'क्लिक' होते</a>
+      <a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener">क्वांटम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</a>
+      <a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener">श्वास एक मितवा</a>
+      <a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a>
+      <a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener">आस्तिक (ना)आस्तिक</a>
+      <a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener">'कॉन्स्टंट' स्थिरांक!!</a>
+      <a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener">Perfectionism -- अचूकतेचा अट्टाहास</a>
+      <a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener">बांडगूळ(च)</a>
+      <a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener">रेझोनन्स</a>
+      <a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener">सोडून देणे.. just let go.. write off..</a>
+      <a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener">'ऑरा'</a>
+      <a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener">'नशीब'</a>
+      <a href="https://jswdrkl.github.io/water/" target="_blank" rel="noopener">पाण्यासारखे..</a>
+      <a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener">बटरफ्लाय इफेक्ट</a>
+      <a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener">ठेहराव</a>
+      <a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener">सापशिडी</a>
+      <a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener">पोली-आजीचे घडयाळ</a>
+      <a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener">'भूल' -- एक घेणे</a>
+      <a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener">एका खड्डयाचे 'पडणे'... आणि त्याचे नशीब</a>
+      <a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener">जेरुषा</a>
+      <a href="https://jswdrkl.github.io/Stage/" target="_blank" rel="noopener">A Stage - रंगमंच</a>
+      <a href="https://jswdrkl.github.io/Networks-and-Bypasses/" target="_blank" rel="noopener">नेटवर्क्स आणि बायपासेस</a>
+      <a href="https://jswdrkl.github.io/Ego-Tariff/" target="_blank" rel="noopener">इगो-टॅरिफ</a>
+      <a href="https://jswdrkl.github.io/Jyache-Tyache-Pani/" target="_blank" rel="noopener">ज्याचे त्याचे 'पाणी'</a>
+      <a href="https://jswdrkl.github.io/Wait/" target="_blank" rel="noopener">वाट पहावी लागण्यातली मज्जा..</a>
+      <a href="https://jswdrkl.github.io/Equalizer/" target="_blank" rel="noopener">आंतरिक सौंदर्य आणि इक्वलायझर</a>
+      <a href="https://jswdrkl.github.io/Tech-Te/" target="_blank" rel="noopener">तेच ते आणि तेच ते..</a>
+      <a href="https://jswdrkl.github.io/Persona-Non-Grata/" target="_blank" rel="noopener">पर्सोना नॉन ग्राटा</a>
+      <a href="https://jswdrkl.github.io/Weather-Forcast/" target="_blank" rel="noopener">हवामान(वा)चा अंदाज..</a>
+      <a href="https://jswdrkl.github.io/Commute/" target="_blank" rel="noopener">कम्यूट</a>
+      <a href="https://jswdrkl.github.io/G-For/" target="_blank" rel="noopener">G For..</a>
+      <a href="https://jswdrkl.github.io/Introspection/" target="_blank" rel="noopener">आत्मनिरीक्षण</a>
+    </div>
   </div>
-</header>
 
-<main>
-  <div class="essay">
-    <p>तसं पाहिलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी 'सुचते' याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून ठेवणे तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे.</p>
-    <p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते 'स्फुट' WhatsApp वर इकडेतिकडे शेअर केलं गेलं. त्यावर ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
-    <p>त्यानंतर मग काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
-    <p>मग एक 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
-    <p>सबस्टॅकवरचे सर्व लेखन हळूहळू इकडे कॉपी करण्याचा मानस आहे.</p>
-    <p>प्रकरण ऑनलाइन असल्याने आणि म्हणून <em>'अक्षर लागले नाही म्हणून वाचले नाही'</em> या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
-  </div>
-
-  <div class="divider">§ § §</div>
-
-  <h2 class="index-title">अनुक्रमणिका</h2>
-
-  <ol class="toc">
-    <li><a href="https://jswdrkl.github.io/clicks/" target="_blank" rel="noopener">काहीतरी 'क्लिक' होते</a></li>
-    <li><a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener">क्वांटम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</a></li>
-    <li><a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener">श्वास एक मितवा</a></li>
-    <li><a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a></li>
-    <li><a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener">आस्तिक (ना)आस्तिक</a></li>
-    <li><a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener">'कॉन्स्टंट' स्थिरांक!!</a></li>
-    <li><a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener">Perfectionism - अचूकतेचा अट्टाहास</a></li>
-    <li><a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener">बांडगूळ(च)</a></li>
-    <li><a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener">रेझोनन्स</a></li>
-    <li><a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener">सोडून देणे.. just let go.. write off..</a></li>
-    <li><a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener">'ऑरा'</a></li>
-    <li><a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener">'नशीब'</a></li>
-    <li><a href="https://jswdrkl.github.io/water/" target="_blank" rel="noopener">पाण्यासारखे..</a></li>
-    <li><a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener">बटरफ्लाय इफेक्ट</a></li>
-    <li><a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener">ठेहराव</a></li>
-    <li><a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener">सापशिडी</a></li>
-    <li><a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener">पोली-आजीचे घडयाळ</a></li>
-    <li><a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener">'भूल' -- एक घेणे</a></li>
-    <li><a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener">एका खड्डयाचे 'पडणे'... आणि त्याचे नशीब</a></li>
-    <li><a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener">जेरुषा</a></li>
-    <li><a href="https://jswdrkl.github.io/Stage/" target="_blank" rel="noopener">A Stage - रंगमंच</a></li>
-    <li><a href="https://jswdrkl.github.io/Networks-and-Bypasses/" target="_blank" rel="noopener">नेटवर्क्स आणि बायपासेस</a></li>
-    <li><a href="https://jswdrkl.github.io/Ego-Tariff/" target="_blank" rel="noopener">इगो-टॅरिफ</a></li>
-    <li><a href="https://jswdrkl.github.io/Jyache-Tyache-Pani/" target="_blank" rel="noopener">ज्याचे त्याचे 'पाणी'</a></li>
-    <li><a href="https://jswdrkl.github.io/Wait/" target="_blank" rel="noopener">वाट पहावी लागण्यातली मज्जा..</a></li>
-    <li><a href="https://jswdrkl.github.io/Equalizer/" target="_blank" rel="noopener">आंतरिक सौंदर्य आणि इक्वलायझर</a></li>
-    <li><a href="https://jswdrkl.github.io/Tech-Te/" target="_blank" rel="noopener">तेच ते आणि तेच ते..</a></li>
-    <li><a href="https://jswdrkl.github.io/Persona-Non-Grata/" target="_blank" rel="noopener">पर्सोना नॉन ग्राटा</a></li>
-    <li><a href="https://jswdrkl.github.io/Weather-Forcast/" target="_blank" rel="noopener">हवामान(वा)चा अंदाज..</a></li>
-    <li><a href="https://jswdrkl.github.io/Commute/" target="_blank" rel="noopener">कम्यूट</a></li>
-    <li><a href="https://jswdrkl.github.io/G-For/" target="_blank" rel="noopener">G For..</a></li>
-    <li><a href="https://jswdrkl.github.io/Introspection/" target="_blank" rel="noopener">आत्मनिरीक्षण</a></li>
-  </ol>
-</main>
-
-<div class="toast" id="toast">लिंक कॉपी झाली</div>
+  <div class="toast" id="toast">लिंक कॉपी झाली</div>
 
 <script>
+  const sunPath = 'M12 3v2 M12 19v2 M4.2 4.2l1.4 1.4 M18.4 18.4l1.4 1.4 M1 12h2 M21 12h2 M4.2 19.8l1.4-1.4 M18.4 5.6l1.4-1.4 M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z';
+  const moonPath = 'M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z';
+
+  const themeBtn = document.getElementById('themeBtn');
+  const themeIcon = document.getElementById('themeIcon');
   const root = document.documentElement;
-  const themeBtn = document.getElementById('themeToggle');
-  const saved = localStorage.getItem('nv-theme');
-  if(saved){ root.setAttribute('data-theme', saved); }
+
+  function prefersDark(){
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function applyIcon(isDark){
+    themeIcon.innerHTML = isDark
+      ? '<path d="' + sunPath + '"></path>'
+      : '<path d="' + moonPath + '"></path>';
+  }
+
+  function currentIsDark(){
+    const attr = root.getAttribute('data-theme');
+    if (attr === 'dark') return true;
+    if (attr === 'light') return false;
+    return prefersDark();
+  }
+
+  applyIcon(currentIsDark());
 
   themeBtn.addEventListener('click', () => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('nv-theme', next);
+    const goingDark = !currentIsDark();
+    root.setAttribute('data-theme', goingDark ? 'dark' : 'light');
+    applyIcon(goingDark);
   });
 
   const toast = document.getElementById('toast');
   function showToast(msg){
     toast.textContent = msg;
     toast.classList.add('show');
-    setTimeout(()=> toast.classList.remove('show'), 2200);
+    setTimeout(() => toast.classList.remove('show'), 1800);
   }
 
   document.getElementById('shareBtn').addEventListener('click', async () => {
-    const shareData = { title: document.title, url: window.location.href };
+    const shareData = { title: 'निबंध वही', url: window.location.href };
     try{
-      if(navigator.share){
+      if (navigator.share){
         await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(window.location.href);
         showToast('लिंक कॉपी झाली');
       }
-    }catch(e){
-      try{
-        await navigator.clipboard.writeText(window.location.href);
-        showToast('लिंक कॉपी झाली');
-      }catch(err){}
+    } catch(e){
+      /* share cancelled or failed silently */
     }
   });
 </script>
