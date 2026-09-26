@@ -6,335 +6,152 @@
 <title>निबंध वही</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#fdf8ee;
-    --bg-soft:#f7f0df;
-    --ink:#2c2620;
-    --ink-soft:#6b6053;
-    --paper-line:#e7dcc5;
-    --coral:#e8615a;
-    --teal:#2a9d8f;
-    --gold:#e0a63c;
-    --violet:#8e6bbf;
-    --sky:#3d8fc4;
-    --rose:#d1618f;
-    --surface:#fffdf8;
-    --shadow:rgba(80,60,20,0.10);
-    --focus:#8e6bbf;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-    box-sizing:border-box;
-  }
+:root{
+  --bg:#FBF6EF; --ink:#2B2620; --sub:#5A5248; --card:#FFFFFF;
+  --c1:#E8574B; --c2:#F2A93B; --c3:#2FAE8B; --c4:#5B6EE8; --c5:#D6559C;
+  --focus:#000000; --focus-ink:#ffffff;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#181511;
-      --bg-soft:#1f1b15;
-      --ink:#ece5d8;
-      --ink-soft:#b3a893;
-      --paper-line:#332c22;
-      --coral:#f08078;
-      --teal:#5cc4b6;
-      --gold:#f0bf62;
-      --violet:#ab8bdc;
-      --sky:#6bb0e0;
-      --rose:#e585ab;
-      --surface:#201c16;
-      --shadow:rgba(0,0,0,0.35);
-    }
+    --bg:#161319; --ink:#EFE9DD; --sub:#B8AF9F; --card:#1F1B24;
+    --c1:#FF7A6E; --c2:#FFC468; --c3:#57D2AF; --c4:#8C9AFF; --c5:#F17FBE;
+    --focus:#EFE9DD; --focus-ink:#161319;
   }
-  :root[data-theme="dark"]{
-    --bg:#181511;
-    --bg-soft:#1f1b15;
-    --ink:#ece5d8;
-    --ink-soft:#b3a893;
-    --paper-line:#332c22;
-    --coral:#f08078;
-    --teal:#5cc4b6;
-    --gold:#f0bf62;
-    --violet:#ab8bdc;
-    --sky:#6bb0e0;
-    --rose:#e585ab;
-    --surface:#201c16;
-    --shadow:rgba(0,0,0,0.35);
-  }
-
-  *{box-sizing:border-box;}
-  html{scroll-padding-top:env(safe-area-inset-top,0px);}
-  html,body{height:100%;}
-  body{
-    margin:0;
-    background:
-      radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--rose) 10%, transparent), transparent 40%),
-      radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--sky) 12%, transparent), transparent 45%),
-      var(--bg);
-    color:var(--ink);
-    font-family:"IBM Plex Sans Devanagari","IBM Plex Sans",-apple-system,sans-serif;
-    line-height:1.8;
-    -webkit-font-smoothing:antialiased;
-    word-break:normal;
-    overflow-wrap:normal;
-    hyphens:none;
-    transition:background-color .4s ease, color .4s ease;
-  }
-
-  .controls{
-    position:fixed;
-    top:calc(env(safe-area-inset-top,0px) + 16px);
-    right:16px;
-    display:flex;
-    gap:8px;
-    z-index:20;
-  }
-  .icon-btn{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    border:1px solid var(--paper-line);
-    background:var(--surface);
-    color:var(--ink);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    box-shadow:0 2px 10px var(--shadow);
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .icon-btn:hover{ transform:translateY(-2px); box-shadow:0 6px 16px var(--shadow); }
-  .icon-btn:active{ transform:translateY(0); }
-  .icon-btn:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; }
-  .icon-btn svg{ width:20px; height:20px; }
-  #moon{ display:none; }
-  :root[data-theme="dark"] #sun{ display:none; }
-  :root[data-theme="dark"] #moon{ display:block; }
-
-  .toast{
-    position:fixed;
-    top:calc(env(safe-area-inset-top,0px) + 66px);
-    right:16px;
-    background:var(--ink);
-    color:var(--bg);
-    padding:8px 14px;
-    border-radius:8px;
-    font-size:0.85rem;
-    opacity:0;
-    pointer-events:none;
-    transform:translateY(-6px);
-    transition:opacity .25s ease, transform .25s ease;
-    z-index:20;
-  }
-  .toast.show{ opacity:1; transform:translateY(0); }
-
-  main{
-    max-width:680px;
-    margin:0 auto;
-    padding:88px 24px 64px;
-  }
-
-  .title{
-    text-align:center;
-    font-size:clamp(2.4rem, 8vw, 3.6rem);
-    font-weight:700;
-    margin:0 0 18px;
-    letter-spacing:0.01em;
-    background:linear-gradient(100deg, var(--coral), var(--gold) 30%, var(--teal) 55%, var(--sky) 75%, var(--violet));
-    background-size:250% 100%;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation:shimmer 10s ease-in-out infinite;
-  }
-  @keyframes shimmer{
-    0%,100%{ background-position:0% 50%; }
-    50%{ background-position:100% 50%; }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .title{ animation:none; }
-  }
-
-  .hero{
-    display:block;
-    width:100%;
-    max-width:420px;
-    margin:0 auto 36px;
-  }
-
-  p.intro{
-    text-align:justify;
-    text-justify:inter-word;
-    font-size:1.05rem;
-    color:var(--ink);
-    margin:0 0 1.35em;
-  }
-  p.intro em{ color:var(--rose); font-style:italic; }
-
-  h2.toc-heading{
-    text-align:center;
-    font-size:clamp(1.5rem, 5vw, 2rem);
-    font-weight:700;
-    margin:44px 0 26px;
-    background:linear-gradient(95deg, var(--violet), var(--rose) 35%, var(--gold) 65%, var(--teal));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-
-  ul.toc{
-    list-style:none;
-    margin:0;
-    padding:0;
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-  }
-  ul.toc li{ padding:0; }
-  ul.toc a{
-    display:inline-block;
-    padding:9px 14px;
-    color:#1a1a1a;
-    text-decoration:none;
-    border-radius:6px;
-    font-size:1.02rem;
-    background:#fff6cf;
-    transition:background-color .2s ease, transform .2s ease;
-  }
-  ul.toc a:hover,
-  ul.toc a:focus-visible{
-    background:#ffec9e;
-    transform:translateY(-1px);
-  }
-  ul.toc a:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
-
-  .closing{
-    text-align:center;
-    margin:40px 0 0;
-    font-size:1.3rem;
-    letter-spacing:0.15em;
-    color:var(--gold);
-  }
-
-  @media (max-width:420px){
-    main{ padding-top:80px; }
-    .icon-btn{ width:38px; height:38px; }
-  }
+}
+:root[data-theme="dark"]{
+  --bg:#161319; --ink:#EFE9DD; --sub:#B8AF9F; --card:#1F1B24;
+  --c1:#FF7A6E; --c2:#FFC468; --c3:#57D2AF; --c4:#8C9AFF; --c5:#F17FBE;
+  --focus:#EFE9DD; --focus-ink:#161319;
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Devanagari","IBM Plex Sans",sans-serif;
+  transition:background .3s ease,color .3s ease;
+  overflow-wrap:normal; word-break:keep-all; hyphens:none;
+}
+.bar{position:fixed; top:env(safe-area-inset-top,0px); right:14px; display:flex; gap:8px; z-index:5;}
+.icon-btn{
+  width:40px; height:40px; border-radius:50%; border:1px solid var(--sub);
+  background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center;
+  cursor:pointer; opacity:.85;
+}
+.icon-btn:hover, .icon-btn:focus-visible{opacity:1; transform:scale(1.06);}
+.icon-btn svg{width:19px; height:19px; stroke:currentColor; fill:none; stroke-width:1.8;}
+.wrap{max-width:660px; margin:0 auto; padding:64px 20px 70px;}
+h1.title{
+  text-align:center; margin:0 0 6px; font-weight:700;
+  font-size:clamp(2.1rem,7vw,3.2rem);
+  background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  background-size:200% auto; animation:hue 8s linear infinite alternate;
+}
+@keyframes hue{to{background-position:100% center;}}
+.hero{display:block; width:100%; max-width:480px; margin:8px auto 46px;}
+p.body-text{
+  text-align:justify; line-height:1.9; font-size:1.05rem; margin:0 0 20px; color:var(--ink);
+}
+p.body-text a{color:var(--c4); text-decoration:underline;}
+h2.index{
+  text-align:center; margin:52px 0 26px; font-weight:700;
+  font-size:clamp(1.4rem,4.5vw,1.9rem);
+  background:linear-gradient(90deg,var(--c5),var(--c1),var(--c2),var(--c3));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+ul.links{list-style:none; margin:0; padding:0; text-align:center;}
+ul.links li{margin:0 0 15px;}
+ul.links a{
+  color:var(--ink); text-decoration:underline; text-underline-offset:3px;
+  padding:3px 8px; border-radius:4px; background:transparent;
+  transition:background-color .15s ease,color .15s ease;
+}
+ul.links a:hover, ul.links a:focus-visible, ul.links a:active{
+  background:var(--focus); color:var(--focus-ink); outline:none;
+}
+.sparkle{animation:twinkle 2.6s ease-in-out infinite;}
+.s2{animation-delay:.5s;} .s3{animation-delay:1s;} .s4{animation-delay:1.6s;} .s5{animation-delay:.9s;}
+@keyframes twinkle{0%,100%{opacity:.35; transform:scale(.75);}50%{opacity:1; transform:scale(1.05);}}
+.bob{animation:bob 5s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.pen{animation:wiggle 4s ease-in-out infinite;}
+@keyframes wiggle{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-3deg);}}
+@media (prefers-reduced-motion:reduce){
+  h1.title, .sparkle, .bob, .pen{animation:none !important;}
+}
 </style>
 </head>
 <body>
 
-<div class="controls">
-  <button class="icon-btn" id="themeToggle" aria-label="थीम बदला" title="थीम बदला">
-    <svg id="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
-    <svg id="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+<div class="bar">
+  <button class="icon-btn" id="themeBtn" aria-label="थीम बदला" title="थीम बदला">
+    <svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
   </button>
   <button class="icon-btn" id="shareBtn" aria-label="शेअर करा" title="शेअर करा">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-3.9M8.6 13.5l6.8 3.9"/></svg>
+    <svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.7l7.3-3.9M8.3 13.3l7.3 3.9"/></svg>
   </button>
 </div>
 
-<div class="toast" id="toast">दुवा कॉपी झाला</div>
+<div class="wrap">
+  <h1 class="title">निबंध वही</h1>
 
-<main>
-  <h1 class="title">✨✨ निबंध वही ✨✨</h1>
-
-  <svg class="hero" viewBox="0 0 420 260" role="img" aria-label="रंगीत उघडी वही आणि लिहिणारे पेन">
+  <svg class="hero bob" viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="रंगीत सजावटी शीर्षचित्र">
     <defs>
-      <linearGradient id="pageL" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#fffaf0"/>
-        <stop offset="1" stop-color="#f6ecd6"/>
+      <linearGradient id="pgL" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#FFD9CE"/><stop offset="100%" stop-color="#FFEFD6"/>
       </linearGradient>
-      <linearGradient id="pageR" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#fffcf5"/>
-        <stop offset="1" stop-color="#f9f1de"/>
+      <linearGradient id="pgR" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#D9F2E6"/><stop offset="100%" stop-color="#DCE3FF"/>
       </linearGradient>
       <linearGradient id="penG" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="var(--rose)"/>
-        <stop offset="1" stop-color="var(--violet)"/>
-      </linearGradient>
-      <linearGradient id="inkTrail" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="var(--coral)"/>
-        <stop offset="0.33" stop-color="var(--gold)"/>
-        <stop offset="0.66" stop-color="var(--teal)"/>
-        <stop offset="1" stop-color="var(--sky)"/>
+        <stop offset="0%" stop-color="#5B6EE8"/><stop offset="100%" stop-color="#D6559C"/>
       </linearGradient>
     </defs>
 
-    <ellipse cx="210" cy="235" rx="160" ry="14" fill="#000" opacity="0.06"/>
-
-    <g transform="translate(210,130)">
-      <path d="M0,-95 L-150,-78 L-150,88 L0,105 Z" fill="url(#pageL)" stroke="var(--paper-line)" stroke-width="2"/>
-      <path d="M0,-95 L150,-78 L150,88 L0,105 Z" fill="url(#pageR)" stroke="var(--paper-line)" stroke-width="2"/>
-      <path d="M0,-95 L0,105" stroke="var(--paper-line)" stroke-width="2"/>
-
-      <g stroke="url(#inkTrail)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85">
-        <path d="M-125,-45 Q-95,-52 -70,-45 T-20,-42" stroke-dasharray="240" stroke-dashoffset="240">
-          <animate attributeName="stroke-dashoffset" from="240" to="0" dur="3.2s" begin="0.2s" fill="freeze"/>
-        </path>
-        <path d="M-125,-18 Q-90,-24 -55,-16 T-15,-14" stroke-dasharray="220" stroke-dashoffset="220">
-          <animate attributeName="stroke-dashoffset" from="220" to="0" dur="2.8s" begin="1.4s" fill="freeze"/>
-        </path>
-        <path d="M-125,9 Q-88,3 -50,10 T-18,12" stroke-dasharray="220" stroke-dashoffset="220">
-          <animate attributeName="stroke-dashoffset" from="220" to="0" dur="2.8s" begin="2.6s" fill="freeze"/>
-        </path>
-      </g>
-
-      <g stroke="var(--paper-line)" stroke-width="1.5" fill="none" opacity="0.7">
-        <path d="M20,-40 H140"/>
-        <path d="M20,-14 H140"/>
-        <path d="M20,12 H120"/>
-        <path d="M20,38 H140"/>
-        <path d="M20,64 H100"/>
-      </g>
-
-      <g transform="translate(30,-10) rotate(-32)">
-        <animateTransform attributeName="transform" type="translate" values="30,-10; 26,-14; 30,-10" dur="2.6s" repeatCount="indefinite" additive="sum"/>
-        <rect x="-6" y="-58" width="12" height="70" rx="4" fill="url(#penG)"/>
-        <path d="M-6,-58 L6,-58 L0,-72 Z" fill="var(--gold)"/>
-        <rect x="-6" y="-14" width="12" height="10" fill="var(--ink-soft)" opacity="0.4"/>
-      </g>
-
-      <g font-size="20" opacity="0.9">
-        <text x="-135" y="-70" fill="var(--coral)">
-          <animate attributeName="opacity" values="0.2;1;0.2" dur="2.4s" repeatCount="indefinite"/>
-          ✦
-        </text>
-        <text x="118" y="-58" fill="var(--teal)">
-          <animate attributeName="opacity" values="1;0.2;1" dur="2.9s" repeatCount="indefinite"/>
-          ✧
-        </text>
-        <text x="130" y="60" fill="var(--violet)">
-          <animate attributeName="opacity" values="0.3;1;0.3" dur="3.3s" repeatCount="indefinite"/>
-          ✦
-        </text>
-        <text x="-145" y="55" fill="var(--gold)">
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.1s" repeatCount="indefinite"/>
-          ✧
-        </text>
-      </g>
+    <path d="M280 46 L120 60 Q108 62 108 74 L108 168 Q108 178 120 176 L280 158 Z" fill="url(#pgL)"/>
+    <path d="M280 46 L440 60 Q452 62 452 74 L452 168 Q452 178 440 176 L280 158 Z" fill="url(#pgR)"/>
+    <rect x="277" y="44" width="6" height="116" fill="#C7BFAE"/>
+    <g stroke="#E8574B" stroke-width="2.5" stroke-linecap="round" opacity=".55">
+      <path d="M132 84 L252 76"/><path d="M132 102 L248 95"/><path d="M132 120 L240 114"/>
     </g>
+    <g stroke="#2FAE8B" stroke-width="2.5" stroke-linecap="round" opacity=".55">
+      <path d="M312 76 L428 84"/><path d="M316 95 L424 102"/><path d="M320 114 L416 120"/>
+    </g>
+
+    <g class="pen" transform="translate(370,40)">
+      <rect x="0" y="0" width="130" height="14" rx="7" transform="rotate(28)" fill="url(#penG)"/>
+      <path d="M113 62 L140 92 L108 78 Z" fill="#F2A93B"/>
+    </g>
+
+    <g class="sparkle" fill="#E8574B"><path d="M60 40 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4 z"/></g>
+    <g class="sparkle s2" fill="#5B6EE8"><path d="M500 130 l3.4 10 10 3.4 -10 3.4 -3.4 10 -3.4 -10 -10 -3.4 10 -3.4 z"/></g>
+    <g class="sparkle s3" fill="#F2A93B"><path d="M40 150 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 z"/></g>
+    <g class="sparkle s4" fill="#2FAE8B"><path d="M488 34 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 z"/></g>
+    <g class="sparkle s5" fill="#D6559C"><path d="M280 12 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 z"/></g>
   </svg>
 
-  <p class="intro">तसं बघायला गेलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी 'सुचते' याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे. 🫣</p>
+  <p class="body-text">तसं बघायला गेलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी 'सुचते' याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे. 🫣</p>
 
-  <p class="intro">सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते 'स्फुट' WhatsApp वर शेअर केलं गेलं. ते वाचून ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
+  <p class="body-text">सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते 'स्फुट' WhatsApp वर शेअर केलं गेलं. त्यावर ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
 
-  <p class="intro">त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण येत राहिला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
+  <p class="body-text">त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण आला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
 
-  <p class="intro">मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
+  <p class="body-text">मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener">Substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
 
-  <p class="intro">ऑनलाइन असल्याने आणि म्हणून <em>'अक्षर लागले नाही म्हणून वाचले नाही'</em> या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
+  <p class="body-text">ऑनलाइन असल्याने आणि म्हणून 'अक्षर लागले नाही म्हणून वाचले नाही' या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
 
-  <h2 class="toc-heading">⚞⚞ अनुक्रमणिका ⚟⚟</h2>
-
-  <ul class="toc">
+  <h2 class="index">अनुक्रमणिका</h2>
+  <ul class="links">
     <li><a href="https://jswdrkl.github.io/clicks/" target="_blank" rel="noopener">काहीतरी 'क्लिक' होते</a></li>
     <li><a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener">क्वांटम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</a></li>
     <li><a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener">श्वास एक मितवा</a></li>
     <li><a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a></li>
     <li><a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener">आस्तिक (ना)आस्तिक</a></li>
     <li><a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener">'कॉन्स्टंट' स्थिरांक!!</a></li>
-    <li><a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener">Perfectionism -- अचूकतेचा अट्टाहास</a></li>
+    <li><a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener">Perfectionism – अचूकतेचा अट्टाहास</a></li>
     <li><a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener">बांडगूळ(च)</a></li>
     <li><a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener">रेझोनन्स</a></li>
     <li><a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener">सोडून देणे.. just let go.. write off..</a></li>
@@ -345,8 +162,8 @@
     <li><a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener">ठेहराव</a></li>
     <li><a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener">सापशिडी</a></li>
     <li><a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener">पोली-आजीचे घडयाळ</a></li>
-    <li><a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener">'भूल' -- एक घेणे</a></li>
-    <li><a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener">एका खड्डयाचे 'पडणे'... आणि त्याचे नशीब</a></li>
+    <li><a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener">'भूल' – एक घेणे</a></li>
+    <li><a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener">एका खड्डयाचे 'पडणे'… आणि त्याचे नशीब</a></li>
     <li><a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener">जेरुषा</a></li>
     <li><a href="https://jswdrkl.github.io/Stage/" target="_blank" rel="noopener">A Stage - रंगमंच</a></li>
     <li><a href="https://jswdrkl.github.io/Networks-and-Bypasses/" target="_blank" rel="noopener">नेटवर्क्स आणि बायपासेस</a></li>
@@ -360,42 +177,41 @@
     <li><a href="https://jswdrkl.github.io/Commute/" target="_blank" rel="noopener">कम्यूट</a></li>
     <li><a href="https://jswdrkl.github.io/G-For/" target="_blank" rel="noopener">G For..</a></li>
     <li><a href="https://jswdrkl.github.io/Introspection//" target="_blank" rel="noopener">आत्मनिरीक्षण</a></li>
+    <li><a href="https://jswdrkl.github.io/Circuit/" target="_blank" rel="noopener">सर्किट</a></li>
+    <li><a href="https://jswdrkl.github.io/RSVP/" target="_blank" rel="noopener">répondez s'il vous plaît</a></li>
+    <li><a href="https://jswdrkl.github.io/Neutral-and-Clutch/" target="_blank" rel="noopener">न्यूट्रल गियर आणि क्लच!</a></li>
   </ul>
-
-  <p class="closing">✧✧✧</p>
-</main>
+</div>
 
 <script>
 (function(){
-  var root = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-  var stored = localStorage.getItem('nv-theme');
-  if(stored){ root.setAttribute('data-theme', stored); }
-
-  toggle.addEventListener('click', function(){
-    var current = root.getAttribute('data-theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var isDark = current ? current === 'dark' : prefersDark;
-    var next = isDark ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try{ localStorage.setItem('nv-theme', next); }catch(e){}
+  var root=document.documentElement;
+  var btn=document.getElementById('themeBtn');
+  var icon=document.getElementById('themeIcon');
+  var moon='<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>';
+  var sun=icon.innerHTML;
+  var saved=localStorage.getItem('nv-theme');
+  if(saved){root.setAttribute('data-theme',saved); icon.innerHTML = saved==='dark'?moon:sun;}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    var dark = cur ? cur!=='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches ? false : true;
+    var next = dark ? 'dark':'light';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('nv-theme',next);
+    icon.innerHTML = next==='dark'?moon:sun;
   });
 
-  var shareBtn = document.getElementById('shareBtn');
-  var toast = document.getElementById('toast');
-  shareBtn.addEventListener('click', function(){
-    var shareData = { title: 'निबंध वही', url: window.location.href };
-    if(navigator.share){
-      navigator.share(shareData).catch(function(){});
-    } else if(navigator.clipboard){
-      navigator.clipboard.writeText(window.location.href).then(function(){
-        toast.classList.add('show');
-        setTimeout(function(){ toast.classList.remove('show'); }, 1800);
-      }).catch(function(){});
+  document.getElementById('shareBtn').addEventListener('click',function(){
+    var data={title:'निबंध वही',url:location.href};
+    if(navigator.share){navigator.share(data).catch(function(){});}
+    else if(navigator.clipboard){
+      navigator.clipboard.writeText(location.href).then(function(){
+        var b=document.getElementById('shareBtn');
+        var old=b.title; b.title='लिंक कॉपी झाली'; setTimeout(function(){b.title=old;},1500);
+      });
     }
   });
 })();
 </script>
-
 </body>
 </html>
