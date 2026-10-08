@@ -222,6 +222,18 @@
   .index { list-style: none; margin: 0; padding: 0; text-align: center; }
   .index li { margin: 0 0 .7rem; line-height: 1.7; font-size: 1.1rem; }
 
+  .share-wrap { display: flex; justify-content: center; margin-top: 1.6rem; }
+  .share-wrap .icon-btn {
+    width: 3.25rem;
+    height: 3.25rem;
+    color: #fff;
+    border-color: transparent;
+    background: linear-gradient(135deg, #ff2d78, #ff8a00);
+    box-shadow: 0 4px 14px rgba(255, 45, 120, .35);
+  }
+  .share-wrap .icon-btn:hover { border-color: transparent; box-shadow: 0 6px 18px rgba(255, 45, 120, .5); }
+  .share-wrap .icon-btn svg { width: 1.5rem; height: 1.5rem; }
+
   .end { margin: 2.6rem 0 0; text-align: center; letter-spacing: .35em; font-weight: 700; color: var(--g5); }
 
   /* ---------- links ---------- */
@@ -266,10 +278,6 @@
     <button class="icon-btn" id="theme" type="button" aria-label="Toggle theme">
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
-    </button>
-    <button class="icon-btn" id="share" type="button" aria-label="Share">
-      <svg class="share-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg>
-      <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
     </button>
   </div>
 
@@ -371,7 +379,7 @@
 
     <p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/">substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
 
-    <p>ऑनलाइन असल्याने आणि म्हणून <em><strong>‘अक्षर लागले नाही म्हणून वाचले नाही’ </strong></em>  या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
+    <p>ऑनलाइन असल्याने आणि म्हणून <em><strong>‘अक्षर लागले नाही म्हणून वाचले नाही’</strong></em> या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
   </section>
 
   <h2><span class="spark" aria-hidden="true">✨</span> <span class="grad">अनुक्रमणिका</span> <span class="spark" aria-hidden="true">✨</span></h2>
@@ -419,9 +427,18 @@
     <li><a href="https://jswdrkl.github.io/Insurance-and-Forcasting/">आत्मनिरीक्षण आणि भविष्यकथन</a></li>
     <li><a href="https://jswdrkl.github.io/Internal-Energy/">आंतरिक ‘उर्जे’चा ‘विचार’..</a></li>
     <li><a href="https://jswdrkl.github.io/Ego/">अहंकारांच्या झुली</a></li>
+    <li><a href="https://jswdrkl.github.io/elsewhere/">इतरत्र – अन्यथा – elsewhere आणि.. Appreciation..</a></li>
+    <li><a href="https://jswdrkl.github.io/start-a-fresh/">पुनश्च हरि ॐ</a></li>
   </ul>
 
   <p class="end" aria-hidden="true">✧✧✧</p>
+
+  <div class="share-wrap">
+    <button class="icon-btn" id="share" type="button" aria-label="Share">
+      <svg class="share-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg>
+      <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </button>
+  </div>
 
 </main>
 
