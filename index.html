@@ -82,7 +82,7 @@
   .wrap {
     width: min(100%, 780px);
     margin: 0 auto;
-    padding: 14px clamp(16px, 5vw, 32px) 56px;
+    padding: 14px clamp(16px, 5vw, 32px) 120px;
   }
 
   /* ---------- toolbar ---------- */
@@ -113,8 +113,19 @@
   .icon-btn.done .share-ic { display: none; }
   .icon-btn.done .check { display: block; }
 
-  .foot { display: flex; justify-content: center; margin-top: 1.6rem; }
-  .share-btn { width: 48px; height: 48px; background: #d8d3ee; border-color: transparent; color: #4a4470; box-shadow: 0 3px 10px rgba(120, 110, 170, .18); transition: transform .15s, background-color .25s; }
+  /* share button: pinned to the bottom of the screen so it is always reachable on any phone */
+  .foot {
+    position: fixed;
+    right: 0; bottom: 0; left: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 14px 14px;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    pointer-events: none;
+  }
+  .foot .share-btn { pointer-events: auto; }
+  .share-btn { width: 44px; height: 44px; opacity: .92; background: #d8d3ee; border-color: transparent; color: #4a4470; box-shadow: 0 3px 10px rgba(120, 110, 170, .18); transition: transform .15s, background-color .25s; }
   .share-btn:hover { background: #cbc4e8; }
   .share-btn.done { background: #c8e4d8; }
   .share-btn .check { stroke: #3f6b58; }
