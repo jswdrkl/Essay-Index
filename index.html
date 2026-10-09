@@ -1,57 +1,61 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="mr" data-theme="light">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>निबंध वही</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="निबंध वही – अनुक्रमणिका">
 <meta name="theme-color" content="#fbf9ff">
-<meta property="og:title" content="निबंध वही">
 <meta property="og:type" content="website">
+<meta property="og:title" content="निबंध वही">
+<meta property="og:description" content="निबंध वही – अनुक्रमणिका">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="निबंध वही">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script>
-  /* Apply saved / system theme before first paint to avoid a flash */
+  // Apply saved / preferred theme before first paint (no flash)
   (function () {
     var t = null;
-    try { t = localStorage.getItem('nv-theme'); } catch (e) {}
-    if (t !== 'light' && t !== 'dark') {
-      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    try { t = localStorage.getItem("nibandh-theme"); } catch (e) {}
+    if (t !== "light" && t !== "dark") {
+      t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     }
-    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute("data-theme", t);
   })();
 </script>
 
 <style>
   :root {
-    --bg: #fbf9ff;
-    --wash-1: #ffe3ef;
-    --wash-2: #ddefff;
-    --wash-3: #fff1cf;
-    --text: #2a2540;
-    --btn-bg: rgba(255, 255, 255, .85);
-    --btn-line: rgba(42, 37, 64, .18);
-    --btn-icon: #2a2540;
-    --g1: #e11d74; --g2: #f26b1d; --g3: #0f9d8a; --g4: #2563eb; --g5: #7c3aed;
-    --glow: .55;
-    --t1: #5d4d86; --t2: #3f6a8c;
+    --bg1: #fbf9ff;
+    --bg2: #fff6ef;
+    --fg: #23233a;
+    --muted: #6a6a86;
+    --btn-bg: rgba(255, 255, 255, .8);
+    --btn-border: rgba(80, 70, 140, .22);
+    --page: #ffffff;
+    --page-shade: #efeafc;
+    --ink: #3b3563;
+    --hover-ring: transparent;
+    --title: #8c82bd;
     color-scheme: light;
   }
   :root[data-theme="dark"] {
-    --bg: #14111f;
-    --wash-1: #2a1730;
-    --wash-2: #11233a;
-    --wash-3: #2b2314;
-    --text: #ebe8f7;
-    --btn-bg: rgba(255, 255, 255, .08);
-    --btn-line: rgba(255, 255, 255, .22);
-    --btn-icon: #ebe8f7;
-    --g1: #ff6aa6; --g2: #ffa24a; --g3: #3fdcc4; --g4: #6aa5ff; --g5: #b18cff;
-    --glow: .28;
-    --t1: #cdbfe8; --t2: #a3c4e0;
+    --bg1: #0e1020;
+    --bg2: #171230;
+    --fg: #e8e8f4;
+    --muted: #a3a3c2;
+    --btn-bg: rgba(255, 255, 255, .07);
+    --btn-border: rgba(255, 255, 255, .22);
+    --page: #2b2d4d;
+    --page-shade: #1f2140;
+    --ink: #d9d4ff;
+    --hover-ring: rgba(255, 255, 255, .4);
+    --title: #bdb6e2;
     color-scheme: dark;
   }
 
@@ -62,66 +66,62 @@
   body {
     margin: 0;
     min-height: 100vh;
-    color: var(--text);
-    font-family: 'IBM Plex Sans', 'IBM Plex Sans Devanagari', 'Noto Sans Devanagari', 'Mukta', 'Nirmala UI', system-ui, sans-serif;
-    font-size: 1.06rem;
-    line-height: 1.9;
-    background:
-      radial-gradient(55rem 28rem at 8% -8%, var(--wash-1), transparent 62%),
-      radial-gradient(50rem 26rem at 104% 4%, var(--wash-2), transparent 60%),
-      radial-gradient(60rem 30rem at 50% 108%, var(--wash-3), transparent 62%),
-      var(--bg);
-    background-attachment: fixed;
-    /* keep words whole everywhere */
-    word-break: keep-all;
+    font-family: "IBM Plex Sans", "IBM Plex Sans Devanagari", "Noto Sans Devanagari", "Nirmala UI", "Mangal", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: clamp(1rem, .96rem + .25vw, 1.15rem);
+    line-height: 1.95;
+    color: var(--fg);
+    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%) fixed;
+    transition: background-color .3s, color .3s;
+    /* never break words anywhere */
+    word-break: normal;
     overflow-wrap: normal;
     hyphens: none;
     -webkit-hyphens: none;
   }
 
-  .page {
-    width: 100%;
-    max-width: 44rem;
+  .wrap {
+    width: min(100%, 780px);
     margin: 0 auto;
-    padding:
-      max(1rem, env(safe-area-inset-top))
-      max(1.25rem, env(safe-area-inset-right))
-      max(3rem, env(safe-area-inset-bottom))
-      max(1.25rem, env(safe-area-inset-left));
+    padding: 14px clamp(16px, 5vw, 32px) 56px;
   }
 
-  /* ---------- toolbar: theme toggle + share ---------- */
-  .bar {
+  /* ---------- toolbar ---------- */
+  .tools {
     display: flex;
     justify-content: flex-end;
-    gap: .6rem;
+    gap: 10px;
   }
   .icon-btn {
-    width: 2.75rem;
-    height: 2.75rem;
-    display: grid;
-    place-items: center;
-    padding: 0;
+    width: 42px; height: 42px;
+    display: inline-grid; place-items: center;
     border-radius: 50%;
-    border: 1px solid var(--btn-line);
+    border: 1px solid var(--btn-border);
     background: var(--btn-bg);
-    color: var(--btn-icon);
+    color: var(--fg);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    backdrop-filter: blur(6px);
-    transition: transform .15s ease, border-color .15s ease;
+    transition: transform .15s, background-color .2s;
   }
-  .icon-btn:hover { transform: translateY(-1px); border-color: var(--g4); }
+  .icon-btn:hover { transform: translateY(-2px); }
   .icon-btn:active { transform: scale(.94); }
-  .icon-btn:focus-visible { outline: 2px solid var(--g4); outline-offset: 3px; }
-  .icon-btn svg { width: 1.3rem; height: 1.3rem; display: block; }
-
-  .icon-btn .sun { display: none; }
-  :root[data-theme="dark"] .icon-btn .sun { display: block; }
-  :root[data-theme="dark"] .icon-btn .moon { display: none; }
+  .icon-btn:focus-visible { outline: 2px solid #c0b8df; outline-offset: 2px; }
+  .icon-btn svg { width: 20px; height: 20px; }
+  .icon-btn .moon { display: none; }
+  :root[data-theme="dark"] .icon-btn .sun { display: none; }
+  :root[data-theme="dark"] .icon-btn .moon { display: block; }
   .icon-btn .check { display: none; }
   .icon-btn.done .share-ic { display: none; }
   .icon-btn.done .check { display: block; }
+
+  .foot { display: flex; justify-content: center; margin-top: 1.6rem; }
+  .share-btn { width: 48px; height: 48px; background: #d8d3ee; border-color: transparent; color: #4a4470; box-shadow: 0 3px 10px rgba(120, 110, 170, .18); transition: transform .15s, background-color .25s; }
+  .share-btn:hover { background: #cbc4e8; }
+  .share-btn.done { background: #c8e4d8; }
+  .share-btn .check { stroke: #3f6b58; }
+  :root[data-theme="dark"] .share-btn { background: #3a3760; color: #e6e2fa; box-shadow: none; }
+  :root[data-theme="dark"] .share-btn:hover { background: #46427a; }
+  :root[data-theme="dark"] .share-btn.done { background: #3f6656; }
+  :root[data-theme="dark"] .share-btn .check { stroke: #e2f5ec; }
 
   /* ---------- headings ---------- */
   h1, h2 {
@@ -129,112 +129,76 @@
     text-align: center;
     font-weight: 700;
     line-height: 1.35;
-    white-space: nowrap;
   }
-  h1 { font-size: clamp(2.6rem, 10.5vw, 4.4rem); margin-top: .4rem; }
-  h2 { font-size: clamp(1.8rem, 7vw, 2.7rem); margin: 3rem 0 1.4rem; }
+  h1 { font-size: clamp(2.1rem, 7.5vw, 3.4rem); margin-top: 6px; }
+  h2 { font-size: clamp(1.45rem, 4.6vw, 2rem); margin: 2.4rem 0 1.1rem; }
 
-  .grad {
-    background-image: linear-gradient(90deg, var(--t1), var(--t2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    padding: 0 .08em;
-  }
-  h2 .grad { background-image: linear-gradient(90deg, var(--t2), var(--t1)); }
+  .grad { color: var(--title); }
 
-  .spark {
-    display: inline-block;
-    font-size: .62em;
-    vertical-align: .18em;
-    animation: twinkle 3.2s ease-in-out infinite;
-  }
-  .spark:last-child { animation-delay: 1.6s; }
+  .spark { display: inline-block; animation: twinkle 2.6s ease-in-out infinite; }
+  .spark:last-child { animation-delay: 1.3s; }
   @keyframes twinkle {
-    0%, 100% { transform: scale(1) rotate(0); opacity: 1; }
-    50% { transform: scale(1.25) rotate(14deg); opacity: .75; }
+    0%, 100% { transform: scale(1) rotate(0); }
+    50% { transform: scale(1.22) rotate(14deg); }
   }
 
-  /* ---------- header illustration ---------- */
-  .hero { margin: .4rem auto 1.6rem; }
-  .hero svg { display: block; width: 100%; height: auto; overflow: visible; }
-
-  .float   { animation: float 7s ease-in-out infinite; }
-  .float.b { animation-duration: 9s;  animation-delay: -2s; }
-  .float.c { animation-duration: 8s;  animation-delay: -4s; }
-  .float.d { animation-duration: 10s; animation-delay: -6s; }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-
-  .star { transform-box: fill-box; transform-origin: center; animation: star 2.8s ease-in-out infinite; }
-  .star.s2 { animation-delay: -.7s; } .star.s3 { animation-delay: -1.4s; }
-  .star.s4 { animation-delay: -2.1s; } .star.s5 { animation-delay: -.3s; }
-  @keyframes star { 0%, 100% { transform: scale(.35) rotate(0); opacity: .4; } 50% { transform: scale(1.1) rotate(45deg); opacity: 1; } }
-
-  .ink {
-    fill: none;
-    stroke-width: 3.2;
-    stroke-linecap: round;
-    stroke-dasharray: 1 1;
-    stroke-dashoffset: 1;
-    animation: write 10s ease-in-out infinite backwards;
+  /* ---------- hero svg ---------- */
+  .hero { display: block; width: 100%; height: auto; margin: 4px auto 6px; overflow: visible; }
+  .blob { animation: floaty 9s ease-in-out infinite alternate; }
+  .blob.b2 { animation-duration: 11s; animation-delay: -3s; }
+  .blob.b3 { animation-duration: 13s; animation-delay: -6s; }
+  @keyframes floaty {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(14px, -12px) scale(1.08); }
   }
-  @keyframes write {
-    0%   { stroke-dashoffset: 1; }
-    10%  { stroke-dashoffset: 0; }
-    80%  { stroke-dashoffset: 0; }
-    92%  { stroke-dashoffset: -1; }
-    100% { stroke-dashoffset: -1; }
+  .book { animation: bob 5s ease-in-out infinite alternate; }
+  @keyframes bob { from { transform: translateY(0); } to { transform: translateY(-5px); } }
+
+  .spk { transform-box: fill-box; transform-origin: center; animation: spk 2.4s ease-in-out infinite; }
+  @keyframes spk {
+    0%, 100% { transform: scale(.2) rotate(0); opacity: .15; }
+    50% { transform: scale(1) rotate(45deg); opacity: 1; }
+  }
+  .dot { animation: rise 6s ease-in-out infinite; }
+  @keyframes rise {
+    0%, 100% { transform: translateY(0); opacity: .9; }
+    50% { transform: translateY(-14px); opacity: .5; }
   }
 
-  .pencil { animation: scribble 10s linear infinite; }
-  @keyframes scribble {
-    0%, 28% { transform: translate(300px, 74px); }
-    30%     { transform: translate(345px, 112px); }
-    40%     { transform: translate(505px, 112px); }
-    41%     { transform: translate(345px, 128px); }
-    50%     { transform: translate(505px, 128px); }
-    51%     { transform: translate(345px, 144px); }
-    60%     { transform: translate(505px, 144px); }
-    61%     { transform: translate(345px, 160px); }
-    70%     { transform: translate(505px, 160px); }
-    71%     { transform: translate(345px, 176px); }
-    80%     { transform: translate(500px, 176px); }
-    90%, 100% { transform: translate(300px, 74px); }
+  .wl { fill: none; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .w1 { animation: w1 7s linear infinite; }
+  .w2 { animation: w2 7s linear infinite; }
+  .w3 { animation: w3 7s linear infinite; }
+  .w4 { animation: w4 7s linear infinite; }
+  @keyframes w1 { 0% { stroke-dashoffset: 1; opacity: 1; } 20%, 94% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+  @keyframes w2 { 0%, 25% { stroke-dashoffset: 1; opacity: 1; } 45%, 94% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+  @keyframes w3 { 0%, 50% { stroke-dashoffset: 1; opacity: 1; } 70%, 94% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+  @keyframes w4 { 0%, 75% { stroke-dashoffset: 1; opacity: 1; } 92%, 94% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+
+  .pen { animation: pen 7s linear infinite; transform: translate(418px, 138px); }
+  @keyframes pen {
+    0%   { transform: translate(338px, 118px); }
+    20%  { transform: translate(418px, 118px); }
+    25%  { transform: translate(338px, 138px); }
+    45%  { transform: translate(418px, 138px); }
+    50%  { transform: translate(338px, 158px); }
+    70%  { transform: translate(418px, 158px); }
+    75%  { transform: translate(338px, 178px); }
+    92%  { transform: translate(410px, 178px); }
+    100% { transform: translate(338px, 118px); }
   }
+  .shimmer { animation: shim 3.4s ease-in-out infinite; }
+  @keyframes shim { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
 
-  .ribbon { transform-box: fill-box; transform-origin: 50% 0; animation: sway 4s ease-in-out infinite; }
-  @keyframes sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
-
-  .wave { animation: drift 7s linear infinite; }
-  .wave.w2 { animation-duration: 11s; animation-direction: reverse; }
-  .wave.w3 { animation-duration: 15s; }
-  @keyframes drift { to { transform: translateX(-160px); } }
-
-  /* ---------- body copy ---------- */
-  .copy p {
-    margin: 0 0 1.25rem;
+  /* ---------- body text ---------- */
+  .intro { font-size: 1.1em; }
+  .intro p {
+    margin: 0 0 1.15em;
     text-align: justify;
     text-justify: inter-word;
+    text-wrap: pretty;
   }
-
-  /* ---------- index ---------- */
-  .index { list-style: none; margin: 0; padding: 0; text-align: center; }
-  .index li { margin: 0 0 .7rem; line-height: 1.7; font-size: 1.1rem; }
-
-  .share-wrap { display: flex; justify-content: center; margin-top: 1.6rem; }
-  .share-wrap .icon-btn {
-    width: 3.25rem;
-    height: 3.25rem;
-    color: #fff;
-    border-color: transparent;
-    background: linear-gradient(135deg, #ff2d78, #ff8a00);
-    box-shadow: 0 4px 14px rgba(255, 45, 120, .35);
-  }
-  .share-wrap .icon-btn:hover { border-color: transparent; box-shadow: 0 6px 18px rgba(255, 45, 120, .5); }
-  .share-wrap .icon-btn svg { width: 1.5rem; height: 1.5rem; }
-
-  .end { margin: 2.6rem 0 0; text-align: center; letter-spacing: .35em; font-weight: 700; color: var(--g5); }
+  .intro em { font-style: italic; }
 
   /* ---------- links ---------- */
   a {
@@ -243,246 +207,262 @@
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: .22em;
-    text-decoration-skip-ink: none;
-    padding: .08em .22em;
+    -webkit-tap-highlight-color: transparent;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    -webkit-tap-highlight-color: transparent;
+    padding: .05em .3em;
+    margin: 0 -.3em;
+    border-radius: 3px;
   }
   a:hover, a:focus-visible, a:active {
     background: #000;
     color: #fff;
+    text-decoration-color: #fff;
+    box-shadow: 0 0 0 1px var(--hover-ring);
     outline: none;
   }
-  :root[data-theme="dark"] a:hover,
-  :root[data-theme="dark"] a:focus-visible,
-  :root[data-theme="dark"] a:active { box-shadow: 0 0 0 1px rgba(255, 255, 255, .4); }
+  .sub svg { width: .8em; height: 1em; vertical-align: -.12em; margin-right: .3em; }
+  .sub b { font-weight: 700; letter-spacing: -.01em; }
 
-  @media (max-width: 480px) {
-    body { font-size: 1rem; line-height: 1.85; }
-    .index li { font-size: 1.05rem; }
+  .index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .index li { margin: 0 0 .7em; line-height: 1.7; text-wrap: balance; }
+
+  .end {
+    margin: 2.2rem 0 0;
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: .3em;
+    padding-left: .3em;
+    background-image: linear-gradient(90deg, #d49ab2, #d4c28a, #94c0ab, #98b4d6, #b0a6d8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 700;
   }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
-    .ink { stroke-dashoffset: 0; }
-    .pencil { transform: translate(500px, 176px); }
+    .spk { transform: scale(.8); opacity: 1; }
   }
 </style>
 </head>
-
 <body>
-<main class="page">
+<div class="wrap">
 
-  <div class="bar">
+  <div class="tools">
     <button class="icon-btn" id="theme" type="button" aria-label="Toggle theme">
-      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
   </div>
 
-  <h1><span class="spark" aria-hidden="true">✨</span> <span class="grad">निबंध वही</span> <span class="spark" aria-hidden="true">✨</span></h1>
+  <header>
+    <h1><span class="spark" aria-hidden="true">✨</span> <span class="grad grad-a">निबंध वही</span> <span class="spark" aria-hidden="true">✨</span></h1>
 
-  <div class="hero">
-    <svg viewBox="0 0 640 262" role="img" aria-label="निबंध वही" xmlns="http://www.w3.org/2000/svg">
+    <svg class="hero" viewBox="0 0 640 280" role="img" aria-label="निबंध वही" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#6a5a93"/>
-          <stop offset=".55" stop-color="#94607f"/>
-          <stop offset="1" stop-color="#c08a6a"/>
+        <linearGradient id="gWarm" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#e6b3c6"/><stop offset=".5" stop-color="#ebc9ab"/><stop offset="1" stop-color="#e6d9ae"/>
         </linearGradient>
-        <linearGradient id="paperL" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#fffdf7"/>
-          <stop offset="1" stop-color="#f6ecd8"/>
+        <linearGradient id="gCool" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#afd4cb"/><stop offset=".5" stop-color="#b3c9e2"/><stop offset="1" stop-color="#c0b8df"/>
         </linearGradient>
-        <linearGradient id="paperR" x1="1" y1="0" x2="0" y2="0">
-          <stop offset="0" stop-color="#fffdf7"/>
-          <stop offset="1" stop-color="#f6ecd8"/>
+        <linearGradient id="gPink" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#c0b8df"/><stop offset="1" stop-color="#e6b3c6"/>
         </linearGradient>
-        <radialGradient id="glow" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#eadce6"/>
-          <stop offset=".55" stop-color="#d8e3ef"/>
-          <stop offset="1" stop-color="#d8e3ef" stop-opacity="0"/>
-        </radialGradient>
+        <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
       </defs>
 
-      <!-- soft glow -->
-      <ellipse cx="320" cy="130" rx="300" ry="120" fill="url(#glow)" opacity=".55"/>
-
-      <!-- floating colour blobs -->
-      <g class="float"><circle cx="78" cy="88" r="44" fill="#b3869f" opacity=".28"/></g>
-      <g class="float b"><circle cx="566" cy="66" r="36" fill="#80a9a3" opacity=".3"/></g>
-      <g class="float c"><circle cx="560" cy="196" r="28" fill="#cdb072" opacity=".38"/></g>
-      <g class="float d"><circle cx="86" cy="196" r="24" fill="#8399bd" opacity=".3"/></g>
-
-      <!-- sparkles -->
-      <g transform="translate(60 40)"><path class="star" fill="#cdb072" d="M0-16Q0 0 16 0Q0 0 0 16Q0 0-16 0Q0 0 0-16Z"/></g>
-      <g transform="translate(598 28)"><path class="star s2" fill="#b3869f" d="M0-14Q0 0 14 0Q0 0 0 14Q0 0-14 0Q0 0 0-14Z"/></g>
-      <g transform="translate(320 36)"><path class="star s3" fill="#80a9a3" d="M0-12Q0 0 12 0Q0 0 0 12Q0 0-12 0Q0 0 0-12Z"/></g>
-      <g transform="translate(610 150)"><path class="star s4" fill="#9a8cbb" d="M0-13Q0 0 13 0Q0 0 0 13Q0 0-13 0Q0 0 0-13Z"/></g>
-      <g transform="translate(30 140)"><path class="star s5" fill="#c08a6a" d="M0-12Q0 0 12 0Q0 0 0 12Q0 0-12 0Q0 0 0-12Z"/></g>
-
-      <!-- waves -->
-      <g opacity=".5"><path class="wave w3" fill="#9a8cbb" d="M-160 244q40-18 80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0V270H-160Z"/></g>
-      <g opacity=".5"><path class="wave w2" fill="#8399bd" d="M-160 250q40-16 80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0V270H-160Z"/></g>
-      <g opacity=".6"><path class="wave" fill="#80a9a3" d="M-160 256q40-12 80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0V270H-160Z"/></g>
-
-      <!-- shadow -->
-      <ellipse cx="320" cy="224" rx="230" ry="9" fill="#2a2540" opacity=".16"/>
-
-      <!-- book -->
-      <rect x="98" y="72" width="444" height="142" rx="16" fill="url(#cover)"/>
-      <path d="M112 80Q215 66 320 92V206Q215 182 112 198Z" fill="url(#paperL)" stroke="#e5d6b8" stroke-width="1.5"/>
-      <path d="M528 80Q425 66 320 92V206Q425 182 528 198Z" fill="url(#paperR)" stroke="#e5d6b8" stroke-width="1.5"/>
-      <path d="M320 92V206" stroke="#d3c19b" stroke-width="2"/>
-
-      <!-- bookmark ribbon -->
-      <g class="ribbon"><path d="M334 200h16v36l-8-8-8 8z" fill="#b3869f"/></g>
-
-      <!-- handwriting: left page -->
-      <g>
-        <path class="ink" pathLength="1" style="animation-delay:0s"   stroke="#a65a7e" d="M135 112q20-10 40 0t40 0t40 0t40 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:.5s"  stroke="#b9805a" d="M135 128q20-10 40 0t40 0t40 0t26 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:1s"   stroke="#4f8a82" d="M135 144q20-10 40 0t40 0t40 0t40 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:1.5s" stroke="#4d6a9c" d="M135 160q20-10 40 0t40 0t40 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:2s"   stroke="#6a5a93" d="M135 176q20-10 40 0t40 0t26 0"/>
-      </g>
-      <!-- handwriting: right page (synced with the pencil) -->
-      <g>
-        <path class="ink" pathLength="1" style="animation-delay:3s" stroke="#6a5a93" d="M345 112q20-10 40 0t40 0t40 0t40 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:4s" stroke="#4d6a9c" d="M345 128q20-10 40 0t40 0t40 0t40 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:5s" stroke="#4f8a82" d="M345 144q20-10 40 0t40 0t40 0t40 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:6s" stroke="#b9805a" d="M345 160q20-10 40 0t40 0t40 0t40 0"/>
-        <path class="ink" pathLength="1" style="animation-delay:7s" stroke="#a65a7e" d="M345 176q20-10 40 0t40 0t40 0t36 0"/>
+      <!-- soft colour blobs -->
+      <g filter="url(#soft)" opacity=".35">
+        <circle class="blob" cx="150" cy="130" r="80" fill="url(#gWarm)"/>
+        <circle class="blob b2" cx="500" cy="140" r="85" fill="url(#gCool)"/>
+        <circle class="blob b3" cx="320" cy="70" r="65" fill="url(#gPink)"/>
       </g>
 
-      <!-- pencil -->
-      <g class="pencil">
-        <g transform="rotate(35)">
-          <rect x="-5" y="-50" width="10" height="40" rx="1.5" fill="#dcc27a"/>
-          <rect x="-5" y="-50" width="3.4" height="40" fill="#cdb072"/>
-          <rect x="-5" y="-58" width="10" height="8" rx="2" fill="#b3869f"/>
-          <rect x="-5" y="-52" width="10" height="3" fill="#c9ced6"/>
-          <path d="M-5-10H5L0 3Z" fill="#f3c6a0"/>
-          <path d="M-1.7-2.2H1.7L0 3Z" fill="#2a2540"/>
+      <!-- floating dots -->
+      <g>
+        <circle class="dot" cx="95" cy="205" r="7" fill="#e6b3c6"/>
+        <circle class="dot" cx="545" cy="90" r="6" fill="#afd4cb" style="animation-delay:-2s"/>
+        <circle class="dot" cx="560" cy="215" r="8" fill="#e6d9ae" style="animation-delay:-4s"/>
+        <circle class="dot" cx="80" cy="95" r="5" fill="#b3c9e2" style="animation-delay:-1s"/>
+        <circle class="dot" cx="130" cy="250" r="4" fill="#c0b8df" style="animation-delay:-3s"/>
+        <circle class="dot" cx="505" cy="250" r="5" fill="#e9bcae" style="animation-delay:-5s"/>
+      </g>
+
+      <!-- the notebook -->
+      <g class="book">
+        <ellipse cx="320" cy="252" rx="140" ry="9" fill="#000" opacity=".12"/>
+        <!-- cover -->
+        <path d="M190 92 Q262 70 320 98 Q378 70 450 92 L450 224 Q378 202 320 230 Q262 202 190 224 Z" fill="url(#gCool)"/>
+        <!-- pages -->
+        <path d="M200 88 Q262 70 318 94 L318 218 Q262 196 200 212 Z" fill="var(--page)"/>
+        <path d="M322 94 Q378 70 440 88 L440 212 Q378 196 322 218 Z" fill="var(--page)"/>
+        <path d="M318 94 L318 218 L322 218 L322 94 Z" fill="var(--page-shade)"/>
+        <path d="M200 212 Q262 196 318 218 L318 206 Q262 186 200 200 Z" fill="var(--page-shade)" opacity=".7"/>
+        <path d="M322 218 Q378 196 440 212 L440 200 Q378 186 322 206 Z" fill="var(--page-shade)" opacity=".7"/>
+
+        <!-- left page: index-like coloured lines -->
+        <g stroke-linecap="round" stroke-width="5" fill="none" class="shimmer">
+          <path d="M222 118 h14" stroke="#e6b3c6"/><path d="M246 118 h50" stroke="var(--ink)" opacity=".55"/>
+          <path d="M222 138 h14" stroke="#ebc9ab"/><path d="M246 138 h44" stroke="var(--ink)" opacity=".55"/>
+          <path d="M222 158 h14" stroke="#e6d9ae"/><path d="M246 158 h52" stroke="var(--ink)" opacity=".55"/>
+          <path d="M222 178 h14" stroke="#afd4cb"/><path d="M246 178 h38" stroke="var(--ink)" opacity=".55"/>
+        </g>
+
+        <!-- right page: lines that get written -->
+        <path class="wl w1" pathLength="1" d="M338 118 H418" stroke="#e6b3c6"/>
+        <path class="wl w2" pathLength="1" d="M338 138 H418" stroke="#ebc9ab"/>
+        <path class="wl w3" pathLength="1" d="M338 158 H418" stroke="#b3c9e2"/>
+        <path class="wl w4" pathLength="1" d="M338 178 H410" stroke="#c0b8df"/>
+
+        <!-- bookmark ribbon -->
+        <path d="M420 84 v46 l8 -7 l8 7 v-50 z" fill="#e6b3c6"/>
+
+        <!-- pen -->
+        <g class="pen">
+          <g transform="rotate(32)">
+            <polygon points="0,0 -3.5,-13 3.5,-13" fill="var(--ink)"/>
+            <rect x="-4.5" y="-56" width="9" height="43" rx="3.5" fill="url(#gWarm)"/>
+            <rect x="-4.5" y="-60" width="9" height="8" rx="3" fill="#c0b8df"/>
+          </g>
         </g>
       </g>
+
+      <!-- sparkles -->
+      <g fill="#e6d9ae">
+        <g transform="translate(205 62)"><path class="spk" d="M0-11C1-3 3-1 11 0C3 1 1 3 0 11C-1 3-3 1-11 0C-3-1-1-3 0-11Z" fill="#e6b3c6"/></g>
+        <g transform="translate(445 55)"><path class="spk" style="animation-delay:-.8s" d="M0-11C1-3 3-1 11 0C3 1 1 3 0 11C-1 3-3 1-11 0C-3-1-1-3 0-11Z" fill="#e6d9ae"/></g>
+        <g transform="translate(320 36)"><path class="spk" style="animation-delay:-1.6s" d="M0-11C1-3 3-1 11 0C3 1 1 3 0 11C-1 3-3 1-11 0C-3-1-1-3 0-11Z" fill="#afd4cb"/></g>
+        <g transform="translate(160 160)"><path class="spk" style="animation-delay:-.4s" d="M0-9C1-3 3-1 9 0C3 1 1 3 0 9C-1 3-3 1-9 0C-3-1-1-3 0-9Z" fill="#b3c9e2"/></g>
+        <g transform="translate(490 175)"><path class="spk" style="animation-delay:-1.2s" d="M0-9C1-3 3-1 9 0C3 1 1 3 0 9C-1 3-3 1-9 0C-3-1-1-3 0-9Z" fill="#c0b8df"/></g>
+        <g transform="translate(275 250)"><path class="spk" style="animation-delay:-2s" d="M0-7C1-2 2-1 7 0C2 1 1 2 0 7C-1 2-2 1-7 0C-2-1-1-2 0-7Z" fill="#ebc9ab"/></g>
+        <g transform="translate(385 252)"><path class="spk" style="animation-delay:-1s" d="M0-7C1-2 2-1 7 0C2 1 1 2 0 7C-1 2-2 1-7 0C-2-1-1-2 0-7Z" fill="#e6b3c6"/></g>
+      </g>
     </svg>
-  </div>
+  </header>
 
-  <section class="copy">
-    <p>तसं बघायला गेलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी ‘सुचते’ याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे. 🫣</p>
+  <main>
+    <section class="intro">
+      <p>तसं बघायला गेलं तर खूप पूर्वीपासून आपल्याला एखाद्या विषयावर थोडेफार सलग काहीतरी ‘सुचते’ याची जाणीव होती, पण अंगी मुरलेला 'आळस' नावाचा असामान्य दैवी गुण सुचलेले 'ते' लिहून तर जाऊचदे परंतु त्यातील मुद्दे टिपून ठेवण्याच्याही कायम आड येत असे. म्हणजे आत्ताही येतोच. पण ते जाऊदे. 🫣</p>
 
-    <p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते ‘स्फुट’ WhatsApp वर शेअर केलं गेलं. त्यावर ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
+      <p>सुमारे दोन तीन वर्षांपूर्वी एका दिवशी असंच काहीतरी सुचलं आणि का कोणास ठाऊक पण ते एका बैठकीत 'टंकल' देखील गेलं. तत्पश्चात गुणधर्माला जागत ते लेखन बरेच दिवस संगणकात तसेच पडून होते. मग पुन्हा एकदा काहीतरी क्लिक झालं आणि ते ‘स्फुट’ WhatsApp वर शेअर केलं गेलं. त्यावर ज्या काही प्रतिक्रिया आल्या ते पाहून जरा जास्तच भारी वाटलं.</p>
 
-    <p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण आला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
+      <p>त्यानंतर काहीबाही सुचलं की ते उतरवून काढण्याच्या आड तो दैवी गुण आला तरी त्याच्यावर जरा जरा मात करता येऊ लागली.</p>
 
-    <p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि <a href="https://jslimaye.substack.com/">substack</a> वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
+      <p>मग 'ब्लॉग'पटू व्हायची उर्मी आली आणि
+        <a class="sub" href="https://jslimaye.substack.com/archive?sort=new" target="_blank" rel="noopener"><svg viewBox="0 0 22 26" aria-hidden="true"><path fill="#ff6719" d="M0 0h22v3.4H0zM0 7.2h22v3.4H0zM0 14.4h22V26L11 19.8 0 26z"/></svg><b>substack</b></a>
+        वर निबंधांचे बरेच थर रचले गेले. परंतु तिथे पान उघडायच्या आधी येणारा 'नावनोंदणी करा' हा संदेश जेन-एक्स आणि त्याच्या आसपासच्या पिढीतल्या मंडळींना जरा त्रासदायक वाटतो, म्हणून मग एकेका निबंधाचे स्वतंत्र वेबपेज बनवावे अशी आयडीयाची कल्पना स्फुरली आणि त्यातून ही वही लिहायला घेतली आहे.</p>
 
-    <p>ऑनलाइन असल्याने आणि म्हणून <em><strong>‘अक्षर लागले नाही म्हणून वाचले नाही’</strong></em> या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
-  </section>
+      <p>ऑनलाइन असल्याने आणि म्हणून <em><strong>'अक्षर लागले नाही म्हणून वाचले नाही'</strong></em> या तक्रारीस जागा नसल्याने ही वही वाचणे सर्वाना आवडेल बहुदा..</p>
+    </section>
 
-  <h2><span class="spark" aria-hidden="true">✨</span> <span class="grad">अनुक्रमणिका</span> <span class="spark" aria-hidden="true">✨</span></h2>
+    <h2><span class="spark" aria-hidden="true">✨</span> <span class="grad grad-b">अनुक्रमणिका</span> <span class="spark" aria-hidden="true">✨</span></h2>
 
-  <ul class="index">
-    <li><a href="https://jswdrkl.github.io/clicks/">काहीतरी ‘क्लिक’ होते</a></li>
-    <li><a href="https://jswdrkl.github.io/Quantum/">क्वांटम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</a></li>
-    <li><a href="https://jswdrkl.github.io/Shwas/">श्वास एक मितवा</a></li>
-    <li><a href="https://jswdrkl.github.io/RadioTuning/">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a></li>
-    <li><a href="https://jswdrkl.github.io/aastik-nastik/">आस्तिक (ना)आस्तिक</a></li>
-    <li><a href="https://jswdrkl.github.io/constants/">‘कॉन्स्टंट’ स्थिरांक!!</a></li>
-    <li><a href="https://jswdrkl.github.io/Perfectionism/">Perfectionism – अचूकतेचा अट्टाहास</a></li>
-    <li><a href="https://jswdrkl.github.io/bandgul/">बांडगूळ(च)</a></li>
-    <li><a href="https://jswdrkl.github.io/Resonance/">रेझोनन्स</a></li>
-    <li><a href="https://jswdrkl.github.io/LetGo/">सोडून देणे.. just let go.. write off..</a></li>
-    <li><a href="https://jswdrkl.github.io/Aura/">‘ऑरा’</a></li>
-    <li><a href="https://jswdrkl.github.io/Nasheeb/">‘नशीब’</a></li>
-    <li><a href="https://jswdrkl.github.io/water/">पाण्यासारखे..</a></li>
-    <li><a href="https://jswdrkl.github.io/butterfly-effect/">बटरफ्लाय इफेक्ट</a></li>
-    <li><a href="https://jswdrkl.github.io/pause/">ठेहराव</a></li>
-    <li><a href="https://jswdrkl.github.io/snakes-and-ladders/">सापशिडी</a></li>
-    <li><a href="https://jswdrkl.github.io/pauline/">पोली-आजीचे घडयाळ</a></li>
-    <li><a href="https://jswdrkl.github.io/anesthesia/">‘भूल’ – एक घेणे</a></li>
-    <li><a href="https://jswdrkl.github.io/JMRoad-dich/">एका खड्डयाचे ‘पडणे’… आणि त्याचे नशीब</a></li>
-    <li><a href="https://jswdrkl.github.io/Jerusha/">जेरुषा</a></li>
-    <li><a href="https://jswdrkl.github.io/Stage/">A Stage - रंगमंच</a></li>
-    <li><a href="https://jswdrkl.github.io/Networks-and-Bypasses/">नेटवर्क्स आणि बायपासेस</a></li>
-    <li><a href="https://jswdrkl.github.io/Ego-Tariff/">इगो-टॅरिफ</a></li>
-    <li><a href="https://jswdrkl.github.io/Jyache-Tyache-Pani/">ज्याचे त्याचे ‘पाणी’</a></li>
-    <li><a href="https://jswdrkl.github.io/Wait/">वाट पहावी लागण्यातली मज्जा..</a></li>
-    <li><a href="https://jswdrkl.github.io/Equalizer/">आंतरिक सौंदर्य आणि इक्वलायझर</a></li>
-    <li><a href="https://jswdrkl.github.io/Tech-Te/">तेच ते आणि तेच ते..</a></li>
-    <li><a href="https://jswdrkl.github.io/Persona-Non-Grata/">पर्सोना नॉन ग्राटा</a></li>
-    <li><a href="https://jswdrkl.github.io/Weather-Forcast/">हवामान(वा)चा अंदाज..</a></li>
-    <li><a href="https://jswdrkl.github.io/Commute/">कम्यूट</a></li>
-    <li><a href="https://jswdrkl.github.io/G-For/">G For..</a></li>
-    <li><a href="https://jswdrkl.github.io/Introspection/">आत्मनिरीक्षण</a></li>
-    <li><a href="https://jswdrkl.github.io/Circuit/">सर्किट</a></li>
-    <li><a href="https://jswdrkl.github.io/RSVP/">répondez s'il vous plaît</a></li>
-    <li><a href="https://jswdrkl.github.io/Neutral-and-Clutch/">न्यूट्रल गियर आणि क्लच!</a></li>
-    <li><a href="https://jswdrkl.github.io/CellPhone/">मी, तुम्ही, आपण सगळे फोन का ‘बघतो’?</a></li>
-    <li><a href="https://jswdrkl.github.io/No-News-Is-Good-News/">नो न्यूज इज गुड न्यूज!</a></li>
-    <li><a href="https://jswdrkl.github.io/GPS-and-Introspection/">जीपीएस आणि आत्मनिरीक्षण</a></li>
-    <li><a href="https://jswdrkl.github.io/Mind/">मन रे..</a></li>
-    <li><a href="https://jswdrkl.github.io/Insurance-and-Forcasting/">आत्मनिरीक्षण आणि भविष्यकथन</a></li>
-    <li><a href="https://jswdrkl.github.io/Internal-Energy/">आंतरिक ‘उर्जे’चा ‘विचार’..</a></li>
-    <li><a href="https://jswdrkl.github.io/Ego/">अहंकारांच्या झुली</a></li>
-    <li><a href="https://jswdrkl.github.io/elsewhere/">इतरत्र – अन्यथा – elsewhere आणि.. Appreciation..</a></li>
-    <li><a href="https://jswdrkl.github.io/start-a-fresh/">पुनश्च हरि ॐ</a></li>
-  </ul>
+    <ul class="index">
+      <li><a href="https://jswdrkl.github.io/clicks/" target="_blank" rel="noopener">काहीतरी ‘क्लिक’ होते</a></li>
+      <li><a href="https://jswdrkl.github.io/Quantum/" target="_blank" rel="noopener">क्वांटम एनटॅंगलमेंट आणि मानसिक स्वास्थ्य!</a></li>
+      <li><a href="https://jswdrkl.github.io/Shwas/" target="_blank" rel="noopener">श्वास एक मितवा</a></li>
+      <li><a href="https://jswdrkl.github.io/RadioTuning/" target="_blank" rel="noopener">रेडियो स्टेशनचे ट्यूनिंग आणि मानसिक स्वास्थ्य</a></li>
+      <li><a href="https://jswdrkl.github.io/aastik-nastik/" target="_blank" rel="noopener">आस्तिक (ना)आस्तिक</a></li>
+      <li><a href="https://jswdrkl.github.io/constants/" target="_blank" rel="noopener">‘कॉन्स्टंट’ स्थिरांक!!</a></li>
+      <li><a href="https://jswdrkl.github.io/Perfectionism/" target="_blank" rel="noopener">Perfectionism – अचूकतेचा अट्टाहास</a></li>
+      <li><a href="https://jswdrkl.github.io/bandgul/" target="_blank" rel="noopener">बांडगूळ(च)</a></li>
+      <li><a href="https://jswdrkl.github.io/Resonance/" target="_blank" rel="noopener">रेझोनन्स</a></li>
+      <li><a href="https://jswdrkl.github.io/LetGo/" target="_blank" rel="noopener">सोडून देणे.. just let go.. write off..</a></li>
+      <li><a href="https://jswdrkl.github.io/Aura/" target="_blank" rel="noopener">‘ऑरा’</a></li>
+      <li><a href="https://jswdrkl.github.io/Nasheeb/" target="_blank" rel="noopener">‘नशीब’</a></li>
+      <li><a href="https://jswdrkl.github.io/water/" target="_blank" rel="noopener">पाण्यासारखे..</a></li>
+      <li><a href="https://jswdrkl.github.io/butterfly-effect/" target="_blank" rel="noopener">बटरफ्लाय इफेक्ट</a></li>
+      <li><a href="https://jswdrkl.github.io/pause/" target="_blank" rel="noopener">ठेहराव</a></li>
+      <li><a href="https://jswdrkl.github.io/snakes-and-ladders/" target="_blank" rel="noopener">सापशिडी</a></li>
+      <li><a href="https://jswdrkl.github.io/pauline/" target="_blank" rel="noopener">पोली-आजीचे घडयाळ</a></li>
+      <li><a href="https://jswdrkl.github.io/anesthesia/" target="_blank" rel="noopener">‘भूल’ – एक घेणे</a></li>
+      <li><a href="https://jswdrkl.github.io/JMRoad-dich/" target="_blank" rel="noopener">एका खड्डयाचे ‘पडणे’… आणि त्याचे नशीब</a></li>
+      <li><a href="https://jswdrkl.github.io/Jerusha/" target="_blank" rel="noopener">जेरुषा</a></li>
+      <li><a href="https://jswdrkl.github.io/Stage/" target="_blank" rel="noopener">A Stage - रंगमंच</a></li>
+      <li><a href="https://jswdrkl.github.io/Networks-and-Bypasses/" target="_blank" rel="noopener">नेटवर्क्स आणि बायपासेस</a></li>
+      <li><a href="https://jswdrkl.github.io/Ego-Tariff/" target="_blank" rel="noopener">इगो-टॅरिफ</a></li>
+      <li><a href="https://jswdrkl.github.io/Jyache-Tyache-Pani/" target="_blank" rel="noopener">ज्याचे त्याचे ‘पाणी’</a></li>
+      <li><a href="https://jswdrkl.github.io/Wait/" target="_blank" rel="noopener">वाट पहावी लागण्यातली मज्जा..</a></li>
+      <li><a href="https://jswdrkl.github.io/Equalizer/" target="_blank" rel="noopener">आंतरिक सौंदर्य आणि इक्वलायझर</a></li>
+      <li><a href="https://jswdrkl.github.io/Tech-Te/" target="_blank" rel="noopener">तेच ते आणि तेच ते..</a></li>
+      <li><a href="https://jswdrkl.github.io/Persona-Non-Grata/" target="_blank" rel="noopener">पर्सोना नॉन ग्राटा</a></li>
+      <li><a href="https://jswdrkl.github.io/Weather-Forcast/" target="_blank" rel="noopener">हवामान(वा)चा अंदाज..</a></li>
+      <li><a href="https://jswdrkl.github.io/Commute/" target="_blank" rel="noopener">कम्यूट</a></li>
+      <li><a href="https://jswdrkl.github.io/G-For/" target="_blank" rel="noopener">G For..</a></li>
+      <li><a href="https://jswdrkl.github.io/Introspection//" target="_blank" rel="noopener">आत्मनिरीक्षण</a></li>
+      <li><a href="https://jswdrkl.github.io/Circuit/" target="_blank" rel="noopener">सर्किट</a></li>
+      <li><a href="https://jswdrkl.github.io/RSVP/" target="_blank" rel="noopener"><em><strong>répondez s'il vous plaît</strong></em></a></li>
+      <li><a href="https://jswdrkl.github.io/Neutral-and-Clutch/" target="_blank" rel="noopener">न्यूट्रल गियर आणि क्लच!</a></li>
+      <li><a href="https://jswdrkl.github.io/CellPhone/" target="_blank" rel="noopener">मी, तुम्ही, आपण सगळे फोन का ‘बघतो’?</a></li>
+      <li><a href="https://jswdrkl.github.io/No-News-Is-Good-News/" target="_blank" rel="noopener">नो न्यूज इज गुड न्यूज!</a></li>
+      <li><a href="https://jswdrkl.github.io/GPS-and-Introspection/" target="_blank" rel="noopener">जीपीएस आणि आत्मनिरीक्षण</a></li>
+    </ul>
+  </main>
 
   <p class="end" aria-hidden="true">✧✧✧</p>
 
-  <div class="share-wrap">
-    <button class="icon-btn" id="share" type="button" aria-label="Share">
-      <svg class="share-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg>
-      <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-    </button>
+  <div class="foot">
+    <button class="icon-btn share-btn" id="share" type="button" aria-label="Share">
+    <svg class="share-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+    <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+  </button>
   </div>
-
-</main>
+</div>
 
 <script>
   (function () {
     var root = document.documentElement;
+    var meta = document.querySelector('meta[name="theme-color"]');
 
-    /* ----- theme toggle ----- */
-    var themeBtn = document.getElementById('theme');
-    themeBtn.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('nv-theme', next); } catch (e) {}
-      var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', next === 'dark' ? '#14111f' : '#fbf9ff');
+    function paintMeta() {
+      if (meta) meta.setAttribute("content", root.getAttribute("data-theme") === "dark" ? "#0e1020" : "#fbf9ff");
+    }
+    paintMeta();
+
+    // ---- theme toggle ----
+    document.getElementById("theme").addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("nibandh-theme", next); } catch (e) {}
+      paintMeta();
     });
-    var m = document.querySelector('meta[name="theme-color"]');
-    if (m && root.getAttribute('data-theme') === 'dark') m.setAttribute('content', '#14111f');
 
-    /* ----- share ----- */
-    var shareBtn = document.getElementById('share');
-    function confirmed() {
-      shareBtn.classList.add('done');
-      setTimeout(function () { shareBtn.classList.remove('done'); }, 1800);
+    // ---- share ----
+    var shareBtn = document.getElementById("share");
+
+    function flashDone() {
+      shareBtn.classList.add("done");
+      setTimeout(function () { shareBtn.classList.remove("done"); }, 1600);
     }
     function legacyCopy(text) {
-      var ta = document.createElement('textarea');
+      var ta = document.createElement("textarea");
       ta.value = text;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
+      ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:fixed;top:-1000px;opacity:0";
       document.body.appendChild(ta);
       ta.select();
-      try { document.execCommand('copy'); confirmed(); } catch (e) {}
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) {}
       document.body.removeChild(ta);
+      if (ok) flashDone();
     }
-    shareBtn.addEventListener('click', function () {
-      var data = { title: 'निबंध वही', url: location.href };
+
+    shareBtn.addEventListener("click", function () {
+      var url = location.href;
       if (navigator.share) {
-        navigator.share(data).catch(function () { /* dismissed by user */ });
+        navigator.share({ title: "निबंध वही", text: "निबंध वही", url: url }).catch(function () {});
       } else if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(location.href).then(confirmed, function () { legacyCopy(location.href); });
+        navigator.clipboard.writeText(url).then(flashDone, function () { legacyCopy(url); });
       } else {
-        legacyCopy(location.href);
+        legacyCopy(url);
       }
     });
   })();
