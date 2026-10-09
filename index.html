@@ -109,12 +109,12 @@
   .icon-btn .moon { display: none; }
   :root[data-theme="dark"] .icon-btn .sun { display: none; }
   :root[data-theme="dark"] .icon-btn .moon { display: block; }
-  .icon-btn .check { display: none; }
-  .icon-btn.done .share-ic { display: none; }
-  .icon-btn.done .check { display: block; }
+  .icon-btn .nv-ok { display: none; }
+  .icon-btn.done .nv-ic1 { display: none; }
+  .icon-btn.done .nv-ok { display: block; }
 
-  /* share button: pinned to the bottom of the screen so it is always reachable on any phone */
-  .foot {
+  /* floating action: pinned to the bottom of the screen so it is always reachable on any phone */
+  .nv-dock {
     position: fixed;
     right: 0; bottom: 0; left: 0;
     z-index: 50;
@@ -124,15 +124,15 @@
     padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     pointer-events: none;
   }
-  .foot .share-btn { pointer-events: auto; }
-  .share-btn { width: 44px; height: 44px; opacity: .92; background: #d8d3ee; border-color: transparent; color: #4a4470; box-shadow: 0 3px 10px rgba(120, 110, 170, .18); transition: transform .15s, background-color .25s; }
-  .share-btn:hover { background: #cbc4e8; }
-  .share-btn.done { background: #c8e4d8; }
-  .share-btn .check { stroke: #3f6b58; }
-  :root[data-theme="dark"] .share-btn { background: #3a3760; color: #e6e2fa; box-shadow: none; }
-  :root[data-theme="dark"] .share-btn:hover { background: #46427a; }
-  :root[data-theme="dark"] .share-btn.done { background: #3f6656; }
-  :root[data-theme="dark"] .share-btn .check { stroke: #e2f5ec; }
+  .nv-dock .nv-fab { pointer-events: auto; }
+  .nv-fab { width: 44px; height: 44px; opacity: .92; background: #d8d3ee; border-color: transparent; color: #4a4470; box-shadow: 0 3px 10px rgba(120, 110, 170, .18); transition: transform .15s, background-color .25s; }
+  .nv-fab:hover { background: #cbc4e8; }
+  .nv-fab.done { background: #c8e4d8; }
+  .nv-fab .nv-ok { stroke: #3f6b58; }
+  :root[data-theme="dark"] .nv-fab { background: #3a3760; color: #e6e2fa; box-shadow: none; }
+  :root[data-theme="dark"] .nv-fab:hover { background: #46427a; }
+  :root[data-theme="dark"] .nv-fab.done { background: #3f6656; }
+  :root[data-theme="dark"] .nv-fab .nv-ok { stroke: #e2f5ec; }
 
   /* ---------- headings ---------- */
   h1, h2 {
@@ -420,10 +420,10 @@
 
   <p class="end" aria-hidden="true">✧✧✧</p>
 
-  <div class="foot">
-    <button class="icon-btn share-btn" id="share" type="button" aria-label="Share">
-    <svg class="share-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-    <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+  <div class="nv-dock">
+    <button class="icon-btn nv-fab" id="nv-fab" type="button" aria-label="Send link">
+    <svg class="nv-ic1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+    <svg class="nv-ok" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
   </button>
   </div>
 </div>
@@ -447,7 +447,7 @@
     });
 
     // ---- share ----
-    var shareBtn = document.getElementById("share");
+    var shareBtn = document.getElementById("nv-fab");
 
     function flashDone() {
       shareBtn.classList.add("done");
